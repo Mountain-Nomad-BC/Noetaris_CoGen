@@ -29,6 +29,6 @@ The Oracle IP, future API HTTPS address and historical `/auth/github/callback` e
 
 ## Remaining implementation and verification
 
-Firebase web-app registration and SDK configuration retrieval succeeded. Provider enablement and real user sign-in are not yet verified. The Python Firebase-token adapter and canonical per-user content/indexing qualification remain pending; public provider buttons must not pretend they work before commissioning. Firebase client configuration alone does not authorize document access.
+Firebase web-app registration and SDK configuration retrieval succeeded. Read-only Firebase administration inspection confirms Google and GitHub are both enabled. Real user sign-in is not yet verified. The Python Firebase-token adapter and canonical per-user content/indexing qualification remain pending; public provider buttons must not pretend they work before commissioning. Firebase client configuration alone does not authorize document access.
 
 Retain canonical UUID-derived accounts, no email-based automatic account merging, ownership checks, bounded usage and logout behavior. Test real Google and GitHub sign-in, wrong-project/expired/forged-token rejection, two-user isolation, public upload acknowledgment, indexing, retrieval, actual inference, citations and sign-out against the final public API origin before claiming success.
