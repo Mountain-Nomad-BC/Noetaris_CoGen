@@ -45,9 +45,8 @@ def verify_database_contract(conn):
     enabled={row[0] for row in conn.execute("SELECT c.relname FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='public' AND c.relname=ANY(%s) AND c.relrowsecurity",
                                            (sorted(RLS_TABLES),)).fetchall()}
     if enabled!=RLS_TABLES:raise RuntimeError('Application source row security is incomplete')
-    contract=expected_access_contract()
-    if conn.execute("SELECT current_setting('server_version_num')::integer/10000").fetchone()[0]!=contract['postgres_major']:
-        raise RuntimeError('Application database version is not admitted')
+    major=conn.execute("SELECT current_setting('server_version_num')::integer/10000").fetchone()[0]
+    contract=expected_access_contract(major)
     actual_definitions=conn.execute(ACCESS_DEFINITIONS_SQL).fetchone()[0]
     if definitions_hash(actual_definitions)!=contract['definitions_sha256']:
         raise RuntimeError('Application database access definitions do not match')
@@ -71,14 +70,17 @@ def definitions_hash(value):
     return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()).hexdigest()
 
 
-@lru_cache(maxsize=1)
-def expected_access_contract():
-    path=ROOT/'database/access-contract.json'
+@lru_cache(maxsize=2)
+def expected_access_contract(major=16):
+    if type(major) is not int or major not in {16,18}:
+        raise RuntimeError('Application database version is not admitted')
+    path=ROOT/('database/access-contract.json' if major==16 else 'database/access-contract-pg18.json')
     info=path.lstat()
     if (path.is_symlink() or getattr(info,'st_file_attributes',0)&getattr(stat,'FILE_ATTRIBUTE_REPARSE_POINT',1024)
         or info.st_size>512*1024):raise RuntimeError('Packaged database access contract is invalid')
     contract=json.loads(path.read_bytes())
-    if (contract.get('schema_version')!='nsai.database-access-contract/1'
+    if (contract.get('postgres_major')!=major
+        or contract.get('schema_version')!='nsai.database-access-contract/1'
         or contract.get('migration_sha256')!=expected_migrations()
         or contract.get('query_sha256')!=hashlib.sha256(ACCESS_DEFINITIONS_SQL.encode()).hexdigest()
         or set(contract.get('definitions',{}))!={'policies','functions','triggers','constraints','columns','application_acl'}

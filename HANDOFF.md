@@ -1,3 +1,9 @@
+# Existing Oracle VM target supersedes laptop deployment
+
+Owner supplied an existing x86-64 Oracle Linux 9.8 VM at `129.80.119.161`; SSH access and outbound HTTPS are verified. Use this VM without replacement, resizing or paid-account upgrades. The disclosed SSH key was replaced after verifying replacement login. Docker 29.9.1/Compose 5.6.0 are installed and enabled. Remote API/parser/MiniLM containers are running with loopback-only API access. API readiness verifies the existing Neon PostgreSQL 18 schema; anonymous document access is rejected. Forty migrations were applied to the existing empty Neon production database after compatibility-branch qualification. Six real ownership/custody checks pass on that branch; actual Oracle MiniLM encoding passes at 384 dimensions. Focused source checks pass 79 tests; an additional PostgreSQL 16 ownership/contract selection passes 12 tests. Docker restart and real VM reboot recovery both pass; services and verified Neon readiness return after boot. Public Firebase authentication, HTTPS ingress, indexing admission for provider users, R2 custody and AMD dispatch remain incomplete. The existing static frontend remains https://noetaris-cogen.web.app on the confirmed `noetaris-cogen` project. The attachment's `noetaris` reference does not supersede the owner's previously confirmed actual Firebase site. See `docs/deployment/OCI_EXISTING_VM.md`. No working remote API or full end-to-end success is claimed yet.
+
+---
+
 # Noetaris CoGen current handoff
 
 Updated October 17, 2026. Local review: **http://127.0.0.1:8790**. Static frontend is published at **https://noetaris-cogen.web.app**. Public backend/SSO/document application commissioning remains incomplete. This handoff replaces the contradictory historical journal; the complete prior file and all original evidence remain in ignored owner-held state. No evidence was rewritten as acceptance.

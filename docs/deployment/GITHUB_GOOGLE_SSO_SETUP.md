@@ -1,19 +1,34 @@
-# Google and GitHub SSO registration
+# Firebase Google and GitHub sign-in for the Oracle rollout
 
-## GitHub OAuth App
+The owner selected Firebase Authentication for the public Spark frontend. This supersedes the historical direct-backend OAuth callback instructions for this rollout. The existing direct OAuth implementation remains in source; it is not evidence that Firebase ID tokens are already verified by the Python API.
 
-Homepage URL: **https://noetaris-cogen.web.app**
+Verified Firebase web app:
 
-Use a GitHub OAuth App for the existing authentication-only integration. The actual NSAI callback path is `/auth/github/callback`. Its full registered URL must use the commissioned, public HTTPS API origin. That origin is **not yet available**. Do not use the homepage itself, a Firebase SDK `/__/auth/handler` callback, a `.test` rehearsal, a guessed domain or an unconfigured static SPA route as a claimed working NSAI callback. The backend callback can be finalized once the API host/routing decision is complete; an existing registration may need its callback edited then.
+- Project and Hosting site: `noetaris-cogen`.
+- App ID: `1:59248056505:web:5a3f08b2ae48bb22272368`.
+- Application homepage: https://noetaris-cogen.web.app.
+- Authentication domain from downloaded SDK configuration: `noetaris-cogen.firebaseapp.com`.
 
-The direct server integration uses S256 PKCE, one-use state and transient provider token exchange followed by stable numeric GitHub user ID binding. Requested scope is `read:user`; no repository/workflow/admin or private-email access is required. Provider email is not an account-merge key. Do not persist GitHub login tokens as application credentials.
+## GitHub OAuth application values
 
-Install the client ID as operator configuration and the client secret as a restricted ignored server file referenced by `NSAI_OAUTH_GITHUB_CLIENT_SECRET_FILE`. Enable only after the actual origin and secret configuration are verified. Do not paste the secret into chat, GitHub source, frontend env or public CI.
+Homepage URL:
 
-## Google
+```text
+https://noetaris-cogen.web.app
+```
 
-Use a registered Google web OAuth/OIDC client for the same commissioned environment. The backend callback path is `/auth/google/callback`, using the real public HTTPS API origin. The current server requests only `openid` and verifies signed issuer/audience/expiry/nonce and stable subject with Authlib. Gcloud/Firebase CLI login is operator access, not application SSO registration. No Firebase Auth SDK identity-store replacement is implemented.
+Authorization callback URL:
 
-## Verification before claiming working SSO
+```text
+https://noetaris-cogen.firebaseapp.com/__/auth/handler
+```
 
-Test real separate provider accounts through signup, repeat login to the same canonical identity, explicit linking, logout and revocation, errors/cancellation, CSRF/state/PKCE negatives and actual HTTPS cookies on desktop/mobile. Preserve per-user document isolation and existing quotas. No invitations, waitlists or manual approval flow are part of this public adult demo. Failed/unconfigured SSO must remain truthful and grant no access.
+Enter the GitHub client ID and secret in Firebase Console > Authentication > Sign-in method > GitHub. Do not put the secret into the browser bundle, public repository, or chat. Enable Google in the same Firebase provider settings. Confirm the deployed Hosting domain is authorized.
+
+The Oracle IP, future API HTTPS address and historical `/auth/github/callback` endpoint are not the Firebase GitHub callback. No custom domain has been verified.
+
+## Remaining implementation and verification
+
+Firebase web-app registration and SDK configuration retrieval succeeded. Provider enablement and real user sign-in are not yet verified. The Python Firebase-token adapter and canonical per-user content/indexing qualification remain pending; public provider buttons must not pretend they work before commissioning. Firebase client configuration alone does not authorize document access.
+
+Retain canonical UUID-derived accounts, no email-based automatic account merging, ownership checks, bounded usage and logout behavior. Test real Google and GitHub sign-in, wrong-project/expired/forged-token rejection, two-user isolation, public upload acknowledgment, indexing, retrieval, actual inference, citations and sign-out against the final public API origin before claiming success.

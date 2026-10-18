@@ -15,7 +15,7 @@ COPY --chown=10001:10001 LICENSES ./LICENSES
 COPY --chown=10001:10001 src ./src
 COPY --chown=10001:10001 assets ./assets
 COPY --chown=10001:10001 database/migrations ./database/migrations
-COPY --chown=10001:10001 database/access-contract.json ./database/access-contract.json
+COPY --chown=10001:10001 database/access-contract.json database/access-contract-pg18.json ./database/
 COPY --chown=10001:10001 deploy/init.sql ./deploy/init.sql
 USER 10001:10001
 EXPOSE 8787

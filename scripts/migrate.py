@@ -103,12 +103,16 @@ def migration_sql(root):
     return sql
 
 
-def role_sql(password, include_commit=True):
+def role_sql(password, include_commit=True, *, database="nsai", managed=False):
     """One privilege contract for deployment and owned qualification; never prints credentials."""
     if (not isinstance(password,str) or not password.isascii() or not 32<=len(password)<=1024
         or any(c not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-' for c in password)):
         raise ValueError('Invalid bounded ASCII database credential')
     if type(include_commit) is not bool: raise ValueError('Commit option must be boolean')
+    import re
+    if not isinstance(database,str) or re.fullmatch(r'[a-z][a-z0-9_]{0,62}',database) is None:
+        raise ValueError('Invalid database name')
+    if type(managed) is not bool:raise ValueError('Invalid managed role option')
     sql=''
     sql += "\nDO $$ BEGIN IF NOT EXISTS(SELECT 1 FROM pg_roles WHERE rolname='nsai_app') THEN CREATE ROLE nsai_app LOGIN PASSWORD '" + password + "'; END IF; END; $$;\n"
     sql += '''
@@ -185,6 +189,10 @@ def role_sql(password, include_commit=True):
     GRANT EXECUTE ON FUNCTION nsai_library_semantic_search(double precision[],text[],text,integer[],text,integer) TO nsai_app;
     GRANT EXECUTE ON FUNCTION nsai_register_source_manifest(text[]),nsai_source_manifest_sources(text) TO nsai_app;
     '''
+    if managed:
+        sql=sql.replace('ALTER ROLE nsai_app NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS;',
+            "DO $$ BEGIN IF EXISTS(SELECT 1 FROM pg_roles WHERE rolname='nsai_app' AND (rolsuper OR rolcreatedb OR rolcreaterole OR rolreplication OR rolbypassrls OR NOT rolcanlogin)) THEN RAISE EXCEPTION 'Unsafe application role'; END IF; END $$;")
+    sql=sql.replace('DATABASE nsai ', 'DATABASE '+database+' ')
     return sql+('COMMIT;\n' if include_commit else '')
 
 
