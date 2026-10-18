@@ -1,10 +1,12 @@
+![Noetaris CoGen Command Centre](docs/images/noetaris-command-centre.png)
+
 # Noetaris CoGen / NSAI
 
 Experimental, noncommercial AMD hackathon research demonstration by the independent US project Mountain Nomad BC. Intended public audience: adults 18+, open supported Google/GitHub signup, no invitations. Public deployment is not complete. Local Docker review: **http://127.0.0.1:8790**.
 
 The local candidate exercises document upload/indexing, MiniLM retrieval, source inspection, graph records, citations, separate review and guarded CPU Gemma answers. Source indexing does not retrain model weights or certify a document as true. Gated agent/studio/execution/voice features are not represented as operational.
 
-Hosted AMD `Gemma-4-31B-IT` is the selected remote primary, with exact free OpenRouter Gemma variants as intended fallback. Automatic source-bearing hosted dispatch remains unfinished. R2 docs/images private Standard buckets pass synthetic checks, but application originals remain in PostgreSQL pending storage custody/quota integration. Neon is project-linked but not the commissioned application DB. Evolus is optional and NOT_CONFIGURED.
+Hosted AMD `Gemma-4-31B-IT` is the selected remote primary, with exact free OpenRouter Gemma variants as intended fallback. Automatic source-bearing hosted dispatch remains unfinished. R2 docs/images private Standard buckets pass synthetic checks, but application originals remain in PostgreSQL pending storage custody/quota integration. Neon PostgreSQL 18 is the deployed application database. Evolus is optional and NOT_CONFIGURED.
 
 ## Documentation
 
