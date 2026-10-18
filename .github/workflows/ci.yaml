@@ -26,6 +26,8 @@ jobs:
           python -m pip install --require-hashes --only-binary=:all: -r requirements-dev.lock
           python -m pip install --no-build-isolation --no-deps -e .
           python -m pip check
+          mkdir -p evidence/implementation
+          cp docs/dependencies/toolchain-lock-provenance.json evidence/implementation/toolchain-lock-provenance.json
           python scripts/lock_dev_tools.py
       - name: Unit contracts and static boundaries
         run: |
