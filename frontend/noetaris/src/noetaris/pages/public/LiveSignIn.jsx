@@ -20,6 +20,7 @@ export default function LiveSignIn() {
   const loading = busy || redirecting || auth.status === 'loading';
   const authenticated = auth.status === 'authenticated';
   const unconfirmed = auth.status === 'logout-unconfirmed';
+  const localCredentialAllowed = ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
   return <main className="min-h-screen flex items-center justify-center p-6" data-testid="login-page">
     <section className="n-glass rounded-2xl p-6 w-full max-w-xl space-y-5">
       <Link to="/"><Logo /></Link>
@@ -34,7 +35,7 @@ export default function LiveSignIn() {
         <p data-testid="content-admission">{auth.capabilities?.content_access?.admitted === true ? 'Backend content admission is enabled for this identity.' : auth.capabilities?.content_access?.reason || 'Document access is not admitted.'}</p>
         <Link to="/app" className="n-cta inline-flex px-4 py-2">View integration status</Link>
       </>}
-      {!authenticated && !unconfirmed && <form className="space-y-3" onSubmit={event => {
+      {localCredentialAllowed && !authenticated && !unconfirmed && <form className="space-y-3" onSubmit={event => {
         event.preventDefault(); const credential = token; setToken(''); run(() => auth.loginLocal(credential));
       }}>
         <label className="block">Existing local credential
