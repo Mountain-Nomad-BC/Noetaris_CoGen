@@ -43,7 +43,9 @@ jobs:
           npm ci
           npm run build
           npm audit --omit=dev --audit-level=high
-      - name: Supported deployment target validation
+      - name: Compose profile syntax only (no model runtime)
+        env:
+          NSAI_GGUF_PATH: /tmp/nsai-compose-syntax-only.gguf
         shell: bash
         run: |
           python scripts/validate_deployment_target.py baseline
