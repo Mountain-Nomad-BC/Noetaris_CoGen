@@ -1,0 +1,21 @@
+# Bounded XLSX evidence and recovery
+
+Implemented: immutable workbook originals, a bounded OOXML worksheet-evidence extractor, original-to-artifact reconstruction checks at parser/API/persistence boundaries, and deterministic authorized worksheet analysis. This is not general Excel execution or complete workbook semantic interpretation.
+
+All admitted worksheets, including hidden sheets, retain explicit physical rows/cells, raw cell types and numeric spellings, coordinates, rich-text markup, formula declarations separately from cached values, and retained section XML. Worksheet dimension hints cannot truncate late cells. Original archive bytes and member hashes preserve styles/layout/properties without claiming they were interpreted. Attribute names are evidence records rather than executable authority or provenance control keys.
+
+Admission rejects the whole workbook for unsupported parts, macros/embedded objects/comments/drawings/external links, unsafe relationships or paths, duplicate ZIP names, encryption, unsupported compression, and exceeded limits. No supported-looking partial workbook is published after an unsupported section is encountered. XML parsing forbids DTDs/entities/external references using hash-pinned DefusedXML 0.7.1. License and wheel provenance are retained under LICENSES/xlsx-defusedxml-*.
+
+Current bounds: the active upload byte limit (normally 2 MiB), 128 archive members, 2 MiB/member, 8 MiB expanded total, compression ratio 200, XML depth 32 and 50,000 nodes, up to 10 worksheets, 2,000 explicit rows/worksheet, 5,000 cells and existing text/chunk budgets. Limits do not imply larger workbooks were qualified. An unsupported source remains with the user; rejection does not create an incomplete database source or delete the original file.
+
+Analysis requires exact worksheet selection for multi-sheet workbooks, including explicit hidden-sheet intent. Numeric operations reject formula caches, booleans, typed dates and errors. Declared decimal inputs use exact Decimal arithmetic and explicit missing/empty exclusions. The analysis supports the first 100 selected column positions; the preserved evidence retains admitted cells beyond that analysis range. Sparse absent rows/cells do not become invented observations. Units remain user declarations, not verified facts. Counts over formula declarations do not verify formula values.
+
+Evidence:
+
+- Current full backend regression before the frontend source-binding extension: 1,325 passed, zero failed/error/skipped; evidence/private-access/a09392b8f21643caa99dc00ac4e5dbce/receipt.json.
+- Actual parser/API/PostgreSQL/Chromium upload, hidden-sheet selection, formula-cache refusal, chart clearing and byte-identical download: 22 scoped checks; evidence/structured-sources/e3000f1ff432481793ae8757a315c050/receipt.json.
+- Actual dump/restore into a separate owned clone: evidence/operational-cost-recovery/399c9294cff64612900826b754250d62/receipt.json. All 50 table fingerprints, definitions/ACLs/sequence state/settings matched; XLSX originals, hidden sheets, raw 001.2300, SUM formula/cache, late Z9 cell, owner isolation and exact analysis hash survived. CSV/JSON originals/types, canonical sessions/revocation, durable queues and separate credit ledgers also survived. This is a synthetic quiescent recovery proof; host power loss, off-host backup and broader RPO/RTO remain unqualified.
+
+Changes: src/nsai/xlsx_sources.py; ingestion.py, api.py, table_analysis.py, existing source inspector assets, tests/xlsx_fixture_helpers.py, test_xlsx_sources.py, structured_sources_pg_fixture.py and packaged-test fixture mounting; pyproject.toml, requirements.lock, LICENSES/xlsx-defusedxml-* and NOTICE. No schema migration or live data rewrite was needed.
+
+Rollback: retain originals and their manifests. Previous reader images may lack this source format and must not overwrite its metadata. Keep the current compatible image for reading XLSX records; disable new XLSX admission if rollback is necessary until compatibility is verified. Do not delete workbook sources or rewrite them as plain text to accommodate an older image. Live stacks and protected backups were unchanged by these qualification runs.

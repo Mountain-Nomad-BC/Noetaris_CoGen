@@ -1,0 +1,8 @@
+{
+  "api_base": "REPLACE_WITH_VERIFIED_HTTPS_WORKSPACE_API_BASE",
+  "application_id": "REPLACE_APPLICATION_ID",
+  "workflow_id": "REPLACE_WORKFLOW_ID",
+  "agent_id": "REPLACE_AGENT_ID",
+  "extractor_id": "REPLACE_EXTRACTOR_ID",
+  "payload_schema_sha256": "REPLACE_WITH_VERIFIED_WORKSPACE_PAYLOAD_SCHEMA_DIGEST"
+}

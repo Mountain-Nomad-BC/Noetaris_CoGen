@@ -1,0 +1,17 @@
+services:
+  api:
+    environment:
+      NSAI_OAUTH_GOOGLE_ENABLED: 'true'
+      NSAI_OAUTH_GOOGLE_CLIENT_ID: ${NSAI_OAUTH_GOOGLE_CLIENT_ID:?registered OAuth
+        client ID required}
+      NSAI_OAUTH_GOOGLE_CLIENT_SECRET_FILE: /run/secrets/oauth_google
+    secrets:
+    - oauth_google
+    networks:
+    - oauth_egress
+secrets:
+  oauth_google:
+    file: /etc/noetaris/secrets/oauth_google
+networks:
+  oauth_egress:
+    internal: false

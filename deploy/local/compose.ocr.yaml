@@ -1,0 +1,43 @@
+# Explicit local OCR extension; never activated by the basic CPU entrypoint.
+services:
+  api:
+    environment:
+      NSAI_OCR_URL: http://ocr:8091
+      NSAI_OCR_TOKEN_FILE: /run/secrets/ocr_token
+    secrets: [ocr_token]
+    networks: [data_net, app_net, parser_net, ocr_net]
+    depends_on:
+      ocr:
+        condition: service_healthy
+  ocr:
+    build:
+      context: .
+      dockerfile: deploy/ocr/Dockerfile
+    init: true
+    restart: unless-stopped
+    user: "10002:10002"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    cpus: 1.0
+    mem_limit: 768m
+    pids_limit: 64
+    tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=128m,mode=1777"]
+    environment:
+      NSAI_OCR_TOKEN_FILE: /run/secrets/ocr_token
+    secrets: [ocr_token]
+    networks: [ocr_net]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8091/healthz',timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: json-file
+      options: {max-size: "5m", max-file: "3"}
+secrets:
+  ocr_token:
+    file: ./secrets/ocr_token.txt
+networks:
+  ocr_net:
+    internal: true

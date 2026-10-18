@@ -1,0 +1,953 @@
+[
+  {
+    "source": "REMY",
+    "source_path": "4_admin_tooling/admin_frontend/src/ai/remy/RemyAssistant.tsx",
+    "component": "Assistant UI",
+    "nsai_destination": "assets/ or apps/console UI",
+    "decision": "DESIGN_ONLY",
+    "phase": "P0",
+    "risk": "HIGH/IP",
+    "notes": "Recreate look and interaction from scratch; employer proprietary license bars copying without permission",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-001",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "4_admin_tooling/admin_frontend/src/ai/remy/RemyContext.tsx",
+    "component": "Chat session orchestration",
+    "nsai_destination": "src/nsai/session/ + frontend state",
+    "decision": "DESIGN_ONLY",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Huge code coupled to React Query, routing, identity, role workflows; design state contracts independently",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-002",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-052"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "4_admin_tooling/admin_frontend/src/ai/RemyInteraction.tsx",
+    "component": "Interaction widget",
+    "nsai_destination": "apps/console/chat",
+    "decision": "DESIGN_ONLY",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Reference interaction patterns only",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-003",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "4_admin_tooling/admin_frontend/src/ai/remy/RemyMemoryTrace.tsx",
+    "component": "Memory explanations UI",
+    "nsai_destination": "apps/console/memory",
+    "decision": "DESIGN_ONLY",
+    "phase": "P2",
+    "risk": "HIGH/IP",
+    "notes": "Design trace viewer around NSAI memory event IDs",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-004",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "4_admin_tooling/admin_frontend/src/ai/remy/RemySuggestionLayer.tsx",
+    "component": "Suggestions",
+    "nsai_destination": "apps/console/suggestions",
+    "decision": "DESIGN_ONLY",
+    "phase": "P2",
+    "risk": "HIGH/IP",
+    "notes": "Optional after evidence chat",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-005",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "4_admin_tooling/admin_frontend/src/components/ai/SourceCitations.tsx",
+    "component": "Citations widget",
+    "nsai_destination": "apps/console/evidence",
+    "decision": "DESIGN_ONLY",
+    "phase": "P0",
+    "risk": "HIGH/IP",
+    "notes": "Implement original clickable sources with exact source locator",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-006",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "4_admin_tooling/admin_frontend/src/components/ai/PDFWorkspace.tsx",
+    "component": "Document viewer",
+    "nsai_destination": "apps/console/documents",
+    "decision": "DESIGN_ONLY",
+    "phase": "P2",
+    "risk": "HIGH/IP",
+    "notes": "Not required for first demo; reproduce generic viewer patterns with clean implementation",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-007",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/turnburn/corpus_builder.py",
+    "component": "TurnBurn corpus builder",
+    "nsai_destination": "src/nsai/ingest/build.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Strong reference design; content hashing, semantic chunks, embeddings, graph creation; remove diagnostics source roots",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-008",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-087"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/turnburn/manifest.py",
+    "component": "Index manifest",
+    "nsai_destination": "src/nsai/ingest/manifest.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Preserve document ID/hash and index generation concept",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-009",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/turnburn/corpus_validation.py",
+    "component": "Retrieval validation",
+    "nsai_destination": "src/nsai/evaluations/retrieval.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Golden query retrieval, failed case reporting",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-010",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/turnburn/service.py",
+    "component": "Index lifecycle",
+    "nsai_destination": "src/nsai/retrieval/index_lifecycle.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Candidate stage, validate, promote and rollback separate from knowledge promotion",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-011",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/turnburn/search.py",
+    "component": "Hybrid search",
+    "nsai_destination": "src/nsai/retrieval/search.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Mix lexical + semantic, provenance checks and score calibration",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-012",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-087"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/turnburn/source_links.py",
+    "component": "Source linking",
+    "nsai_destination": "src/nsai/evidence/sources.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P0",
+    "risk": "HIGH/IP",
+    "notes": "URI/path sanitization and locators",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-013",
+    "card_ids": [
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/graph/service.py",
+    "component": "Graph exploration",
+    "nsai_destination": "src/nsai/graph/query.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P2",
+    "risk": "HIGH/IP",
+    "notes": "Graph neighbors, paths and provenance visibility; decouple from RIE catalog",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-014",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/knowledge/provenance.py",
+    "component": "Knowledge provenance",
+    "nsai_destination": "src/nsai/evidence/provenance.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Conceptual pattern only; avoid referencing company records",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-015",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/retrieval/controlled_retriever.py",
+    "component": "Controlled retrieval",
+    "nsai_destination": "src/nsai/retrieval/policy.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Authorized scopes and cited retrieval",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-016",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/models/remote_client.py",
+    "component": "Remote inference client",
+    "nsai_destination": "src/nsai/inference/openai.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P0",
+    "risk": "HIGH/IP",
+    "notes": "Generic HTTP gateway written originally; support ROCm vLLM adapter",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-017",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/memory/service.py",
+    "component": "Session memory",
+    "nsai_destination": "src/nsai/memory/session.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P2",
+    "risk": "HIGH/IP",
+    "notes": "Session ownership and personal preferences; avoid domain-specific user tables",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-018",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/learning/service.py",
+    "component": "Governed consolidation",
+    "nsai_destination": "src/nsai/learning/feedback.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P2",
+    "risk": "HIGH/IP",
+    "notes": "Current service captures summaries; do not label autonomous learning",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-019",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-063"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/safety/guard.py",
+    "component": "Safety guard",
+    "nsai_destination": "src/nsai/security/input.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Treat as prompts/policy guidance, not a runtime sandbox",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-020",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/permissions/service.py",
+    "component": "Permissions",
+    "nsai_destination": "src/nsai/auth/policy.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Original RBAC/ABAC scope design",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-021",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/telemetry/service.py",
+    "component": "Observability",
+    "nsai_destination": "src/nsai/observability/events.py",
+    "decision": "REIMPLEMENT",
+    "phase": "P1",
+    "risk": "HIGH/IP",
+    "notes": "Correlation IDs, audit events, timings",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-022",
+    "card_ids": [
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/remy/voice/runtime.py",
+    "component": "Speech interface",
+    "nsai_destination": "apps/console/voice",
+    "decision": "DEFER",
+    "phase": "P3",
+    "risk": "HIGH/IP",
+    "notes": "Not relevant to judging vertical slice",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-023",
+    "card_ids": [
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/Dockerfile",
+    "component": "Nonroot application image pattern",
+    "nsai_destination": "Dockerfile",
+    "decision": "PATTERN_ONLY",
+    "phase": "P0",
+    "risk": "MEDIUM",
+    "notes": "Source contains good USER practice; too many domain-specific copies and packages",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-024",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/docker-compose.yml",
+    "component": "Runtime compose design",
+    "nsai_destination": "compose.yaml",
+    "decision": "PATTERN_ONLY",
+    "phase": "P0",
+    "risk": "HIGH/SEC",
+    "notes": "Rebuild; avoid default token, public bind, shared external network, broad mounts",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-025",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "7_Remy/docker-compose.gpu.yml",
+    "component": "GPU compose",
+    "nsai_destination": "deploy/amd/compose.amd.yaml",
+    "decision": "REPLACE",
+    "phase": "P1",
+    "risk": "HIGH/SEC",
+    "notes": "Configured as gpu_bridge/remote_ollama; target AMD ROCm vLLM",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-026",
+    "card_ids": [
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "gpu-worker/docker-compose.yml",
+    "component": "GPU worker",
+    "nsai_destination": "deploy/amd/compose.amd.yaml",
+    "decision": "REPLACE",
+    "phase": "P1",
+    "risk": "HIGH/SEC",
+    "notes": "NVIDIA driver reservations incompatible with AMD pass-through",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-027",
+    "card_ids": [
+      "NSAI-052",
+      "NSAI-060",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "docker-compose.monitoring.yml",
+    "component": "Monitoring",
+    "nsai_destination": "deploy/monitoring",
+    "decision": "DEFER",
+    "phase": "P2",
+    "risk": "HIGH/SEC",
+    "notes": "Avoid Docker socket mount, even read-only; use restricted metric exports",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-028",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "REMY",
+    "source_path": "docs/deployment/docker-hardening-pc16.md",
+    "component": "Docker hardening runbook",
+    "nsai_destination": "docs/DOCKER_SAFETY.md",
+    "decision": "PATTERN_ONLY",
+    "phase": "P0",
+    "risk": "LOW",
+    "notes": "Explains prior hardening but describes config validation not runtime proof",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-029",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "contracts/nsai/knowledge-object.schema.json",
+    "component": "Knowledge schema",
+    "nsai_destination": "contracts/knowledge.schema.json",
+    "decision": "ADAPT_APACHE",
+    "phase": "P1",
+    "risk": "MEDIUM",
+    "notes": "Retain source license and original notices if copied; adapt scope and schema version",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-030",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "contracts/nsai/formula-object.schema.json",
+    "component": "Formula schema",
+    "nsai_destination": "contracts/formula.schema.json",
+    "decision": "ADAPT_APACHE",
+    "phase": "P2",
+    "risk": "MEDIUM",
+    "notes": "Candidate formula objects; formulas never executable without validation",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-031",
+    "card_ids": [
+      "NSAI-057",
+      "NSAI-058",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/nsai_knowledge.py",
+    "component": "NSAI knowledge object validator",
+    "nsai_destination": "src/nsai/knowledge/px_adapter.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P1",
+    "risk": "MEDIUM/DEPENDENCIES",
+    "notes": "Imports PX archive_io,bounded_walk,contracts,json_io; lift pure semantics or implement narrow adapter",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-032",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/knowledge_refinery.py",
+    "component": "Novelty and merge proposals",
+    "nsai_destination": "src/nsai/evidence/refinery.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P1",
+    "risk": "MEDIUM/DEPENDENCIES",
+    "notes": "Near-duplicate, novelty, merge planning and graph audits; no direct canon writes",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-033",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/knowledge_foundry.py",
+    "component": "Candidate skill/calculation build",
+    "nsai_destination": "src/nsai/skills/candidate_builder.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P2",
+    "risk": "HIGH/EXEC",
+    "notes": "Use restricted AST checks and explicit validation; never execute untrusted code in API",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-034",
+    "card_ids": [
+      "NSAI-057",
+      "NSAI-058",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/memory_fabric.py",
+    "component": "Memory record/shards",
+    "nsai_destination": "src/nsai/memory/fabric.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P2",
+    "risk": "MEDIUM/DEPENDENCIES",
+    "notes": "Candidate multi-class record model, shard identities, admission semantics",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-035",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/memory_broker.py",
+    "component": "Context materializer",
+    "nsai_destination": "src/nsai/memory/context.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P2",
+    "risk": "MEDIUM/DEPENDENCIES",
+    "notes": "Depends on memory_fabric,memory_intelligence,hash_utils; bounded query plans",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-036",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/learning_promotion.py",
+    "component": "Evidence-based learning promotion",
+    "nsai_destination": "src/nsai/learning/promotion.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P2",
+    "risk": "HIGH/GOV",
+    "notes": "Candidate hypotheses, revision freeze, confidence gates; keep separate signing authority",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-037",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/trusted_evidence.py",
+    "component": "Trusted evidence receipts",
+    "nsai_destination": "src/nsai/evidence/receipts.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P1",
+    "risk": "MEDIUM/DEPENDENCIES",
+    "notes": "Source scope, producer identity, signatures; no fake authorizations",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-038",
+    "card_ids": [
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/event_ledger.py",
+    "component": "Audit ledger",
+    "nsai_destination": "src/nsai/audit/event_log.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P1",
+    "risk": "MEDIUM",
+    "notes": "Append-only evidentiary event patterns",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-039",
+    "card_ids": [
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/compact_address.py",
+    "component": "Compact deterministic addressing",
+    "nsai_destination": "src/nsai/routing/addressing.py",
+    "decision": "DEFER",
+    "phase": "P2",
+    "risk": "MEDIUM",
+    "notes": "Useful after objects/sources stable; avoid forcing addressing onto raw evidence",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-040",
+    "card_ids": [
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/capability_routing.py",
+    "component": "Deterministic capability selection",
+    "nsai_destination": "src/nsai/routing/capability.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P2",
+    "risk": "MEDIUM/DEPENDENCIES",
+    "notes": "Structured candidates, ranking, bounded execution package",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-041",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/provider_gateway.py",
+    "component": "Provider budgets/retries",
+    "nsai_destination": "src/nsai/inference/gateway.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P2",
+    "risk": "MEDIUM/DEPENDENCIES",
+    "notes": "Broader than needed for first AMD endpoint; start with thin client",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-042",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/isolated_sandbox.py",
+    "component": "Sandbox policy contracts",
+    "nsai_destination": "src/nsai/security/policy.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P1",
+    "risk": "HIGH/ENFORCEMENT",
+    "notes": "Declarative policy only; enforce with containers and Linux host mechanism",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-043",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/gremlin/containment.py",
+    "component": "Gremlin containment facade",
+    "nsai_destination": "src/nsai/security/gremlin_adapter.py",
+    "decision": "DEFER",
+    "phase": "P3",
+    "risk": "HIGH/PORTABILITY",
+    "notes": "Has exact identity/receipt ideas; not complete Linux Docker isolation",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-044",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/gremlin/host_enforcement_backend.py",
+    "component": "Host process enforcement",
+    "nsai_destination": "none",
+    "decision": "EXCLUDE",
+    "phase": "NEVER",
+    "risk": "HIGH/PORTABILITY",
+    "notes": "Windows Job Objects and kernel32; not usable on ROCm Linux host",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-045",
+    "card_ids": [
+      "NSAI-052",
+      "NSAI-060"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/docker_model_runtime.py",
+    "component": "Docker model runner lifecycle",
+    "nsai_destination": "src/nsai/deploy/model_manager.py",
+    "decision": "DEFER",
+    "phase": "P3",
+    "risk": "MEDIUM",
+    "notes": "OCI digest and authority verification ideas; external AMD runner uses Compose",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-046",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/process_supervisor.py",
+    "component": "Host process management",
+    "nsai_destination": "none",
+    "decision": "EXCLUDE",
+    "phase": "NEVER",
+    "risk": "HIGH/PORTABILITY",
+    "notes": "Tightly tied to PX supervisor and Windows Job custody",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-047",
+    "card_ids": [
+      "NSAI-052",
+      "NSAI-060"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/work_admission.py",
+    "component": "Work admission",
+    "nsai_destination": "src/nsai/governance/admission.py",
+    "decision": "ADAPT_APACHE",
+    "phase": "P2",
+    "risk": "HIGH/GOV",
+    "notes": "Borrow scoped admission semantics, avoid copying full PX release ledger",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-048",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/semantic_retrieval_fusion.py",
+    "component": "Fusion of evidence sources",
+    "nsai_destination": "src/nsai/retrieval/fusion.py",
+    "decision": "DEFER",
+    "phase": "P2",
+    "risk": "MEDIUM/DEPENDENCIES",
+    "notes": "Short adapter but depends on multiple semantic subsystem modules",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-049",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  },
+  {
+    "source": "PX",
+    "source_path": "runtime/resource_lifecycle.py",
+    "component": "Custody and resource budgets",
+    "nsai_destination": "src/nsai/jobs/lifecycle.py",
+    "decision": "DEFER",
+    "phase": "P3",
+    "risk": "HIGH/PORTABILITY",
+    "notes": "Host-level resource management not needed for initial Docker deployment",
+    "present_in_archive": "YES",
+    "planning_id": "KIT-050",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-052",
+      "NSAI-060"
+    ],
+    "current_disposition": "Superseded by architecture-only implementation: no source/assets/data copied; current optional/deferred boundaries apply regardless of original phase or decision."
+  }
+]

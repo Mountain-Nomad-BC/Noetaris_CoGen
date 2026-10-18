@@ -1,0 +1,90 @@
+id,key,stage,priority,status,disposition,title,finding_ids,dependencies,evidence_directory
+NSAI-001,evidence,A,P1,PLANNED,REQUIRED,Bind verification to immutable run identities,OPS-01,,evidence/implementation/NSAI-001/
+NSAI-002,runtime,A,P1,PLANNED,REQUIRED,Verify the complete effective deployment,OPS-02,NSAI-001,evidence/implementation/NSAI-002/
+NSAI-003,test-isolation,A,P1,PLANNED,REQUIRED,Isolate stateful acceptance and restore on every exit,OPS-03,NSAI-001,evidence/implementation/NSAI-003/
+NSAI-004,startup,B,P1,PLANNED,REQUIRED,Make startup and readiness observational,OPS-04,"NSAI-003,NSAI-002",evidence/implementation/NSAI-004/
+NSAI-005,entrypoints,B,P1,PLANNED,REQUIRED,Consolidate supported local entrypoints,OPS-05,NSAI-004,evidence/implementation/NSAI-005/
+NSAI-006,migrations,B,P1,PLANNED,REQUIRED,Stage checks before journaled compatible migrations,OPS-08,NSAI-003,evidence/implementation/NSAI-006/
+NSAI-007,db-privileges,B,P1,PLANNED,REQUIRED,Converge database privileges and rotate credentials,OPS-09,NSAI-006,evidence/implementation/NSAI-007/
+NSAI-008,windows-acl,B,P1,PLANNED,REQUIRED,Protect private state with Windows ACLs,OPS-10,NSAI-005,evidence/implementation/NSAI-008/
+NSAI-009,backup,B,P1,PLANNED,REQUIRED,Write bounded exclusive recoverable backups,OPS-07,"NSAI-008,NSAI-006",evidence/implementation/NSAI-009/
+NSAI-010,auth,B,P0,PLANNED,REQUIRED,Validate credentials and secure every error response,CORE-03,NSAI-003,evidence/implementation/NSAI-010/
+NSAI-011,logout,B,P1,PLANNED,REQUIRED,Clear all private browser state on identity changes,OPS-06,NSAI-010,evidence/implementation/NSAI-011/
+NSAI-012,provider-errors,B,P0,PLANNED,REQUIRED,Handle malformed provider and secret failures,CORE-11,NSAI-010,evidence/implementation/NSAI-012/
+NSAI-013,pdf-bounds,B,P0,PLANNED,REQUIRED,Bound PDF decoding before allocation,CORE-01,NSAI-003,evidence/implementation/NSAI-013/
+NSAI-014,page-status,B,P0,PLANNED,REQUIRED,Record every PDF page and its completeness,CORE-13,"NSAI-013,NSAI-006",evidence/implementation/NSAI-014/
+NSAI-015,settlement,B,P0,PLANNED,REQUIRED,Make inference terminal transitions idempotent,CORE-04,"NSAI-006,NSAI-003",evidence/implementation/NSAI-015/
+NSAI-016,token-admission,B,P0,PLANNED,REQUIRED,Admit the complete prompt using the actual tokenizer,CORE-16,"NSAI-012,NSAI-015",evidence/implementation/NSAI-016/
+NSAI-017,conflict-scope,B,P0,PLANNED,REQUIRED,Discover conflicts beyond retrieved top-k,CORE-02,NSAI-006,evidence/implementation/NSAI-017/
+NSAI-018,unicode-bounds,B,P1,PLANNED,REQUIRED,Align Unicode and serialized transport budgets,CORE-14,NSAI-013,evidence/implementation/NSAI-018/
+NSAI-019,browser-evidence,B,P1,PLANNED,REQUIRED,Replace UI presence checks with observed outcomes,OPS-11,"NSAI-011,NSAI-001",evidence/implementation/NSAI-019/
+NSAI-020,model-identity,B,P1,PLANNED,REQUIRED,"Verify model identity, licensing and endpoint configuration",OPS-12,NSAI-012,evidence/implementation/NSAI-020/
+NSAI-021,image-repro,B,P1,PLANNED,REQUIRED,Make container package resolution reproducible,SUP-01,NSAI-002,evidence/implementation/NSAI-021/
+NSAI-022,toolchain-lock,B,P1,PLANNED,REQUIRED,"Lock runtime, build, test and CI dependencies",SUP-02,NSAI-021,evidence/implementation/NSAI-022/
+NSAI-023,compose-policy,B,P1,PLANNED,REQUIRED,Validate Docker's effective profile-aware configuration,SUP-03,NSAI-002,evidence/implementation/NSAI-023/
+NSAI-024,script-purity,B,P1,PLANNED,REQUIRED,Remove import-time script mutations and bound subprocesses,SUP-04,NSAI-005,evidence/implementation/NSAI-024/
+NSAI-025,restore,B,P1,PLANNED,REQUIRED,Qualify recovery from independently verified backups,SUP-05,"NSAI-009,NSAI-007,NSAI-024",evidence/implementation/NSAI-025/
+NSAI-026,db-invariants,B,P1,PLANNED,REQUIRED,Enforce database structural invariants,SUP-06,"NSAI-006,NSAI-007",evidence/implementation/NSAI-026/
+NSAI-027,admission,B,P1,PLANNED,REQUIRED,Bound pre-auth traffic and enforce fair admission,SUP-07,"NSAI-010,NSAI-015",evidence/implementation/NSAI-027/
+NSAI-028,transport,B,P1,PLANNED,REQUIRED,Unify approved model/parser HTTP transport,SUP-08,"NSAI-012,NSAI-018",evidence/implementation/NSAI-028/
+NSAI-029,parser-custody,B,P1,PLANNED,REQUIRED,Verify parser output independently,SUP-09,"NSAI-014,NSAI-018",evidence/implementation/NSAI-029/
+NSAI-030,privacy,B,P1,PLANNED,REQUIRED,Redact logs and verification metadata,SUP-10,"NSAI-010,NSAI-001",evidence/implementation/NSAI-030/
+NSAI-031,provenance,B,P1,PLANNED,REQUIRED,Resolve existing imported source and compatibility,SUP-11,NSAI-029,evidence/implementation/NSAI-031/
+NSAI-032,foundation-gate,B,P1,PLANNED,REQUIRED,Commission the repaired CPU foundation,GAP-01,"NSAI-004,NSAI-005,NSAI-006,NSAI-007,NSAI-008,NSAI-009,NSAI-010,NSAI-011,NSAI-012,NSAI-013,NSAI-014,NSAI-015,NSAI-016,NSAI-017,NSAI-018,NSAI-019,NSAI-020,NSAI-021,NSAI-022,NSAI-023,NSAI-024,NSAI-025,NSAI-026,NSAI-027,NSAI-028,NSAI-029,NSAI-030,NSAI-031",evidence/implementation/NSAI-032/
+NSAI-033,typed-values,C,P1,PLANNED,REQUIRED,Compare finite quantities with dimensions and intervals,CORE-05,NSAI-032,evidence/implementation/NSAI-033/
+NSAI-034,evidence-states,C,P1,PLANNED,REQUIRED,"Represent negation, conditions, time and uncertainty",CORE-06,NSAI-033,evidence/implementation/NSAI-034/
+NSAI-035,reflection,C,P1,PLANNED,REQUIRED,Apply one conflict policy to reflection and learning,CORE-07,"NSAI-034,NSAI-017",evidence/implementation/NSAI-035/
+NSAI-036,canon-relevance,C,P1,PLANNED,REQUIRED,Rank eligible memory and invalidate stale dependencies,CORE-08,NSAI-035,evidence/implementation/NSAI-036/
+NSAI-037,memory-budget,C,P1,PLANNED,REQUIRED,Measure complete memory envelopes and omissions,CORE-10,"NSAI-036,NSAI-016",evidence/implementation/NSAI-037/
+NSAI-038,source-map,C,P1,PLANNED,REQUIRED,Persist reversible normalization and chunk geometry,SUP-12,NSAI-032,evidence/implementation/NSAI-038/
+NSAI-039,generations,C,P1,PLANNED,REQUIRED,"Version extraction, indexes and projections independently",SUP-13,NSAI-038,evidence/implementation/NSAI-039/
+NSAI-040,retrieval,C,P1,PLANNED,REQUIRED,Improve measured scoped lexical recall,CORE-12,"NSAI-038,NSAI-039,NSAI-034",evidence/implementation/NSAI-040/
+NSAI-041,answer-support,C,P1,PLANNED,REQUIRED,Check factual support beyond citation identity,CORE-09,"NSAI-033,NSAI-040,NSAI-037",evidence/implementation/NSAI-041/
+NSAI-042,db-performance,C,P1,PLANNED,REQUIRED,Bound database work and unblock async handlers,CORE-15,"NSAI-032,NSAI-040",evidence/implementation/NSAI-042/
+NSAI-043,downloads,C,P1,PLANNED,REQUIRED,Return safe original filename and media type,SUP-14,"NSAI-038,NSAI-010",evidence/implementation/NSAI-043/
+NSAI-044,ui-order,C,P1,PLANNED,REQUIRED,Make conversation failures and retries ordered,SUP-15,"NSAI-011,NSAI-015,NSAI-039",evidence/implementation/NSAI-044/
+NSAI-045,ui-scale,C,P1,PLANNED,REQUIRED,Paginate and lazily render large views accessibly,SUP-16,"NSAI-042,NSAI-044",evidence/implementation/NSAI-045/
+NSAI-046,retention,C,P1,PLANNED,REQUIRED,"Plan capacity, holds and non-destructive retention",SUP-17,"NSAI-032,NSAI-030",evidence/implementation/NSAI-046/
+NSAI-047,capabilities,C,P1,PLANNED,REQUIRED,Publish honest contracts and capability maturity,SUP-18,NSAI-032,evidence/implementation/NSAI-047/
+NSAI-048,exact-lane,C,P1,PLANNED,REQUIRED,Use source-bound deterministic answers where qualified,REF-01,"NSAI-041,NSAI-047",evidence/implementation/NSAI-048/
+NSAI-049,refinement-gate,C,P1,PLANNED,REQUIRED,Accept quality and performance refinement,GAP-02,"NSAI-033,NSAI-034,NSAI-035,NSAI-036,NSAI-037,NSAI-038,NSAI-039,NSAI-040,NSAI-041,NSAI-042,NSAI-043,NSAI-044,NSAI-045,NSAI-046,NSAI-047,NSAI-048",evidence/implementation/NSAI-049/
+NSAI-050,pdf-scope,D,P2,PLANNED,REQUIRED,Add server-validated document/revision/page questions,REF-02,NSAI-049,evidence/implementation/NSAI-050/
+NSAI-051,pdf-viewer,D,P2,PLANNED,REQUIRED,Build a private PDF workspace and exact citation navigation,REF-03,"NSAI-050,NSAI-043,NSAI-031",evidence/implementation/NSAI-051/
+NSAI-052,ocr-job,D,P2,PLANNED,REQUIRED,Build bounded owned OCR jobs and leases,REF-04,"NSAI-051,NSAI-029,NSAI-023",evidence/implementation/NSAI-052/
+NSAI-053,ocr-quality,D,P2,PLANNED,REQUIRED,Choose native extraction or OCR for each page,REF-05,"NSAI-052,NSAI-014",evidence/implementation/NSAI-053/
+NSAI-054,ocr-geometry,D,P2,PLANNED,REQUIRED,"Preserve raw OCR, boxes and coordinate transforms",REF-06,"NSAI-053,NSAI-038",evidence/implementation/NSAI-054/
+NSAI-055,ocr-metrics,D,P2,PLANNED,REQUIRED,Implement independently checked OCR metrics and holdouts,REF-07,NSAI-054,evidence/implementation/NSAI-055/
+NSAI-056,ocr-calibrate,D,P2,PLANNED,REQUIRED,Calibrate OCR admission and resource targets,REF-08,"NSAI-055,NSAI-052",evidence/implementation/NSAI-056/
+NSAI-057,formula-contract,D,P2,PLANNED,REQUIRED,Represent recognized formula candidates safely,REF-09,"NSAI-054,NSAI-033",evidence/implementation/NSAI-057/
+NSAI-058,formula-check,D,P2,PLANNED,REQUIRED,Validate finite allowlisted calculations without execution,REF-10,"NSAI-057,NSAI-041",evidence/implementation/NSAI-058/
+NSAI-059,pdf-gate,D,P2,PLANNED,REQUIRED,Qualify the complete PDF/OCR/formula workflow,GAP-03,"NSAI-051,NSAI-056,NSAI-058",evidence/implementation/NSAI-059/
+NSAI-060,stage-dag,E,P2,PLANNED,REQUIRED,Assemble a small deterministic evidence stage graph,REF-11,"NSAI-059,NSAI-039",evidence/implementation/NSAI-060/
+NSAI-061,learning-gates,E,P2,PLANNED,REQUIRED,"Govern proposals through holdout, review and rollback",REF-12,"NSAI-060,NSAI-047",evidence/implementation/NSAI-061/
+NSAI-062,data-registry,E,P2,PLANNED,REQUIRED,Use strict data-only manifests and procedure proposals,REF-13,"NSAI-061,NSAI-031",evidence/implementation/NSAI-062/
+NSAI-063,correction-queue,E,P2,PLANNED,REQUIRED,Track scoped correction and outcome uncertainty,REF-14,"NSAI-061,NSAI-044",evidence/implementation/NSAI-063/
+NSAI-064,admin-local,E,P2,PLANNED,REQUIRED,Complete local governance management controls,REF-15,"NSAI-061,NSAI-046,NSAI-010",evidence/implementation/NSAI-064/
+NSAI-065,central-contract,E,P2,PLANNED,REQUIRED,Stage central authorization interfaces without activation,REF-16,NSAI-064,evidence/implementation/NSAI-065/
+NSAI-066,integration-secrets,E,P2,PLANNED,REQUIRED,Specify scoped integration secret lifecycle,REF-17,"NSAI-065,NSAI-008",evidence/implementation/NSAI-066/
+NSAI-067,trace-projection,E,P2,PLANNED,REQUIRED,Render bounded accepted and withheld evidence traces,REF-18,"NSAI-060,NSAI-030,NSAI-063",evidence/implementation/NSAI-067/
+NSAI-068,assembly-gate,E,P2,PLANNED,REQUIRED,Accept governed assembly and disabled central contracts,GAP-04,"NSAI-062,NSAI-063,NSAI-064,NSAI-065,NSAI-066,NSAI-067",evidence/implementation/NSAI-068/
+NSAI-069,transcript-contract,F,P2,PLANNED,OPTIONAL_AFTER_BASELINE,Build independent source-bound transcript observations,REF-19,NSAI-068,evidence/implementation/NSAI-069/
+NSAI-070,transcript-linkage,F,P2,PLANNED,OPTIONAL_AFTER_BASELINE,"Link questions, measurements, actions and outcomes conservatively",REF-20,"NSAI-069,NSAI-034",evidence/implementation/NSAI-070/
+NSAI-071,transcript-report,F,P2,PLANNED,OPTIONAL_AFTER_BASELINE,Qualify transcript replay and withheld reports,REF-21,"NSAI-070,NSAI-067",evidence/implementation/NSAI-071/
+NSAI-072,metric-lineage,F,P2,PLANNED,OPTIONAL_AFTER_BASELINE,Define operational metrics before business conclusions,REF-22,"NSAI-068,NSAI-046",evidence/implementation/NSAI-072/
+NSAI-073,continuity,F,P2,PLANNED,OPTIONAL_AFTER_BASELINE,"Distinguish continuation, recurrence and new tasks",REF-23,"NSAI-069,NSAI-044",evidence/implementation/NSAI-073/
+NSAI-074,resource-ledger,F,P2,PLANNED,OPTIONAL_AFTER_BASELINE,Account for local resource budgets and usage,REF-24,"NSAI-015,NSAI-072",evidence/implementation/NSAI-074/
+NSAI-075,business-outcomes,F,P2,PLANNED,OPTIONAL_AFTER_BASELINE,Report reviewed outcomes and hypothetical scenarios honestly,REF-25,"NSAI-074,NSAI-072,NSAI-063",evidence/implementation/NSAI-075/
+NSAI-076,optional-gate,F,P2,PLANNED,OPTIONAL_AFTER_BASELINE,Qualify optional transcript and operational reporting,GAP-05,"NSAI-071,NSAI-073,NSAI-075",evidence/implementation/NSAI-076/
+NSAI-077,security-worker,G,P2,EXTERNAL_PREREQUISITE,REQUIRED,Resolve dedicated security scan worker prerequisite,GAP-06,,evidence/implementation/NSAI-077/
+NSAI-078,security-scan,G,P2,PLANNED,REQUIRED,Run independent security qualification and revalidate fixes,GAP-07,"NSAI-077,NSAI-068",evidence/implementation/NSAI-078/
+NSAI-079,coverage,G,P2,PLANNED,REQUIRED,"Close remaining adversarial, branch and load coverage gaps",SUP-19,NSAI-032,evidence/implementation/NSAI-079/
+NSAI-080,packaging,G,P2,PLANNED,REQUIRED,Validate the actual submission archive,SUP-20,"NSAI-031,NSAI-030,NSAI-047",evidence/implementation/NSAI-080/
+NSAI-081,docs-status,G,P2,PLANNED,REQUIRED,Reconcile guides and current capability statements,SUP-21,"NSAI-005,NSAI-047,NSAI-080",evidence/implementation/NSAI-081/
+NSAI-082,release-gate,G,P2,PLANNED,REQUIRED,Rehearse controlled CPU deployment and submission readiness,GAP-08,"NSAI-078,NSAI-079,NSAI-080,NSAI-081,NSAI-025,NSAI-059,NSAI-068",evidence/implementation/NSAI-082/
+NSAI-083,optional-providers,H,P2,PLANNED,DEFERRED_NO_ACTIVATION,Disposition unqualified providers and accelerator profiles,SUP-22,NSAI-082,evidence/implementation/NSAI-083/
+NSAI-084,enterprise-defer,H,P2,PLANNED,DEFERRED_NO_ACTIVATION,Record deferred enterprise features and rejected transplantation,REF-26,NSAI-068,evidence/implementation/NSAI-084/
+NSAI-085,central-activation,H,P2,PLANNED,DEFERRED_NO_ACTIVATION,Define future central identity commissioning prerequisites,REF-27,"NSAI-065,NSAI-082",evidence/implementation/NSAI-085/
+NSAI-086,amd-evolus,H,P2,PLANNED,DEFERRED_NO_ACTIVATION,Define later AMD and Evolus commissioning boundary,REF-28,"NSAI-083,NSAI-082",evidence/implementation/NSAI-086/
+NSAI-087,semantic-index,F,P2,PLANNED,OPTIONAL_AFTER_BASELINE,Qualify optional local semantic retrieval generations,REF-29,"NSAI-049,NSAI-039,NSAI-061",evidence/implementation/NSAI-087/
+NSAI-088,temporal-memory,F,P2,PLANNED,OPTIONAL_AFTER_BASELINE,Specify valid-time and observation-time memory queries,REF-30,"NSAI-036,NSAI-039,NSAI-034",evidence/implementation/NSAI-088/
+NSAI-089,signed-anchor,H,P2,PLANNED,DEFERRED_NO_ACTIVATION,Define future independent audit anchoring,REF-31,"NSAI-085,NSAI-067",evidence/implementation/NSAI-089/

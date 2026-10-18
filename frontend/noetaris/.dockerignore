@@ -1,0 +1,12 @@
+node_modules
+dist
+.env
+.env.*
+.git
+Dockerfile.audit
+*.log
+npm-debug.log*
+.DS_Store
+.vscode
+coverage
+audit-container-assets

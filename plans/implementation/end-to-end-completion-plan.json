@@ -1,0 +1,2358 @@
+{
+  "schema_version": "nsai.end-to-end-completion-plan/1",
+  "planning_date": "2026-10-15",
+  "scope": "Planning only; no implementation, certification or deployment performed",
+  "certified": false,
+  "release_approved": false,
+  "partner_rollout_ready": false,
+  "source_bindings": {
+    "plans/implementation/M_END_TO_END_COMPLETION_AND_CERTIFICATION.md": "b499f972700b3ff72093af91e0ff7503a66816da468bd4da5936b378f6efe88e",
+    "plans/implementation/build_end_to_end_completion_plan.py": "71c48fcf43740e0e540a16a02002883599342044c80418fd398f9ffe40a07614",
+    "plans/implementation/completion-repair-plan.json": "43c3c5fe0a703a3d833949a24eab68b58467c3a9dedf6c32ddb645f1893a7895",
+    "plans/implementation/research-workspace-integration-plan.json": "b54f0865274be2dc1f5f2008383512535d23d23d58d26b08e6c088fbde2a33dd",
+    "plans/implementation/L_PRIVATE_DOCUMENT_AUTHORIZATION.md": "e4733711e313e31ed58cbb24e71a61a36907f8d6dccee3dfe355d6c9e5e86429",
+    "plans/implementation/backlog.json": "e90209a70de6b9569184aaa10c885975e36df7cc9868ca47159f1943693c83ed",
+    "plans/implementation/release-validation-extension.json": "5b961ed711088912c2920213185abe6ff9307953e5f0ae5902050d20c7b3ef1e"
+  },
+  "packages": [
+    {
+      "id": "E2E-01",
+      "title": "Baseline and requirement reconciliation",
+      "dependencies": [],
+      "fin_cards": [
+        "FIN-01"
+      ],
+      "ui_cards": [],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-01--reconcile-the-real-baseline-and-requirements",
+      "evidence_directory": "evidence/end-to-end/E2E-01/"
+    },
+    {
+      "id": "E2E-02",
+      "title": "Qualification environments, reviewers and frozen test contracts",
+      "dependencies": [
+        "E2E-01"
+      ],
+      "fin_cards": [
+        "FIN-02",
+        "FIN-20"
+      ],
+      "ui_cards": [],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-02--establish-qualification-environments-and-test-oracles",
+      "evidence_directory": "evidence/end-to-end/E2E-02/"
+    },
+    {
+      "id": "E2E-03",
+      "title": "Database identity, ownership, scoped deduplication and enforcement",
+      "dependencies": [
+        "E2E-01",
+        "E2E-02"
+      ],
+      "fin_cards": [
+        "FIN-04",
+        "FIN-05"
+      ],
+      "ui_cards": [],
+      "acl_cards": [
+        "ACL-01",
+        "ACL-02",
+        "ACL-03"
+      ],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-03--complete-database-identity-ownership-and-access-enforcement",
+      "evidence_directory": "evidence/end-to-end/E2E-03/"
+    },
+    {
+      "id": "E2E-04",
+      "title": "Complete derived provenance and revocation",
+      "dependencies": [
+        "E2E-03"
+      ],
+      "fin_cards": [
+        "FIN-04",
+        "FIN-09",
+        "FIN-10",
+        "FIN-15"
+      ],
+      "ui_cards": [],
+      "acl_cards": [
+        "ACL-05",
+        "ACL-06"
+      ],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-04--protect-every-derived-artifact-and-revoke-access-completely",
+      "evidence_directory": "evidence/end-to-end/E2E-04/"
+    },
+    {
+      "id": "E2E-05",
+      "title": "Sharing, group and audited admin API/UI",
+      "dependencies": [
+        "E2E-03",
+        "E2E-04"
+      ],
+      "fin_cards": [
+        "FIN-04",
+        "FIN-19"
+      ],
+      "ui_cards": [],
+      "acl_cards": [
+        "ACL-04"
+      ],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-05--finish-sharing-and-administrative-workflows",
+      "evidence_directory": "evidence/end-to-end/E2E-05/"
+    },
+    {
+      "id": "E2E-06",
+      "title": "Durable authorized ingestion and atomic indexing",
+      "dependencies": [
+        "E2E-03",
+        "E2E-04"
+      ],
+      "fin_cards": [
+        "FIN-10",
+        "FIN-18"
+      ],
+      "ui_cards": [
+        "UI-04"
+      ],
+      "acl_cards": [
+        "ACL-07"
+      ],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-06--implement-durable-authorized-ingestion-and-atomic-indexing",
+      "evidence_directory": "evidence/end-to-end/E2E-06/"
+    },
+    {
+      "id": "E2E-07",
+      "title": "Independent private-adapter acceptance",
+      "dependencies": [
+        "E2E-03",
+        "E2E-04",
+        "E2E-05",
+        "E2E-06"
+      ],
+      "fin_cards": [
+        "FIN-04",
+        "FIN-05",
+        "FIN-20"
+      ],
+      "ui_cards": [],
+      "acl_cards": [
+        "ACL-08"
+      ],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-07--independently-accept-the-private-application-adapter",
+      "evidence_directory": "evidence/end-to-end/E2E-07/"
+    },
+    {
+      "id": "E2E-08",
+      "title": "Extraction, typed facts and source lineage",
+      "dependencies": [
+        "E2E-02",
+        "E2E-06"
+      ],
+      "fin_cards": [
+        "FIN-08",
+        "FIN-10",
+        "FIN-13"
+      ],
+      "ui_cards": [],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-08--repair-extraction-typed-facts-and-source-lineage",
+      "evidence_directory": "evidence/end-to-end/E2E-08/"
+    },
+    {
+      "id": "E2E-09",
+      "title": "Knowledge, memory and governed learning",
+      "dependencies": [
+        "E2E-04",
+        "E2E-07",
+        "E2E-08"
+      ],
+      "fin_cards": [
+        "FIN-09",
+        "FIN-14",
+        "FIN-15"
+      ],
+      "ui_cards": [
+        "UI-07"
+      ],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-09--finish-knowledge-memory-and-governed-learning",
+      "evidence_directory": "evidence/end-to-end/E2E-09/"
+    },
+    {
+      "id": "E2E-10",
+      "title": "Authorized full-library hybrid retrieval",
+      "dependencies": [
+        "E2E-06",
+        "E2E-07",
+        "E2E-08",
+        "E2E-09"
+      ],
+      "fin_cards": [
+        "FIN-11"
+      ],
+      "ui_cards": [
+        "UI-05"
+      ],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-10--integrate-full-authorized-library-retrieval",
+      "evidence_directory": "evidence/end-to-end/E2E-10/"
+    },
+    {
+      "id": "E2E-11",
+      "title": "Grounded CPU chat and durable resource accounting",
+      "dependencies": [
+        "E2E-09",
+        "E2E-10"
+      ],
+      "fin_cards": [
+        "FIN-12",
+        "FIN-17"
+      ],
+      "ui_cards": [
+        "UI-06"
+      ],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-11--repair-actual-grounded-chat-and-resource-accounting",
+      "evidence_directory": "evidence/end-to-end/E2E-11/"
+    },
+    {
+      "id": "E2E-12",
+      "title": "Exact PDF citations and honest fallback",
+      "dependencies": [
+        "E2E-07",
+        "E2E-08"
+      ],
+      "fin_cards": [
+        "FIN-10",
+        "FIN-13",
+        "FIN-19"
+      ],
+      "ui_cards": [
+        "UI-02",
+        "UI-03"
+      ],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-12--complete-exact-pdf-citation-navigation",
+      "evidence_directory": "evidence/end-to-end/E2E-12/"
+    },
+    {
+      "id": "E2E-13",
+      "title": "Engineering flows and task continuity",
+      "dependencies": [
+        "E2E-09",
+        "E2E-11"
+      ],
+      "fin_cards": [
+        "FIN-16",
+        "FIN-17",
+        "FIN-18"
+      ],
+      "ui_cards": [],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-13--finish-engineering-flows-and-operational-accounting",
+      "evidence_directory": "evidence/end-to-end/E2E-13/"
+    },
+    {
+      "id": "E2E-14",
+      "title": "Complete real browser workflows and accessibility",
+      "dependencies": [
+        "E2E-05",
+        "E2E-07",
+        "E2E-09",
+        "E2E-10",
+        "E2E-11",
+        "E2E-12",
+        "E2E-13"
+      ],
+      "fin_cards": [
+        "FIN-19"
+      ],
+      "ui_cards": [
+        "UI-01",
+        "UI-07"
+      ],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-14--complete-the-real-ui-from-login-to-reviewed-result",
+      "evidence_directory": "evidence/end-to-end/E2E-14/"
+    },
+    {
+      "id": "E2E-15",
+      "title": "P0/P1 capacity and upload-envelope qualification",
+      "dependencies": [
+        "E2E-06",
+        "E2E-10",
+        "E2E-11",
+        "E2E-12",
+        "E2E-14"
+      ],
+      "fin_cards": [
+        "FIN-18"
+      ],
+      "ui_cards": [
+        "UI-08"
+      ],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-15--qualify-the-required-workload-and-upload-envelopes",
+      "evidence_directory": "evidence/end-to-end/E2E-15/"
+    },
+    {
+      "id": "E2E-16",
+      "title": "Runtime, launchers, migration, backup and recovery",
+      "dependencies": [
+        "E2E-03",
+        "E2E-06",
+        "E2E-07"
+      ],
+      "fin_cards": [
+        "FIN-03",
+        "FIN-05",
+        "FIN-06",
+        "FIN-07"
+      ],
+      "ui_cards": [],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-16--repair-and-rehearse-the-complete-runtime-lifecycle",
+      "evidence_directory": "evidence/end-to-end/E2E-16/"
+    },
+    {
+      "id": "E2E-17",
+      "title": "Frozen candidate and integrated adversarial qualification",
+      "dependencies": [
+        "E2E-14",
+        "E2E-15",
+        "E2E-16"
+      ],
+      "fin_cards": [
+        "FIN-01",
+        "FIN-03",
+        "FIN-20"
+      ],
+      "ui_cards": [
+        "UI-09"
+      ],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-17--freeze-a-candidate-and-run-integrated-adversarial-qualification",
+      "evidence_directory": "evidence/end-to-end/E2E-17/"
+    },
+    {
+      "id": "E2E-18",
+      "title": "Canonical security and exact-image package acceptance",
+      "dependencies": [
+        "E2E-02",
+        "E2E-17"
+      ],
+      "fin_cards": [
+        "FIN-02",
+        "FIN-03",
+        "FIN-20"
+      ],
+      "ui_cards": [],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-18--obtain-canonical-security-and-package-acceptance",
+      "evidence_directory": "evidence/end-to-end/E2E-18/"
+    },
+    {
+      "id": "E2E-19",
+      "title": "Rights, exact archive and final documentation acceptance",
+      "dependencies": [
+        "E2E-01",
+        "E2E-17"
+      ],
+      "fin_cards": [
+        "FIN-21",
+        "FIN-23"
+      ],
+      "ui_cards": [],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-19--clear-rights-packaging-and-documentation",
+      "evidence_directory": "evidence/end-to-end/E2E-19/"
+    },
+    {
+      "id": "E2E-20",
+      "title": "Untouched-subject and independent cold-start acceptance",
+      "dependencies": [
+        "E2E-17"
+      ],
+      "fin_cards": [
+        "FIN-24"
+      ],
+      "ui_cards": [
+        "UI-09"
+      ],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-20--pass-untouched-subject-and-cold-start-acceptance",
+      "evidence_directory": "evidence/end-to-end/E2E-20/"
+    },
+    {
+      "id": "E2E-21",
+      "title": "Independent release acceptance and controlled CPU commissioning",
+      "dependencies": [
+        "E2E-18",
+        "E2E-19",
+        "E2E-20"
+      ],
+      "fin_cards": [
+        "FIN-22"
+      ],
+      "ui_cards": [
+        "UI-10"
+      ],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-21--accept-commission-and-certify-the-cpu-reference-release",
+      "evidence_directory": "evidence/end-to-end/E2E-21/"
+    },
+    {
+      "id": "E2E-22",
+      "title": "Evolus/AMD preparation handoff; no partner activation",
+      "dependencies": [
+        "E2E-21"
+      ],
+      "fin_cards": [
+        "FIN-23"
+      ],
+      "ui_cards": [],
+      "acl_cards": [],
+      "status": "PLANNED",
+      "implementation_owner": "UNASSIGNED",
+      "independent_reviewer": "UNASSIGNED",
+      "accepted": false,
+      "contract": "M_END_TO_END_COMPLETION_AND_CERTIFICATION.md#e2e-22--hand-off-readiness-for-evolus-and-amd-preparation",
+      "evidence_directory": "evidence/end-to-end/E2E-22/"
+    }
+  ],
+  "original_card_coverage": {
+    "NSAI-001": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "NSAI-002": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "NSAI-003": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "NSAI-004": [
+      "E2E-16"
+    ],
+    "NSAI-005": [
+      "E2E-16"
+    ],
+    "NSAI-006": [
+      "E2E-16"
+    ],
+    "NSAI-007": [
+      "E2E-03",
+      "E2E-07",
+      "E2E-16"
+    ],
+    "NSAI-008": [
+      "E2E-03",
+      "E2E-07",
+      "E2E-16"
+    ],
+    "NSAI-009": [
+      "E2E-16"
+    ],
+    "NSAI-010": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07"
+    ],
+    "NSAI-011": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07"
+    ],
+    "NSAI-012": [
+      "E2E-11"
+    ],
+    "NSAI-013": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-014": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-015": [
+      "E2E-11"
+    ],
+    "NSAI-016": [
+      "E2E-11"
+    ],
+    "NSAI-017": [
+      "E2E-04",
+      "E2E-09"
+    ],
+    "NSAI-018": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-019": [
+      "E2E-05",
+      "E2E-12",
+      "E2E-14"
+    ],
+    "NSAI-020": [
+      "E2E-11"
+    ],
+    "NSAI-021": [
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "NSAI-022": [
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "NSAI-023": [
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "NSAI-024": [
+      "E2E-16"
+    ],
+    "NSAI-025": [
+      "E2E-16"
+    ],
+    "NSAI-026": [
+      "E2E-03",
+      "E2E-07",
+      "E2E-16"
+    ],
+    "NSAI-027": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07"
+    ],
+    "NSAI-028": [
+      "E2E-16"
+    ],
+    "NSAI-029": [
+      "E2E-16"
+    ],
+    "NSAI-030": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "NSAI-031": [
+      "E2E-19"
+    ],
+    "NSAI-032": [
+      "E2E-16"
+    ],
+    "NSAI-033": [
+      "E2E-08"
+    ],
+    "NSAI-034": [
+      "E2E-08"
+    ],
+    "NSAI-035": [
+      "E2E-04",
+      "E2E-09"
+    ],
+    "NSAI-036": [
+      "E2E-04",
+      "E2E-09"
+    ],
+    "NSAI-037": [
+      "E2E-04",
+      "E2E-09"
+    ],
+    "NSAI-038": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-039": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-040": [
+      "E2E-10"
+    ],
+    "NSAI-041": [
+      "E2E-10"
+    ],
+    "NSAI-042": [
+      "E2E-06",
+      "E2E-13",
+      "E2E-15"
+    ],
+    "NSAI-043": [
+      "E2E-05",
+      "E2E-12",
+      "E2E-14"
+    ],
+    "NSAI-044": [
+      "E2E-05",
+      "E2E-12",
+      "E2E-14"
+    ],
+    "NSAI-045": [
+      "E2E-06",
+      "E2E-13",
+      "E2E-15"
+    ],
+    "NSAI-046": [
+      "E2E-06",
+      "E2E-13",
+      "E2E-15"
+    ],
+    "NSAI-047": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "NSAI-048": [
+      "E2E-10"
+    ],
+    "NSAI-049": [
+      "E2E-10"
+    ],
+    "NSAI-050": [
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-051": [
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-052": [
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-053": [
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-054": [
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-055": [
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-056": [
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-057": [
+      "E2E-08"
+    ],
+    "NSAI-058": [
+      "E2E-08"
+    ],
+    "NSAI-059": [
+      "E2E-08",
+      "E2E-12"
+    ],
+    "NSAI-060": [
+      "E2E-09"
+    ],
+    "NSAI-061": [
+      "E2E-04",
+      "E2E-09"
+    ],
+    "NSAI-062": [
+      "E2E-09"
+    ],
+    "NSAI-063": [
+      "E2E-04",
+      "E2E-09"
+    ],
+    "NSAI-064": [
+      "E2E-04",
+      "E2E-09"
+    ],
+    "NSAI-065": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07"
+    ],
+    "NSAI-066": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07"
+    ],
+    "NSAI-067": [
+      "E2E-09"
+    ],
+    "NSAI-068": [
+      "E2E-09"
+    ],
+    "NSAI-069": [
+      "E2E-13"
+    ],
+    "NSAI-070": [
+      "E2E-13"
+    ],
+    "NSAI-071": [
+      "E2E-13"
+    ],
+    "NSAI-072": [
+      "E2E-11",
+      "E2E-13"
+    ],
+    "NSAI-073": [
+      "E2E-11",
+      "E2E-13"
+    ],
+    "NSAI-074": [
+      "E2E-11",
+      "E2E-13"
+    ],
+    "NSAI-075": [
+      "E2E-11",
+      "E2E-13"
+    ],
+    "NSAI-076": [
+      "E2E-13"
+    ],
+    "NSAI-077": [
+      "E2E-02",
+      "E2E-18"
+    ],
+    "NSAI-078": [
+      "E2E-02",
+      "E2E-18"
+    ],
+    "NSAI-079": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "NSAI-080": [
+      "E2E-19"
+    ],
+    "NSAI-081": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "NSAI-082": [
+      "E2E-21"
+    ],
+    "NSAI-083": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "NSAI-084": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "NSAI-085": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07"
+    ],
+    "NSAI-086": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "NSAI-087": [
+      "E2E-10"
+    ],
+    "NSAI-088": [
+      "E2E-04",
+      "E2E-09"
+    ],
+    "NSAI-089": [
+      "E2E-04",
+      "E2E-09"
+    ]
+  },
+  "checklist_coverage": {
+    "REL-00-001": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "REL-00-002": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "REL-00-003": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "REL-00-004": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "REL-00-005": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "REL-00-006": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "REL-00-007": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "REL-00-008": [
+      "E2E-01",
+      "E2E-17"
+    ],
+    "REL-01-001": [
+      "E2E-01",
+      "E2E-09",
+      "E2E-16",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-01-002": [
+      "E2E-01",
+      "E2E-09",
+      "E2E-16",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-01-003": [
+      "E2E-01",
+      "E2E-09",
+      "E2E-16",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-01-004": [
+      "E2E-01",
+      "E2E-09",
+      "E2E-16",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-01-005": [
+      "E2E-01",
+      "E2E-09",
+      "E2E-16",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-01-006": [
+      "E2E-01",
+      "E2E-09",
+      "E2E-16",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-01-007": [
+      "E2E-01",
+      "E2E-09",
+      "E2E-16",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-01-008": [
+      "E2E-01",
+      "E2E-09",
+      "E2E-16",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-01-009": [
+      "E2E-01",
+      "E2E-09",
+      "E2E-16",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-01-010": [
+      "E2E-01",
+      "E2E-09",
+      "E2E-16",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-02-001": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-002": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-003": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-004": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-005": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-006": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-007": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-008": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-009": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-010": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-011": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-012": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-013": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-02-014": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-03-001": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-002": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-003": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-004": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-005": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-006": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-007": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-008": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-009": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-010": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-011": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-012": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-03-013": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-06",
+      "E2E-07",
+      "E2E-09",
+      "E2E-13",
+      "E2E-15",
+      "E2E-16"
+    ],
+    "REL-04-001": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-002": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-003": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-004": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-005": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-006": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-007": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-008": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-009": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-010": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-011": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-012": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-04-013": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12",
+      "E2E-16"
+    ],
+    "REL-05-001": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-002": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-003": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-004": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-005": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-006": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-007": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-008": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-009": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-010": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-011": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-012": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-013": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-014": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-05-015": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REL-06-001": [
+      "E2E-08",
+      "E2E-10",
+      "E2E-11"
+    ],
+    "REL-06-002": [
+      "E2E-08",
+      "E2E-10",
+      "E2E-11"
+    ],
+    "REL-06-003": [
+      "E2E-08",
+      "E2E-10",
+      "E2E-11"
+    ],
+    "REL-06-004": [
+      "E2E-08",
+      "E2E-10",
+      "E2E-11"
+    ],
+    "REL-06-005": [
+      "E2E-08",
+      "E2E-10",
+      "E2E-11"
+    ],
+    "REL-06-006": [
+      "E2E-08",
+      "E2E-10",
+      "E2E-11"
+    ],
+    "REL-06-007": [
+      "E2E-08",
+      "E2E-10",
+      "E2E-11"
+    ],
+    "REL-06-008": [
+      "E2E-08",
+      "E2E-10",
+      "E2E-11"
+    ],
+    "REL-06-009": [
+      "E2E-08",
+      "E2E-10",
+      "E2E-11"
+    ],
+    "REL-06-010": [
+      "E2E-08",
+      "E2E-10",
+      "E2E-11"
+    ],
+    "REL-06-011": [
+      "E2E-08",
+      "E2E-10",
+      "E2E-11"
+    ],
+    "REL-07-001": [
+      "E2E-04",
+      "E2E-09",
+      "E2E-13"
+    ],
+    "REL-07-002": [
+      "E2E-04",
+      "E2E-09",
+      "E2E-13"
+    ],
+    "REL-07-003": [
+      "E2E-04",
+      "E2E-09",
+      "E2E-13"
+    ],
+    "REL-07-004": [
+      "E2E-04",
+      "E2E-09",
+      "E2E-13"
+    ],
+    "REL-07-005": [
+      "E2E-04",
+      "E2E-09",
+      "E2E-13"
+    ],
+    "REL-07-006": [
+      "E2E-04",
+      "E2E-09",
+      "E2E-13"
+    ],
+    "REL-08-001": [
+      "E2E-05",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-13",
+      "E2E-14",
+      "E2E-15"
+    ],
+    "REL-08-002": [
+      "E2E-05",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-13",
+      "E2E-14",
+      "E2E-15"
+    ],
+    "REL-08-003": [
+      "E2E-05",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-13",
+      "E2E-14",
+      "E2E-15"
+    ],
+    "REL-08-004": [
+      "E2E-05",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-13",
+      "E2E-14",
+      "E2E-15"
+    ],
+    "REL-08-005": [
+      "E2E-05",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-13",
+      "E2E-14",
+      "E2E-15"
+    ],
+    "REL-08-006": [
+      "E2E-05",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-13",
+      "E2E-14",
+      "E2E-15"
+    ],
+    "REL-08-007": [
+      "E2E-05",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-13",
+      "E2E-14",
+      "E2E-15"
+    ],
+    "REL-08-008": [
+      "E2E-05",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-13",
+      "E2E-14",
+      "E2E-15"
+    ],
+    "REL-08-009": [
+      "E2E-05",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-13",
+      "E2E-14",
+      "E2E-15"
+    ],
+    "REL-08-010": [
+      "E2E-05",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-13",
+      "E2E-14",
+      "E2E-15"
+    ],
+    "REL-08-011": [
+      "E2E-05",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-13",
+      "E2E-14",
+      "E2E-15"
+    ],
+    "REL-09-001": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-09-002": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-09-003": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-09-004": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-09-005": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-09-006": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-09-007": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-09-008": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-10-001": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-002": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-003": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-004": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-005": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-006": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-007": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-008": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-009": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-010": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-011": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-012": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-013": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-014": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-015": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-016": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-017": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-10-018": [
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-001": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-002": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-003": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-004": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-005": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-006": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-007": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-008": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-009": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-010": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-011": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-012": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-013": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-11-014": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-10",
+      "E2E-16",
+      "E2E-17",
+      "E2E-18"
+    ],
+    "REL-12-001": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-12-002": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-12-003": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-12-004": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-12-005": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-12-006": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-12-007": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-12-008": [
+      "E2E-19",
+      "E2E-22"
+    ],
+    "REL-13-001": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-002": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-003": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-004": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-005": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-006": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-007": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-008": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-009": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-010": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-011": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-012": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-013": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-014": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-015": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-016": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-13-017": [
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-14-001": [
+      "E2E-01",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-14-002": [
+      "E2E-01",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-14-003": [
+      "E2E-01",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-14-004": [
+      "E2E-01",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-14-005": [
+      "E2E-01",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-14-006": [
+      "E2E-01",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-14-007": [
+      "E2E-01",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-14-008": [
+      "E2E-01",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-14-009": [
+      "E2E-01",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-14-010": [
+      "E2E-01",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-14-011": [
+      "E2E-01",
+      "E2E-17",
+      "E2E-19"
+    ],
+    "REL-15-001": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-002": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-003": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-004": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-005": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-006": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-007": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-008": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-009": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-010": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-011": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-012": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-15-013": [
+      "E2E-01",
+      "E2E-02",
+      "E2E-07",
+      "E2E-17",
+      "E2E-18",
+      "E2E-21"
+    ],
+    "REL-16-001": [
+      "E2E-19",
+      "E2E-21"
+    ],
+    "REL-16-002": [
+      "E2E-19",
+      "E2E-21"
+    ],
+    "REL-16-003": [
+      "E2E-19",
+      "E2E-21"
+    ],
+    "REL-16-004": [
+      "E2E-19",
+      "E2E-21"
+    ],
+    "REL-16-005": [
+      "E2E-19",
+      "E2E-21"
+    ],
+    "REL-16-006": [
+      "E2E-19",
+      "E2E-21"
+    ],
+    "REL-16-007": [
+      "E2E-19",
+      "E2E-21"
+    ],
+    "REL-16-008": [
+      "E2E-19",
+      "E2E-21"
+    ],
+    "REL-16-009": [
+      "E2E-19",
+      "E2E-21"
+    ],
+    "REL-17-001": [
+      "E2E-09",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-17-002": [
+      "E2E-09",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-17-003": [
+      "E2E-09",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-17-004": [
+      "E2E-09",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-17-005": [
+      "E2E-09",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-17-006": [
+      "E2E-09",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-17-007": [
+      "E2E-09",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-17-008": [
+      "E2E-09",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-17-009": [
+      "E2E-09",
+      "E2E-20",
+      "E2E-21"
+    ],
+    "REL-17-010": [
+      "E2E-09",
+      "E2E-20",
+      "E2E-21"
+    ]
+  },
+  "research_coverage": {
+    "REF-01": [
+      "E2E-09"
+    ],
+    "REF-02": [
+      "E2E-09"
+    ],
+    "REF-03": [
+      "E2E-10"
+    ],
+    "REF-04": [
+      "E2E-03",
+      "E2E-04",
+      "E2E-05",
+      "E2E-07"
+    ],
+    "REF-05": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12"
+    ],
+    "REF-06": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-12"
+    ],
+    "REF-07": [
+      "E2E-04",
+      "E2E-06",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "REF-08": [
+      "E2E-05",
+      "E2E-12",
+      "E2E-14"
+    ],
+    "REF-09": [
+      "E2E-08",
+      "E2E-12"
+    ]
+  },
+  "coverage_counts": {
+    "original_cards": 89,
+    "original_criteria": 301,
+    "checklist_requirements": 209,
+    "research_cards": 9,
+    "fin_packages": 24,
+    "ui_packages": 10,
+    "acl_packages": 8,
+    "execution_packages": 22
+  },
+  "external_prerequisites": [
+    "Effective managed filesystem profile for canonical deep scan",
+    "Assigned independent engineering/security/domain reviewers",
+    "Rights-cleared independent fixtures and approved numeric test contracts",
+    "Qualification hardware/storage sufficient for P1 workload"
+  ],
+  "acceptance_rule": "All mandatory criteria need fresh exact-artifact evidence and independent review; mapping is not acceptance"
+}

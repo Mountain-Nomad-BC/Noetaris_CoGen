@@ -1,0 +1,45 @@
+import { createRequire } from 'node:module';
+import fs from 'node:fs';
+import path from 'node:path';
+const require = createRequire(import.meta.url);
+const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const base = process.env.NOETARIS_AUDIT_URL || 'http://127.0.0.1:8878';
+const output = process.env.NOETARIS_AUDIT_OUTPUT || path.resolve('evidence/noetaris-integration/frontend-ui-audit.json');
+const source = fs.readFileSync(new URL('../src/App.jsx', import.meta.url), 'utf8');
+const routePatterns = [...source.matchAll(/<Route\s+path="([^"]+)"/g)].map(match => match[1]);
+const routes = [...new Set([...routePatterns.filter(route => route.startsWith('/') && route !== '*' && route !== '/auth/callback'), '/app', ...routePatterns.filter(route => !route.startsWith('/') && route !== '').map(route => `/app/${route}`)])];
+const browser = await chromium.launch({ headless: true });
+const results = [], consoleErrors = [], pageErrors = [], failedRequests = [];
+try {
+  const env = fs.readFileSync(path.resolve('../../.env'), 'utf8');
+  const token = env.match(/^NSAI_API_TOKEN=(.+)$/m)?.[1]?.trim();
+  if (!token) throw new Error('NSAI_API_TOKEN absent from protected local .env; no secret generated or emitted.');
+  const basePage = await browser.newPage({ viewport:{width:1440,height:900} });
+  const identityCheck = await fetch(`${base}/v1/capabilities`,{headers:{Authorization:`Bearer ${token}`},redirect:'error'});
+  if (!identityCheck.ok) throw new Error(`Protected operator identity verification failed: HTTP ${identityCheck.status}.`);
+  const identity = (await identityCheck.json()).identity;
+  if (identity?.identity_kind !== 'local-operator' || typeof identity?.actor !== 'string') throw new Error('Browser audit needs an explicitly verified local operator. Refusing substitute credentials or bypass.');
+  await basePage.goto(new URL('/',base).href,{waitUntil:'networkidle',timeout:20000});
+  const cookieOrigin=new URL(base).origin;
+  await basePage.context().addCookies([{name:'nsai_bearer',value:token,url:cookieOrigin,httpOnly:true,sameSite:'Lax'}]);
+  basePage.on('console',msg=>{if(msg.type()==='error')consoleErrors.push(msg.text());});
+  basePage.on('pageerror',e=>pageErrors.push(e.message));
+  basePage.on('requestfailed',r=>failedRequests.push({url:r.url(),error:r.failure()?.errorText}));
+  for(const routePattern of routes){
+    const route=routePattern.includes(':')?routePattern.replaceAll(':id','audit-placeholder').replaceAll(':provider','audit-provider'):routePattern;
+    const startErrors=pageErrors.length,startFailures=failedRequests.length;
+    const response=await basePage.goto(new URL(route,base).href,{waitUntil:'networkidle',timeout:20000});
+    await basePage.waitForTimeout(70);
+    const content=await basePage.locator('#root').innerText().catch(()=>''), body=await basePage.locator('body').innerText().catch(()=>''), sidebar=await basePage.locator('aside').count().catch(()=>0);
+    results.push({path:route,status:response?.status()??null,rendered:content.trim().length>0,serverDenied:/LIVE INTEGRATION BLOCKED|Access is not verified|HTTP 503|not authorized/i.test(body),sidebar:sidebar>0,preview:content.slice(0,260),pageErrors:pageErrors.slice(startErrors),failedRequests:failedRequests.slice(startFailures)});
+  }
+  await basePage.goto(new URL('/login',base).href,{waitUntil:'networkidle',timeout:20000});
+  const loginBody=await basePage.locator('body').innerText();
+  const auth=await basePage.evaluate(async()=>{let a=await fetch('/auth/config',{cache:'no-store'}),cfg=await a.json(),s=await fetch('/auth/session',{cache:'no-store'});return{configStatus:a.status,providers:cfg.providers,sessionStatus:s.status}});
+  const mobile=await browser.newPage({viewport:{width:390,height:844}});
+  await mobile.goto(new URL('/',base).href,{waitUntil:'networkidle',timeout:20000});await mobile.getByTestId('public-menu-btn').click();const publicMobileMenuWorks=await mobile.getByTestId('public-mobile-nav').isVisible();await mobile.close();
+  const result={checkedAt:new Date().toISOString(),baseUrl:base,identityKind:identity.identity_kind,routesChecked:results.length,results,loginVisible:loginBody.includes('Sign in to NSAI'),providerSettingsVisible:loginBody.includes('Google')&&loginBody.includes('GitHub'),auth,publicMobileMenuWorks,consoleErrors,pageErrors,failedRequests,note:'Authenticated same-browser HTTP-only operator credential audit. Separate private-user source-access authorization is not overridden. Rendering is not workflow/feature acceptance.'};
+  fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n','utf8');
+  console.log(JSON.stringify({output,routesChecked:results.length,failures:results.filter(r=>r.status!==200||!r.rendered||r.pageErrors.length||r.failedRequests.length),auth,publicMobileMenuWorks,consoleErrors,pageErrors,failedRequests},null,2));
+  if(results.some(r=>r.status!==200||!r.rendered||r.pageErrors.length||r.failedRequests.length)||pageErrors.length||failedRequests.length||auth.configStatus!==200||auth.sessionStatus!==200||typeof auth.providers?.google!=='boolean'||typeof auth.providers?.github!=='boolean'||!loginBody.includes('Sign in to NSAI')||!publicMobileMenuWorks)process.exitCode=1;
+}finally{await browser.close();}

@@ -1,0 +1,192 @@
+{
+  "version": 1,
+  "date": "2026-10-14",
+  "release_approved": false,
+  "cards": [
+    {
+      "id": "REL-C00",
+      "status": "IN_PROGRESS",
+      "implemented": [
+        "Read-only source/build/test/docs/plan inventory with explicit secret/state exclusions",
+        "Exact current candidate image and 56 runtime source bindings",
+        "Eight earlier evidence digests verified without acceptance inheritance",
+        "Host/Docker version and resource inventory",
+        "Static 17-capability / 42-route claim matrix"
+      ],
+      "remaining": [
+        "Independent reviewer assignment and evidence admission",
+        "Full schema/log/model inventory and exact claim-to-contract/test/demo linkage",
+        "Freeze/correction enforcement across every evidence producer"
+      ],
+      "accepted": false
+    },
+    {
+      "id": "REF-07",
+      "status": "PARTIALLY_IMPLEMENTED",
+      "implemented": [
+        "Independent native graph/source quote/formula/memory/vector lineage oracle",
+        "Full native corpus structural validation",
+        "Mutation tests including correctly rehashed dangling edges, fabricated quotes and missing passage plus index",
+        "Author/OCR namespace structural checks with expected inventory enforcement",
+        "Independent corpus-map centroid/cosine/neighbour derivation",
+        "Real587-check API/DB/source unit and review-descriptor lineage qualification",
+        "Independent reviewer reproduced missing-inventory gap and verified correction"
+      ],
+      "remaining": [
+        "Independent per-claim archival source-byte and geometry/quality interpretation remain separate; no scientific correctness acceptance"
+      ],
+      "accepted": false
+    },
+    {
+      "id": "REF-01",
+      "status": "IMPLEMENTED_ACCEPTANCE_PENDING",
+      "accepted": false,
+      "implemented": [
+        "Versioned original document-unit module and authenticated read-only API",
+        "13831units persisted as separate private generation across14documents; exact original spans preserved",
+        "Independent review plus7original Unicode/math/structure/resource tests"
+      ],
+      "remaining": [
+        "Independent source-family structural classification accuracy qualification and UI adoption"
+      ]
+    },
+    {
+      "id": "REF-02",
+      "status": "IMPLEMENTED_ACCEPTANCE_PENDING",
+      "accepted": false,
+      "implemented": [
+        "Independent quality signals without ASCII corruption scoring or fabricated probabilities",
+        "Uncertain headings/list/table structures remain candidates; source text retained"
+      ],
+      "remaining": [
+        "Calibrate additional diagnostics only against independent labels; no OCR accuracy claim"
+      ]
+    },
+    {
+      "id": "REL-C01",
+      "status": "IN_PROGRESS",
+      "accepted": false,
+      "implemented": [
+        "API contract inventory; duplicate GET/HEAD operation ID reproduced and fixed",
+        "Original GET/HEAD body and auth compatibility independently reviewed",
+        "507function inventory/allocation;237observed under unit tracing"
+      ],
+      "remaining": [
+        "Full import/state/deletion/architecture reconciliation and independent coverage of unobserved operations"
+      ]
+    },
+    {
+      "id": "REL-C03",
+      "status": "IN_PROGRESS",
+      "accepted": false,
+      "implemented": [
+        "41private method/path combinations reject anonymous access before backend work"
+      ],
+      "remaining": [
+        "Source-level/user isolation, full authorized-role and lifecycle matrices; central activation remains disabled"
+      ]
+    },
+    {
+      "id": "REL-C16",
+      "status": "IMPLEMENTED_ACCEPTANCE_PENDING",
+      "accepted": false,
+      "implemented": [
+        "Release guard requires pinned209-requirement extension,9researchcards and fresh content/source-bound aggregate acceptance",
+        "Independent positive synthetic guard case plus omitted-extension denial"
+      ],
+      "remaining": [
+        "All mandatory criteria and authentic independent acceptance; current actual guard remainsDENY"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/release-validation/function-trace/ee457cf9314843698ec6794b40a5425b/unit-tests.xml",
+      "sha256": "40de907971d5c770396b108461e18d8e6130cfe7a5dd2e026e67ba4d969141c8"
+    },
+    {
+      "path": "evidence/release-validation/function-trace/ee457cf9314843698ec6794b40a5425b/function-trace.json",
+      "sha256": "3a38b9e6be07e24bc30f981ffab41086a1edba295e45aefc41a926000f84b092"
+    },
+    {
+      "path": "evidence/arxiv-ingestion/nsai-arxiv-db-a85ab539ada4/receipt.json",
+      "sha256": "a833d037baa812a9fe9919366e0fb820d33570d3b163572b0e53e5013c9d55d5"
+    },
+    {
+      "path": "evidence/release-validation/contract-stack/receipt.json",
+      "sha256": "018d4a24aee9a0b518d637c2d5dd8f4815599ef07a9745f95dfef0421c9ebabb"
+    },
+    {
+      "path": "evidence/release-validation/image-source-binding-4bd.json",
+      "sha256": "5d81cacbda8f3ce08df5189e851f4dbb84a22af9929ae2b37ecdd50e858178d4"
+    },
+    {
+      "path": "evidence/release-validation/REF-07/00c2f64406aa432d8f2b287464a4be44/supplement-lineage.json",
+      "sha256": "50b7c502b5c3b36d58d0fa2293514ecbace8c76a2523b2b9ef58afd9fd7db8ab"
+    },
+    {
+      "path": "evidence/release-validation/independent-review/review-20261014-supplements-followup.json",
+      "sha256": "563f833dd257e5136e188392746a1f8106cd9fc191c5465317fcb00ff14d5f70"
+    },
+    {
+      "path": "evidence/release-validation/independent-review/review-20261014-release-extension-gate.json",
+      "sha256": "60dab5e6273d7adafbcb5e4d702dcb9b7ab83d6f3de8867341bb8da6a8b5e9c5"
+    },
+    {
+      "path": "evidence/release-validation/independent-review/review-20261014-original-get-head.json",
+      "sha256": "992a7815315149291eaaa6e03ecb813dfc1e8366b6f0692a88e20a73e3418c13"
+    },
+    {
+      "path": "evidence/release-validation/image-4bd1f8c08869/receipt.json",
+      "sha256": "dc80c43f7d479b22b39b0697404b3abab3873c9d39fd054c70a7480541587197"
+    },
+    {
+      "path": "evidence/release-validation/document-units-50acd42328ee.json",
+      "sha256": "71c8b4a5cc8ed6ee55463360151c2e810c8ee6e3387048048092a9f091411b56"
+    },
+    {
+      "path": "evidence/release-validation/final-affected-tests.xml",
+      "sha256": "43738b194d755e42b840d1cf3a7c01320289f8d6b4ab424e3c078c204b60d584"
+    },
+    {
+      "path": "evidence/release-validation/all-private-routes.xml",
+      "sha256": "396b01382c8ccddc4ef4c6cdd7457c271417e549b16b886f992c385e95587e88"
+    },
+    {
+      "path": "evidence/arxiv-ingestion/author-source-custody-validation.json",
+      "sha256": "42aedf74e43320c1d59022fe83f7370743ef6c4fba7d47175eb43ed84313b5fe"
+    }
+  ],
+  "failures_retained": [
+    {
+      "scope": "oracle development",
+      "failure": "Initial CLI argument named knowledge did not match graph parameter",
+      "disposition": "Fixed key mapping; actual 14-document run passed afterward"
+    },
+    {
+      "scope": "oracle mutation test",
+      "failure": "Correctly rehashed removal of all passages and vectors was not rejected",
+      "disposition": "Added independent complete source interval coverage; regression passed afterward"
+    },
+    {
+      "scope": "independent supplement review",
+      "failure": "Removing every supplement still passed original validator",
+      "disposition": "Required expected OCR/author inventory and author binding; independent mutations now rejected"
+    },
+    {
+      "scope": "generated API schema",
+      "failure": "CombinedGET/HEAD original route yielded44operations but43uniqueIDs",
+      "disposition": "Separate declarations on same handler; unique schema regression and independent GET/HEAD compatibility pass"
+    }
+  ],
+  "next": [
+    "Resolve managed security profile without weakening permissions; do not retry unchanged failure",
+    "Continue remaining REF-03/04/05/06/08/09 and original unaccepted core criteria",
+    "Complete untouched holdout, OCR/formula/answer quality, fault/load/a11y, rights/archive and independent release acceptance"
+  ],
+  "limitations": [
+    "Application candidate rebuilt and isolatedly qualified; LIVE unchanged",
+    "Canonical security scan and full-plan acceptance remain open",
+    "Image4bd package scan retained28advisories;1HIGHrequires affected-version review"
+  ]
+}

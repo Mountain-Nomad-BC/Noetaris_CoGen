@@ -1,0 +1,17 @@
+# Optional browser-session foundation. Provider overlays require registered
+# credentials. Public TLS is mandatory; this profile never provisions hosting.
+services:
+  api:
+    environment:
+      NSAI_PUBLIC_ORIGIN: ${NSAI_PUBLIC_ORIGIN:-https://localhost:8443}
+      NSAI_OAUTH_COOKIE_SECRET_FILE: /run/secrets/oauth_cookie_signing
+      NSAI_OAUTH_SESSION_HOURS: ${NSAI_OAUTH_SESSION_HOURS:-12}
+      NSAI_OAUTH_GOOGLE_ENABLED: "false"
+      NSAI_OAUTH_GITHUB_ENABLED: "false"
+      NSAI_AUTH_REQUESTS_PER_MINUTE: ${NSAI_AUTH_REQUESTS_PER_MINUTE:-60}
+      NSAI_AUTH_PEER_REQUESTS_PER_MINUTE: ${NSAI_AUTH_PEER_REQUESTS_PER_MINUTE:-60}
+      NSAI_AUTH_BROWSER_REQUESTS_PER_MINUTE: ${NSAI_AUTH_BROWSER_REQUESTS_PER_MINUTE:-20}
+    secrets: [oauth_cookie_signing]
+secrets:
+  oauth_cookie_signing:
+    file: ./secrets/oauth_cookie_signing.txt

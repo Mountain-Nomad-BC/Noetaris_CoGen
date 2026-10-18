@@ -1,0 +1,19 @@
+import {apiRequest} from './liveTransport.js';
+import {sourceId} from './libraryContracts.js';
+import {indexSnapshot,retryRequest,retryReceipt,controlRequest,controlReceipt} from './queueContracts.js';
+const initial=()=>({activeId:null,data:null,loading:false,error:null,busy:false,attempts:Object.create(null)});
+export class LiveQueueStore{
+ constructor(api=apiRequest){this.api=api;this.state=initial();this.listeners=new Set();this.view=0;this.identity=0;this.read=null;this.write=null;}
+ snapshot=()=>this.state;subscribe=fn=>{this.listeners.add(fn);return()=>this.listeners.delete(fn);};set=patch=>{this.state={...this.state,...patch};for(const fn of this.listeners)fn();};
+ leave=()=>{this.view++;this.read?.abort();this.set({data:null,loading:false,error:null});};
+ reset=()=>{this.identity++;this.view++;this.read?.abort();this.write?.abort();this.state=initial();for(const fn of this.listeners)fn();};
+ attempt=(id,value)=>Object.assign(Object.create(null),this.state.attempts,{[id]:value});
+ open=async id=>{this.leave();this.set({activeId:id});if(!sourceId(id)){this.set({error:'Invalid source identity.'});return;}const view=this.view;const controller=new AbortController();this.read=controller;this.set({loading:true});try{const data=indexSnapshot(await this.api('/v1/sources/'+id+'/index',{signal:controller.signal}),id);if(view!==this.view)return;let attempts=this.state.attempts;const previous=attempts[id];if(previous&&previous.status!=='pending')attempts=this.attempt(id,{...previous,status:'observed',observation:{epoch:data.epoch,state:data.state,job_id:data.job_id},previous_status:previous.status});this.set({loading:false,data,attempts});}catch(error){if(view===this.view&&error.name!=='AbortError')this.set({loading:false,error:error.message,data:null});}};
+ mutate=async(action,source,identity,priority)=>{if(this.state.busy||this.state.attempts[source?.id])return;const snapshot=this.state.data;let body;try{if(source?.id!==this.state.activeId)throw new Error('Select the exact source first.');body=action==='retry'?retryRequest(snapshot,source,identity):controlRequest(snapshot,source,identity,action,priority);if(Object.keys(this.state.attempts).length>=100)throw new Error('Clear a reconciled retry receipt before retaining more than100.');}catch(error){this.set({error:error.message});return;}const id=source.id,epoch=this.identity;this.write=new AbortController();this.set({busy:true,error:null,attempts:this.attempt(id,{status:'pending',action,snapshot,body})});try{const routes={retry:'retry-index',cancel:'cancel-index',priority:'index-priority'};const reply=await this.api('/v1/sources/'+id+'/'+routes[action],{method:'POST',body,signal:this.write.signal});const receipt=action==='retry'?retryReceipt(reply,snapshot):controlReceipt(reply,snapshot,action,body);if(epoch!==this.identity)return;this.set({busy:false,attempts:this.attempt(id,{status:'confirmed',action,snapshot,body,receipt}),...(this.state.activeId===id?{data:null}:{})});}catch(error){if(epoch===this.identity)this.set({busy:false,attempts:this.attempt(id,{status:'uncertain',action,snapshot,body,error:error.message}),...(this.state.activeId===id?{data:null,error:error.message}:{})});}};
+ retry=(source,identity)=>this.mutate('retry',source,identity);
+ cancel=(source,identity)=>this.mutate('cancel',source,identity);
+ prioritize=(source,identity,priority)=>this.mutate('priority',source,identity,priority);
+ allowControl=id=>{const prior=this.state.attempts[id];if(this.state.busy||prior?.status!=='observed'||this.state.activeId!==id||!this.state.data||prior.observation?.epoch!==this.state.data.epoch)return;this.clear(id);};
+ allowRetry=id=>this.allowControl(id);
+ clear=id=>{if(this.state.busy||!['confirmed','observed'].includes(this.state.attempts[id]?.status))return;const attempts=Object.assign(Object.create(null),this.state.attempts);delete attempts[id];this.set({attempts});};
+}

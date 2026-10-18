@@ -1,0 +1,2603 @@
+{
+  "functions": [
+    {
+      "file": "src/nsai/api.py",
+      "name": "browser_headers",
+      "line": 26,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "protections",
+      "line": 33,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "translate_error",
+      "line": 73,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "health",
+      "line": 81,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "ready",
+      "line": 83,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "ui",
+      "line": 89,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "capabilities",
+      "line": 91,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "model_readiness",
+      "line": 100,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "ingest",
+      "line": 102,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "upload",
+      "line": 107,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "documents",
+      "line": 121,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "source",
+      "line": 123,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "original",
+      "line": 127,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "claims",
+      "line": 133,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "review",
+      "line": 138,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "search",
+      "line": 142,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "evidence",
+      "line": 144,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "chat",
+      "line": 159,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "reason",
+      "line": 173,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "memory",
+      "line": 197,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "propose",
+      "line": 201,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "reflect",
+      "line": 205,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "proposals",
+      "line": 209,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "learning_review",
+      "line": 211,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "security",
+      "line": 215,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "policy",
+      "line": 217,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "audit",
+      "line": 223,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "execute",
+      "line": 225,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/api.py",
+      "name": "submission",
+      "line": 227,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-017",
+        "NSAI-027"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/inference.py",
+      "name": "model_settings",
+      "line": 18,
+      "card_ids": [
+        "NSAI-012",
+        "NSAI-015",
+        "NSAI-016",
+        "NSAI-028",
+        "NSAI-041"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/inference.py",
+      "name": "model_status",
+      "line": 35,
+      "card_ids": [
+        "NSAI-012",
+        "NSAI-015",
+        "NSAI-016",
+        "NSAI-028",
+        "NSAI-041"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/inference.py",
+      "name": "generate_from_candidates",
+      "line": 58,
+      "card_ids": [
+        "NSAI-012",
+        "NSAI-015",
+        "NSAI-016",
+        "NSAI-028",
+        "NSAI-041"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/inference.py",
+      "name": "generate_from_sources",
+      "line": 93,
+      "card_ids": [
+        "NSAI-012",
+        "NSAI-015",
+        "NSAI-016",
+        "NSAI-028",
+        "NSAI-041"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/ingestion.py",
+      "name": "clean_text",
+      "line": 13,
+      "card_ids": [
+        "NSAI-013",
+        "NSAI-014",
+        "NSAI-038",
+        "NSAI-053"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/ingestion.py",
+      "name": "parse_source",
+      "line": 19,
+      "card_ids": [
+        "NSAI-013",
+        "NSAI-014",
+        "NSAI-038",
+        "NSAI-053"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/memory.py",
+      "name": "materialize_projection",
+      "line": 9,
+      "card_ids": [
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-037"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/memory.py",
+      "name": "size",
+      "line": 27,
+      "card_ids": [
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-037"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/models.py",
+      "name": "sha256",
+      "line": 14,
+      "card_ids": [
+        "NSAI-033",
+        "NSAI-034"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/models.py",
+      "name": "extract_claims",
+      "line": 26,
+      "card_ids": [
+        "NSAI-033",
+        "NSAI-034"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/models.py",
+      "name": "conflict_groups",
+      "line": 39,
+      "card_ids": [
+        "NSAI-033",
+        "NSAI-034"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/parser.py",
+      "name": "health",
+      "line": 21,
+      "card_ids": [
+        "NSAI-018",
+        "NSAI-029"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/parser.py",
+      "name": "parse",
+      "line": 24,
+      "card_ids": [
+        "NSAI-018",
+        "NSAI-029"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/security.py",
+      "name": "principal",
+      "line": 15,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-065"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/security.py",
+      "name": "require",
+      "line": 29,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-065"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/security.py",
+      "name": "security_status",
+      "line": 59,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-065"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/security.py",
+      "name": "check",
+      "line": 30,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-065"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/security.py",
+      "name": "staged",
+      "line": 42,
+      "card_ids": [
+        "NSAI-010",
+        "NSAI-065"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/store.py",
+      "name": "_secret",
+      "line": 6,
+      "card_ids": [
+        "NSAI-042"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/store.py",
+      "name": "connect",
+      "line": 13,
+      "card_ids": [
+        "NSAI-042"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/store.py",
+      "name": "store_document",
+      "line": 24,
+      "card_ids": [
+        "NSAI-042"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/store.py",
+      "name": "all_claims",
+      "line": 30,
+      "card_ids": [
+        "NSAI-042"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/store.py",
+      "name": "all_documents",
+      "line": 37,
+      "card_ids": [
+        "NSAI-042"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "rows",
+      "line": 15,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "audit",
+      "line": 19,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "persist_source",
+      "line": 29,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "source",
+      "line": 73,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "original_source",
+      "line": 84,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "retrieve",
+      "line": 92,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "review",
+      "line": 98,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "session",
+      "line": 129,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "save_exchange",
+      "line": 139,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "memory_context",
+      "line": 145,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "propose_learning",
+      "line": 166,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "reflect_on_conflicts",
+      "line": 179,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "proposals",
+      "line": 193,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "review_learning",
+      "line": 197,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "policy",
+      "line": 208,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "update_policy",
+      "line": 212,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "reserve_inference",
+      "line": 220,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "finish_inference",
+      "line": 230,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/workflow_store.py",
+      "name": "audit_report",
+      "line": 235,
+      "card_ids": [
+        "NSAI-015",
+        "NSAI-017",
+        "NSAI-026",
+        "NSAI-035",
+        "NSAI-036",
+        "NSAI-040"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/audit/chain.py",
+      "name": "digest",
+      "line": 21,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/contracts/evidence.py",
+      "name": "canonical_hash",
+      "line": 22,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/contracts/evidence.py",
+      "name": "aware_datetime",
+      "line": 54,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/contracts/evidence.py",
+      "name": "v1_only",
+      "line": 61,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/contracts/lifecycle.py",
+      "name": "activation_requires_test",
+      "line": 25,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/contracts/lifecycle.py",
+      "name": "proposals_cannot_execute",
+      "line": 42,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/contracts/lifecycle.py",
+      "name": "require_timezone",
+      "line": 65,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/integrations/evolus.py",
+      "name": "__init__",
+      "line": 16,
+      "card_ids": [
+        "NSAI-086"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/integrations/evolus.py",
+      "name": "execute_workflow",
+      "line": 22,
+      "card_ids": [
+        "NSAI-086"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/learning/gates.py",
+      "name": "assess_candidate",
+      "line": 12,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/retrieval/fusion.py",
+      "name": "reciprocal_rank_fusion",
+      "line": 9,
+      "card_ids": [
+        "NSAI-040",
+        "NSAI-048",
+        "NSAI-050"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/vendor/px_memory_plan.py",
+      "name": "_aware_utc",
+      "line": 26,
+      "card_ids": [
+        "NSAI-031"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/vendor/px_memory_plan.py",
+      "name": "_hash",
+      "line": 33,
+      "card_ids": [
+        "NSAI-031"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/vendor/px_memory_plan.py",
+      "name": "build_memory_query_plan",
+      "line": 85,
+      "card_ids": [
+        "NSAI-031"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/vendor/px_memory_plan.py",
+      "name": "validate_memory_query_plan",
+      "line": 158,
+      "card_ids": [
+        "NSAI-031"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/vendor/px_memory_plan.py",
+      "name": "as_dict",
+      "line": 60,
+      "card_ids": [
+        "NSAI-031"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/vendor/remy_manifest.py",
+      "name": "resolve_manifest_path",
+      "line": 29,
+      "card_ids": [
+        "NSAI-031"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/vendor/remy_manifest.py",
+      "name": "load_manifest",
+      "line": 41,
+      "card_ids": [
+        "NSAI-031"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/vendor/remy_manifest.py",
+      "name": "write_manifest",
+      "line": 79,
+      "card_ids": [
+        "NSAI-031"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "src/nsai/vendor/remy_manifest.py",
+      "name": "_normalize_document",
+      "line": 84,
+      "card_ids": [
+        "NSAI-031"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/amd_preflight.py",
+      "name": "record",
+      "line": 13,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/import_selected_components.py",
+      "name": "adopt",
+      "line": 13,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/lock_runtime.py",
+      "name": "lock_entry",
+      "line": 25,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/preflight.py",
+      "name": "command_output",
+      "line": 14,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/preflight.py",
+      "name": "inspect",
+      "line": 23,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/task_cli.py",
+      "name": "deps",
+      "line": 22,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/task_cli.py",
+      "name": "ready",
+      "line": 24,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/task_cli.py",
+      "name": "show",
+      "line": 26,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/validate_compose_security.py",
+      "name": "merge",
+      "line": 10,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_local.py",
+      "name": "fetch",
+      "line": 11,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_local_ai.py",
+      "name": "api",
+      "line": 13,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_recovery.py",
+      "name": "command",
+      "line": 17,
+      "card_ids": [
+        "NSAI-009",
+        "NSAI-025"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_recovery.py",
+      "name": "fingerprint",
+      "line": 22,
+      "card_ids": [
+        "NSAI-009",
+        "NSAI-025"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "request",
+      "line": 23,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "check",
+      "line": 28,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "save",
+      "line": 39,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "dedupe",
+      "line": 52,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "original",
+      "line": 57,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "span",
+      "line": 61,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "cited_chat",
+      "line": 69,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "memory",
+      "line": 75,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "continuation",
+      "line": 79,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "projected_memory",
+      "line": 94,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "audit",
+      "line": 114,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "scripts/verify_system.py",
+      "name": "model",
+      "line": 108,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_citation_guard.py",
+      "name": "test_model_citation_gate",
+      "line": 11,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_citation_guard.py",
+      "name": "test_provider_timeout_does_not_fabricate_success",
+      "line": 28,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_citation_guard.py",
+      "name": "respond",
+      "line": 14,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_citation_guard.py",
+      "name": "timeout",
+      "line": 30,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_core.py",
+      "name": "test_extract_and_provenance_line",
+      "line": 3,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_core.py",
+      "name": "test_conflict_candidates_not_automatically_promoted",
+      "line": 7,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_core.py",
+      "name": "test_stable_content_digest",
+      "line": 13,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_core.py",
+      "name": "test_contradiction_not_from_same_value",
+      "line": 16,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_core.py",
+      "name": "test_inference_rejects_arbitrary_http_endpoint",
+      "line": 21,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_core.py",
+      "name": "test_inference_accepts_internal_vllm",
+      "line": 28,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_core.py",
+      "name": "test_health_and_browser_security_headers",
+      "line": 34,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_core.py",
+      "name": "test_api_requires_token",
+      "line": 44,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_core.py",
+      "name": "test_console_static_assets",
+      "line": 51,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_core.py",
+      "name": "test_prompt_injection_is_not_extracted_as_trusted_claim",
+      "line": 61,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "test_generated_request_uses_v1_chat_and_candidates",
+      "line": 5,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "test_model_status_queries_model_inventory",
+      "line": 33,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "raise_for_status",
+      "line": 12,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "json",
+      "line": 13,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "__init__",
+      "line": 15,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "__aenter__",
+      "line": 16,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "__aexit__",
+      "line": 17,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "post",
+      "line": 18,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "raise_for_status",
+      "line": 38,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "json",
+      "line": 39,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "__init__",
+      "line": 41,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "__aenter__",
+      "line": 42,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "__aexit__",
+      "line": 43,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_inference_http_contract.py",
+      "name": "get",
+      "line": 44,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_local_model_wiring.py",
+      "name": "test_accepts_configured_ollama",
+      "line": 7,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_local_model_wiring.py",
+      "name": "test_rejects_external_plaintext",
+      "line": 13,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_local_model_wiring.py",
+      "name": "test_rejects_url_with_credentials",
+      "line": 18,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_local_model_wiring.py",
+      "name": "test_local_status_not_configured",
+      "line": 23,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_local_model_wiring.py",
+      "name": "test_ui_has_both_local_and_evidence_controls",
+      "line": 31,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_local_model_wiring.py",
+      "name": "test_model_status_is_auth_gated",
+      "line": 38,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_memory_projection.py",
+      "name": "claim",
+      "line": 3,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_memory_projection.py",
+      "name": "test_new_conflict_quarantines_reviewed_memory_without_promoting_candidate",
+      "line": 7,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_memory_projection.py",
+      "name": "test_missing_provenance_or_reviewer_cannot_enter_canon_memory",
+      "line": 17,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_memory_projection.py",
+      "name": "test_total_memory_payload_is_bounded_and_preserves_whole_messages",
+      "line": 23,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_memory_projection.py",
+      "name": "test_rejected_reflections_are_excluded_from_materialized_context",
+      "line": 31,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_new_contracts.py",
+      "name": "source",
+      "line": 9,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_new_contracts.py",
+      "name": "test_candidate_never_verified_by_default",
+      "line": 12,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_new_contracts.py",
+      "name": "test_extra_authority_flags_rejected",
+      "line": 17,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_new_contracts.py",
+      "name": "test_index_activation_without_test_fails",
+      "line": 21,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_new_contracts.py",
+      "name": "test_skills_cannot_self_authorize_execution",
+      "line": 25,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_new_contracts.py",
+      "name": "test_gate_reports_independent_blockers",
+      "line": 29,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_new_contracts.py",
+      "name": "test_deterministic_fusion_and_dedupe",
+      "line": 33,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_secret_wire_format.py",
+      "name": "test_generated_model_key_is_lf_and_existing_value_is_preserved",
+      "line": 6,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "text_pdf",
+      "line": 11,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_real_pdf_source_hash_and_page_locator",
+      "line": 21,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_reject_unsafe_sources",
+      "line": 29,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_normalization_keeps_original_hash_and_chunk_offsets",
+      "line": 32,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "plan",
+      "line": 40,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_px_plan_deterministic_and_stale_revision_rejected",
+      "line": 46,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_px_plan_never_allows_direct_writeback",
+      "line": 51,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_remy_manifest_integration_preserves_provenance",
+      "line": 54,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_central_activation_and_insecure_issuer_rejected",
+      "line": 58,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "client",
+      "line": 65,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "headers",
+      "line": 72,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_role_escalation_denied_before_storage",
+      "line": 78,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_unknown_authority_fields_rejected",
+      "line": 81,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_all_roles_denied_generated_execution",
+      "line": 85,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_oversized_body_rejected_without_parser_or_database",
+      "line": 89,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_wrong_token_denied",
+      "line": 94,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_rate_limit_is_bounded",
+      "line": 97,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "tests/test_workflows.py",
+      "name": "test_central_environment_flag_fails_closed",
+      "line": 105,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "evaluations/synthetic_pdf.py",
+      "name": "text_pdf",
+      "line": 4,
+      "card_ids": [
+        "NSAI-079",
+        "NSAI-047"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "node",
+      "line": 7,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "view",
+      "line": 8,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "notice",
+      "line": 10,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "syncPermissions",
+      "line": 11,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "guarded",
+      "line": 12,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "request",
+      "line": 13,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "clearWorkspace",
+      "line": 14,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "pretty",
+      "line": 15,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "action",
+      "line": 16,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "append",
+      "line": 17,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "inspect",
+      "line": 18,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "refresh",
+      "line": 19,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "status",
+      "line": 23,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "ask",
+      "line": 31,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "learning",
+      "line": 37,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    },
+    {
+      "file": "assets/app.js",
+      "name": "loadPolicy",
+      "line": 39,
+      "card_ids": [
+        "NSAI-011",
+        "NSAI-014",
+        "NSAI-043",
+        "NSAI-044",
+        "NSAI-045"
+      ],
+      "qualification_card": "NSAI-079",
+      "note": "Mapping is a work allocation, not dynamic branch coverage; disabled integrations remain uninvoked."
+    }
+  ],
+  "additional_inventory": {
+    "method": "AST inventory and JS function/onclick regex; candidate test links lexical only, not dynamic coverage",
+    "routes": [
+      {
+        "file": "src/nsai/api.py",
+        "line": 81,
+        "function": "health",
+        "method": "GET",
+        "path": "/healthz"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 83,
+        "function": "ready",
+        "method": "GET",
+        "path": "/readyz"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 89,
+        "function": "ui",
+        "method": "GET",
+        "path": "/"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 91,
+        "function": "capabilities",
+        "method": "GET",
+        "path": "/v1/capabilities"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 100,
+        "function": "model_readiness",
+        "method": "GET",
+        "path": "/v1/model/status"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 102,
+        "function": "ingest",
+        "method": "POST",
+        "path": "/v1/documents"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 107,
+        "function": "upload",
+        "method": "POST",
+        "path": "/v1/files"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 121,
+        "function": "documents",
+        "method": "GET",
+        "path": "/v1/documents"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 123,
+        "function": "source",
+        "method": "GET",
+        "path": "/v1/sources/{document_id}"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 127,
+        "function": "original",
+        "method": "GET",
+        "path": "/v1/sources/{document_id}/original"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 133,
+        "function": "claims",
+        "method": "GET",
+        "path": "/v1/claims"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 138,
+        "function": "review",
+        "method": "POST",
+        "path": "/v1/review/{claim_id}"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 142,
+        "function": "search",
+        "method": "GET",
+        "path": "/v1/search"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 159,
+        "function": "chat",
+        "method": "POST",
+        "path": "/v1/chat"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 173,
+        "function": "reason",
+        "method": "POST",
+        "path": "/v1/reason"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 197,
+        "function": "memory",
+        "method": "GET",
+        "path": "/v1/memory/{session_id}"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 201,
+        "function": "propose",
+        "method": "POST",
+        "path": "/v1/learning"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 205,
+        "function": "reflect",
+        "method": "POST",
+        "path": "/v1/learning/reflect"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 209,
+        "function": "proposals",
+        "method": "GET",
+        "path": "/v1/learning"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 211,
+        "function": "learning_review",
+        "method": "POST",
+        "path": "/v1/learning/{pid}/review"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 215,
+        "function": "security",
+        "method": "GET",
+        "path": "/v1/admin/security"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 217,
+        "function": "policy",
+        "method": "PUT",
+        "path": "/v1/admin/policy"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 223,
+        "function": "audit",
+        "method": "GET",
+        "path": "/v1/audit"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 225,
+        "function": "execute",
+        "method": "POST",
+        "path": "/v1/execute"
+      },
+      {
+        "file": "src/nsai/api.py",
+        "line": 227,
+        "function": "submission",
+        "method": "GET",
+        "path": "/v1/submission/evidence"
+      },
+      {
+        "file": "src/nsai/parser.py",
+        "line": 21,
+        "function": "health",
+        "method": "GET",
+        "path": "/healthz"
+      },
+      {
+        "file": "src/nsai/parser.py",
+        "line": 24,
+        "function": "parse",
+        "method": "POST",
+        "path": "/parse"
+      }
+    ],
+    "ui_handlers": [
+      {
+        "id": "connect",
+        "line": 24
+      },
+      {
+        "id": "disconnect",
+        "line": 25
+      },
+      {
+        "id": "upload",
+        "line": 27
+      },
+      {
+        "id": "upload-file",
+        "line": 28
+      },
+      {
+        "id": "seed",
+        "line": 29
+      },
+      {
+        "id": "sample-question",
+        "line": 30
+      },
+      {
+        "id": "send",
+        "line": 32
+      },
+      {
+        "id": "model",
+        "line": 32
+      },
+      {
+        "id": "download-source",
+        "line": 33
+      },
+      {
+        "id": "refresh-memory",
+        "line": 34
+      },
+      {
+        "id": "propose-learning",
+        "line": 35
+      },
+      {
+        "id": "auto-reflect",
+        "line": 36
+      },
+      {
+        "id": "load-learning",
+        "line": 38
+      },
+      {
+        "id": "load-policy",
+        "line": 40
+      },
+      {
+        "id": "save-policy",
+        "line": 41
+      },
+      {
+        "id": "load-audit",
+        "line": 42
+      },
+      {
+        "id": "load-verification",
+        "line": 43
+      }
+    ]
+  },
+  "contract": "All routes and inline handlers in additional_inventory belong to coverage plus browser-evidence; allocate focused tests when their implementation cards are opened."
+}

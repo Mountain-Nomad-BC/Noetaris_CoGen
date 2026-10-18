@@ -1,0 +1,9 @@
+.nsai-pdf-surface{position:relative;line-height:1;width:fit-content;background:white}
+.nsai-pdf-text-host,.pdf-text-layer,.nsai-pdf-quotes{position:absolute;inset:0;transform-origin:0 0}
+.pdf-text-layer{overflow:clip;line-height:1;text-align:initial;text-size-adjust:none;color:transparent;--scale-round-x:1px;--scale-round-y:1px}
+.pdf-text-layer span{position:absolute;white-space:pre;transform-origin:0 0;font-size:calc(var(--total-scale-factor)*var(--font-height));transform:rotate(var(--rotate,0deg)) scaleX(var(--scale-x,1))}
+.pdf-text-layer[data-main-rotation="90"]{transform:rotate(90deg) translateY(-100%)}
+.pdf-text-layer[data-main-rotation="180"]{transform:rotate(180deg) translate(-100%,-100%)}
+.pdf-text-layer[data-main-rotation="270"]{transform:rotate(270deg) translateX(-100%)}
+.nsai-pdf-quotes{pointer-events:none}.pdf-quote-mark{position:absolute;background:rgba(255,200,0,.32);outline:1px solid #b67800}
+.pdf-text-layer ::selection{background:rgba(40,110,190,.3)}

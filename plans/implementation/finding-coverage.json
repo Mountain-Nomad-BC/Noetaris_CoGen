@@ -1,0 +1,803 @@
+[
+  {
+    "id": "OPS-01",
+    "description": "Bind verification to immutable run identities",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-001"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "OPS-02",
+    "description": "Verify the complete effective deployment",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-002"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "OPS-03",
+    "description": "Isolate stateful acceptance and restore on every exit",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-003"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "OPS-04",
+    "description": "Make startup and readiness observational",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-004"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "OPS-05",
+    "description": "Consolidate supported local entrypoints",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-005"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "OPS-08",
+    "description": "Stage checks before journaled compatible migrations",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-006"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "OPS-09",
+    "description": "Converge database privileges and rotate credentials",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-007"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "OPS-10",
+    "description": "Protect private state with Windows ACLs",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-008"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "OPS-07",
+    "description": "Write bounded exclusive recoverable backups",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-009"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-03",
+    "description": "Validate credentials and secure every error response",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-010"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "OPS-06",
+    "description": "Clear all private browser state on identity changes",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-011"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-11",
+    "description": "Handle malformed provider and secret failures",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-012"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-01",
+    "description": "Bound PDF decoding before allocation",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-013"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-13",
+    "description": "Record every PDF page and its completeness",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-014"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-04",
+    "description": "Make inference terminal transitions idempotent",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-015"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-16",
+    "description": "Admit the complete prompt using the actual tokenizer",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-016"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-02",
+    "description": "Discover conflicts beyond retrieved top-k",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-017"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-14",
+    "description": "Align Unicode and serialized transport budgets",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-018"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "OPS-11",
+    "description": "Replace UI presence checks with observed outcomes",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-019"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "OPS-12",
+    "description": "Verify model identity, licensing and endpoint configuration",
+    "source": "docs/audit/FOUNDATION_STATIC.md",
+    "cards": [
+      "NSAI-020"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-01",
+    "description": "Make container package resolution reproducible",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-021"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-02",
+    "description": "Lock runtime, build, test and CI dependencies",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-022"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-03",
+    "description": "Validate Docker's effective profile-aware configuration",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-023"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-04",
+    "description": "Remove import-time script mutations and bound subprocesses",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-024"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-05",
+    "description": "Qualify recovery from independently verified backups",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-025"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-06",
+    "description": "Enforce database structural invariants",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-026"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-07",
+    "description": "Bound pre-auth traffic and enforce fair admission",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-027"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-08",
+    "description": "Unify approved model/parser HTTP transport",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-028"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-09",
+    "description": "Verify parser output independently",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-029"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-10",
+    "description": "Redact logs and verification metadata",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-030"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-11",
+    "description": "Resolve existing imported source and compatibility",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-031"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "GAP-01",
+    "description": "Commission the repaired CPU foundation",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-032"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-05",
+    "description": "Compare finite quantities with dimensions and intervals",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-033"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-06",
+    "description": "Represent negation, conditions, time and uncertainty",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-034"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-07",
+    "description": "Apply one conflict policy to reflection and learning",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-035"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-08",
+    "description": "Rank eligible memory and invalidate stale dependencies",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-036"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-10",
+    "description": "Measure complete memory envelopes and omissions",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-037"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-12",
+    "description": "Persist reversible normalization and chunk geometry",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-038"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-13",
+    "description": "Version extraction, indexes and projections independently",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-039"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-12",
+    "description": "Improve measured scoped lexical recall",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-040"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-09",
+    "description": "Check factual support beyond citation identity",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-041"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "CORE-15",
+    "description": "Bound database work and unblock async handlers",
+    "source": "docs/audit/CORE_FINDINGS.md",
+    "cards": [
+      "NSAI-042"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-14",
+    "description": "Return safe original filename and media type",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-043"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-15",
+    "description": "Make conversation failures and retries ordered",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-044"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-16",
+    "description": "Paginate and lazily render large views accessibly",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-045"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-17",
+    "description": "Plan capacity, holds and non-destructive retention",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-046"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-18",
+    "description": "Publish honest contracts and capability maturity",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-047"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-01",
+    "description": "Use source-bound deterministic answers where qualified",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-048"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "GAP-02",
+    "description": "Accept quality and performance refinement",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-049"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-02",
+    "description": "Add server-validated document/revision/page questions",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-050"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-03",
+    "description": "Build a private PDF workspace and exact citation navigation",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-051"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-04",
+    "description": "Build bounded owned OCR jobs and leases",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-052"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-05",
+    "description": "Choose native extraction or OCR for each page",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-053"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-06",
+    "description": "Preserve raw OCR, boxes and coordinate transforms",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-054"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-07",
+    "description": "Implement independently checked OCR metrics and holdouts",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-055"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-08",
+    "description": "Calibrate OCR admission and resource targets",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-056"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-09",
+    "description": "Represent recognized formula candidates safely",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-057"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-10",
+    "description": "Validate finite allowlisted calculations without execution",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-058"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "GAP-03",
+    "description": "Qualify the complete PDF/OCR/formula workflow",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-059"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-11",
+    "description": "Assemble a small deterministic evidence stage graph",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-060"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-12",
+    "description": "Govern proposals through holdout, review and rollback",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-061"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-13",
+    "description": "Use strict data-only manifests and procedure proposals",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-062"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-14",
+    "description": "Track scoped correction and outcome uncertainty",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-063"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-15",
+    "description": "Complete local governance management controls",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-064"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-16",
+    "description": "Stage central authorization interfaces without activation",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-065"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-17",
+    "description": "Specify scoped integration secret lifecycle",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-066"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-18",
+    "description": "Render bounded accepted and withheld evidence traces",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-067"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "GAP-04",
+    "description": "Accept governed assembly and disabled central contracts",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-068"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "REF-19",
+    "description": "Build independent source-bound transcript observations",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-069"
+    ],
+    "disposition": "OPTIONAL_AFTER_BASELINE"
+  },
+  {
+    "id": "REF-20",
+    "description": "Link questions, measurements, actions and outcomes conservatively",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-070"
+    ],
+    "disposition": "OPTIONAL_AFTER_BASELINE"
+  },
+  {
+    "id": "REF-21",
+    "description": "Qualify transcript replay and withheld reports",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-071"
+    ],
+    "disposition": "OPTIONAL_AFTER_BASELINE"
+  },
+  {
+    "id": "REF-22",
+    "description": "Define operational metrics before business conclusions",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-072"
+    ],
+    "disposition": "OPTIONAL_AFTER_BASELINE"
+  },
+  {
+    "id": "REF-23",
+    "description": "Distinguish continuation, recurrence and new tasks",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-073"
+    ],
+    "disposition": "OPTIONAL_AFTER_BASELINE"
+  },
+  {
+    "id": "REF-24",
+    "description": "Account for local resource budgets and usage",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-074"
+    ],
+    "disposition": "OPTIONAL_AFTER_BASELINE"
+  },
+  {
+    "id": "REF-25",
+    "description": "Report reviewed outcomes and hypothetical scenarios honestly",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-075"
+    ],
+    "disposition": "OPTIONAL_AFTER_BASELINE"
+  },
+  {
+    "id": "GAP-05",
+    "description": "Qualify optional transcript and operational reporting",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-076"
+    ],
+    "disposition": "OPTIONAL_AFTER_BASELINE"
+  },
+  {
+    "id": "GAP-06",
+    "description": "Resolve dedicated security scan worker prerequisite",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-077"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "GAP-07",
+    "description": "Run independent security qualification and revalidate fixes",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-078"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-19",
+    "description": "Close remaining adversarial, branch and load coverage gaps",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-079"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-20",
+    "description": "Validate the actual submission archive",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-080"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-21",
+    "description": "Reconcile guides and current capability statements",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-081"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "GAP-08",
+    "description": "Rehearse controlled CPU deployment and submission readiness",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-082"
+    ],
+    "disposition": "REQUIRED"
+  },
+  {
+    "id": "SUP-22",
+    "description": "Disposition unqualified providers and accelerator profiles",
+    "source": "docs/audit/AUDIT_REPORT.md",
+    "cards": [
+      "NSAI-083"
+    ],
+    "disposition": "DEFERRED_NO_ACTIVATION"
+  },
+  {
+    "id": "REF-26",
+    "description": "Record deferred enterprise features and rejected transplantation",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-084"
+    ],
+    "disposition": "DEFERRED_NO_ACTIVATION"
+  },
+  {
+    "id": "REF-27",
+    "description": "Define future central identity commissioning prerequisites",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-085"
+    ],
+    "disposition": "DEFERRED_NO_ACTIVATION"
+  },
+  {
+    "id": "REF-28",
+    "description": "Define later AMD and Evolus commissioning boundary",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-086"
+    ],
+    "disposition": "DEFERRED_NO_ACTIVATION"
+  },
+  {
+    "id": "REF-29",
+    "description": "Qualify optional local semantic retrieval generations",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-087"
+    ],
+    "disposition": "OPTIONAL_AFTER_BASELINE"
+  },
+  {
+    "id": "REF-30",
+    "description": "Specify valid-time and observation-time memory queries",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-088"
+    ],
+    "disposition": "OPTIONAL_AFTER_BASELINE"
+  },
+  {
+    "id": "REF-31",
+    "description": "Define future independent audit anchoring",
+    "source": "docs/audit/INTEGRATION_PLAN.md",
+    "cards": [
+      "NSAI-089"
+    ],
+    "disposition": "DEFERRED_NO_ACTIVATION"
+  }
+]

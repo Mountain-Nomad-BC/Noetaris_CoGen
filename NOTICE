@@ -1,0 +1,24 @@
+NSAI Local Evidence Workspace
+Original NSAI implementation and independently specified integration contracts.
+
+Remy/RIE, Pacify-X and DVA references inform generic architecture only.
+Historical source-adoption evidence is retained as history, not current capability
+or licensing clearance. Prior manifest and query-plan runtime imports were
+replaced by local contracts and compatibility names; filesystem imports retired.
+No corporate source bodies, rules, dictionaries, assets or corpora are authorized
+for new incorporation. This notice does not claim a comprehensive legal IP audit.
+
+Bundled PDF.js is an Apache-2.0 third-party dependency, separately pinned with
+its upstream LICENSE and integrity provenance under assets/pdfjs. General
+runtime dependencies retain their respective licenses. Model weights remain
+outside the project and submission archive; their license is artifact-specific.
+
+FontTools 4.67.0 supports native PDF font decoding. Its distribution license,
+notices and byte-custody provenance are retained under LICENSES/fonttools-*.
+
+Publication is not authorized. Current-source and exact-archive provenance,
+privacy and license review remain release requirements.
+
+DefusedXML 0.7.1 provides hardened XML parsing for bounded XLSX evidence.
+Its Python Software Foundation license and verified wheel provenance are
+retained under LICENSES/xlsx-defusedxml-*. No spreadsheet formulas execute.

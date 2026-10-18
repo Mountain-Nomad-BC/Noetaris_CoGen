@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@neon/config": "^1.9.2",
+    "@neon/env": "^1.6.3"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "npm --prefix frontend/noetaris run build && node --experimental-strip-types --test tests/neon-function.test.ts"
+  }
+}

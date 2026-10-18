@@ -1,0 +1,28 @@
+# NOETARIS authorized PDF workspace
+
+The new UI now opens actual authorized PDF originals from the library through the existing Python source/original endpoints. Metadata is reauthorized, input is bounded to 25 MiB, and SHA-256 must match the inspected original before PDF.js receives bytes. The viewer permits up to 1,000 stored pages as a safety envelope, not a demonstrated capacity. New-upload limits remain unchanged.
+
+The viewer reuses the existing pinned PDF.js 6.4.299, matching worker, canvas budget and quote/OCR alignment helpers from the API image. A restricted /pdf-runtime/ proxy forwards only named public renderer/helper/font/license/provenance paths; it strips Cookie/Authorization and cannot serve arbitrary assets or originals. Renderer/worker byte custody is checked against existing files. Only known font filenames are fetched, with byte/time bounds and pinned hashes. No CDN or external PDF service is required.
+
+Rendering disables active annotations, links, forms, attachments, XFA, system-font substitution and eval. Canvas/device-pixel geometry is bounded to 16 million pixels. Page, zoom and rotation controls use CSS coordinates for text/quote overlays. Each render gets fresh text/quote containers and a generation token so cancelled PDF.js tasks cannot mutate a newer layer. Source changes and sign-out cancel requests and destroy tasks/resources. Fatal load errors release the worker.
+
+Quote anchors must match selected source ID, original hash, revision, page, exact UTF-8 quote and quote hash. A unique native text match can be highlighted; duplicate/missing/unqualified geometry receives no guessed highlight. Regions outside the visible page are withheld. OCR fallback reuses the existing strict coordinate helper only when retained metadata permits it; fresh OCR browser acceptance is still outstanding. Visible highlights do not verify recognition, interpretation or factual support.
+
+**Historical qualification image pair only:** frontend `sha256:3264f18999cf0b0ad7a55550ff203930b8ac69f7360cb0fbf9d0c0b2b2924151` with API `sha256:2cb14915a827ee050fe7a2dd04d2d1c79a211891154501ed2e72c57a97299ec0`. These identities scope the receipts below; they are not the current live image pair and must not be deployed based on this document. Fresh runtime provenance is unresolved; see [current-tree reconciliation](../../reports/current-tree-diff.md). No schema or live-source migration was performed by that historical qualification.
+
+Fresh exact-image evidence:
+
+- 18 frontend contract tests run inside the Docker build: evidence/noetaris-integration/docker-pdf-final-build.log.
+- 30 actual API/parser/PostgreSQL/Chromium PDF checks: evidence/noetaris-integration/66f172e3d5c344d7bc2c6388aba3ce23/receipt.json. Covers a two-page native PDF, correct page targeting, local runtime custody, 1x/2x device density, zoom/rotation, bounded highlight rectangles, foreign and duplicate quote rejection, off-page text, unknown/demo IDs, five viewport widths and sign-out cleanup.
+- Explicit font-response corruption suppressed highlighting; actual font data recovered on reload. This is a declared negative fault injection. Positive PDF/module/worker paths use real services. Anchors were constructed using the existing backend helper against authorized source identity/text, not produced by a newly completed chat UI. Full chat-to-citation navigation remains unfinished.
+- 49 current library/analysis/preservation checks: evidence/noetaris-integration/afa6b8721d4e494e81aa8fcebbb9b6ab/receipt.json.
+- 23 current Docker/session checks: evidence/noetaris-integration/d0e23ca2c6f547ca81b714af99c09aa8/receipt.json.
+- 21 current HTTPS OAuth/resilience checks: evidence/oauth-browser-tls/200c2066f4fc46f8a92067c70282807c/receipt.json. No real external provider activation is claimed.
+
+Retained failures exposed a real render-container race: after a rotation/source-anchor change, an old PDF.js task could leave an old rectangle in reused DOM. Fresh containers and generation checks repaired it; rotation and high-DPI cases passed afterward. An initial off-page verifier expected a specific fallback branch, but PDF.js omitted that clipped text from its layer; the corrected assertion requires the actual selected source, completed page render and no highlight. No extraction or geometry success was fabricated.
+
+Changed surfaces: LivePdfWorkspace, pdf-workspace.css, pdfIdentity, pdfRuntime and pinned pdfFontHashes; PdfWorkspace live/demo wrapper, library link, read/admission route gate, HTTP/TLS restricted asset routes and contract tests. Exact 34-file frontend import differences and receipt/source hashes are in evidence/noetaris-integration/changed-imported-files.json and current-evidence.json. Original 44 downloaded files remain unchanged. Original API packaged inputs match the prior 1,327-test backend baseline; that full suite was not redundantly rerun for frontend-only changes.
+
+Rollback selects the retained prior frontend or original UI while keeping compatible API originals and PDF assets. No data deletion or restore is needed. Only owned isolated test resources were created/removed; the four existing live services were untouched.
+
+Remaining: actual grounded chat and backend history in NOETARIS, real chat-to-anchor navigation, representative held-out PDF/font/OCR/formula/rotation quality, private-owner HTTP admission/acceptance and full capacity/performance/security/deployment qualification. The native synthetic checks do not certify all PDFs, OCR or whole-system readiness. All wider operational expansion and independent release gates remain open.

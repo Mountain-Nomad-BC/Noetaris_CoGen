@@ -1,0 +1,7 @@
+{
+  "project_id": "REPLACE_FIREBASE_PROJECT",
+  "site_id": "REPLACE_HOSTING_SITE",
+  "app_origin": "https://app.REPLACE_OWNED_DOMAIN",
+  "api_origin": "https://api.REPLACE_OWNED_DOMAIN",
+  "deployment_site": "REPLACE_OWNED_DOMAIN"
+}

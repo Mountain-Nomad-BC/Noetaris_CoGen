@@ -1,0 +1,55 @@
+# Use only on a verified Linux AMD ROCm host. Experimental until tested on the event GPU.
+# Usage: docker compose -f compose.yaml -f deploy/amd/compose.amd.yaml --profile amd up -d vllm
+# NOTE: vLLM image may need extra host GPU group and ROCm-specific options.
+services:
+  api:
+    environment:
+      NSAI_MODEL_URL: http://vllm:8000/v1
+      NSAI_MODEL_NAME: ${NSAI_VLLM_MODEL:?Select the intended Gemma model on the AMD host}
+      NSAI_MODEL_PROVIDER: amd-vllm
+  vllm:
+    profiles: [amd]
+    image: ${NSAI_VLLM_IMAGE:-vllm/vllm-openai-rocm:v0.31.0}
+    # Candidate image only. scripts/amd_preflight.py rejects mutable tags before deployment.
+    init: true
+    read_only: true
+    tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=512m,mode=1777"]
+    command:
+      - --model
+      - ${NSAI_VLLM_MODEL:?Select the intended Gemma model on the AMD host}
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+      - --max-model-len
+      - "4096"
+    devices:
+      - /dev/kfd:/dev/kfd
+      - ${NSAI_GPU_RENDER_DEVICE:-/dev/dri/renderD128}:${NSAI_GPU_RENDER_DEVICE:-/dev/dri/renderD128}
+    # Do not automatically use --privileged, host networking, SYS_PTRACE or seccomp=unconfined.
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    ipc: private
+    shm_size: "2gb"
+    restart: unless-stopped
+    pids_limit: 512
+    mem_limit: 24g
+    cpus: 8.0
+    expose: ["8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health',timeout=5)"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+    volumes:
+      - vllm_cache:/root/.cache/huggingface
+    networks: [app_net]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  vllm_cache:

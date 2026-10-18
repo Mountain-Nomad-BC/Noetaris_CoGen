@@ -1,0 +1,9 @@
+# Candidate image retention
+
+Use `python scripts/build_candidate.py --retain-only` to retain the exact image currently resolved by `nsai-implementation-candidate:local`. The deterministic hold tag uses its full SHA256. An existing conflicting hold tag, missing candidate, failed tag operation or failed identity verification denies further work.
+
+An explicitly requested `--build` verifies required lockfiles, snapshots source/configuration inputs, retains the prior candidate, then builds a unique staging tag. Only a successful build with unchanged inputs and unchanged prior alias may promote the staging image to the fixed candidate alias. Failed builds retain the prior image and alias. There is no implicit build on import, help or invocation without an action. This wrapper never targets the live image alias, runs Compose, migrates or deploys.
+
+Receipts under private `evidence/implementation/candidate-builds/<run>/` retain image identities, input hashes, command exit status and build-output digest. Raw build output is captured without printing or persistence to avoid recording paths, environment values or credentials. Inspect failed staging artifacts locally if needed; no secret values are supplied as build arguments. Builds may retrieve the hash-locked dependencies required by the Dockerfile and do not automatically pull a new base image.
+
+Retaining an image is not a tested rollback, provenance clearance, release approval or security qualification. The live privacy-only image and its independent rollback retention remain separate. Previously lost untagged intermediate candidates cannot be reconstructed merely by adding this safeguard. These operations assume one trusted local build writer; concurrent Docker image mutation remains outside an atomic compare-and-swap guarantee.

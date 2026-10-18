@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {governanceOverview,usageObservation} from '../src/noetaris/services/governanceContracts.js';
+const overview=()=>({mode:'demonstration-only',cash_dispatch_enabled:false,local_token_ceiling:null,
+ credit_ledger:{accounts:['amd-credits','evolus-credits'].map(name=>({name,unit:'provider-credit-unit',limit:1000,reserved:7,spent:11,enabled:false,alert:'disabled'})),provider_billing_cap_guaranteed:false,unknown_outcomes_remain_reserved:true},
+ limits:{concurrent_users:5,requests_per_minute:120,generations_per_user:1,ingestions_per_user:1,generations_per_day:20,gpu_jobs:1,gpu_queue:10},explanation:'Example',generation_accounting:'Generation only',configuration_source:'Operator environment'});
+const usage=()=>({metric_version:'local-resource/1',period:'current UTC day',attempts:0,completed_inferences:0,latency_observations:0,token_observations:0,observed_latency_ms:null,observed_completion_tokens:null,completed_is_verified_resolution:false,financial_cost:null,verified_outcome_cost:null,source_receipt_sha256:'a'.repeat(64)});
+test('separate credit units and operator limits retain their exact values',()=>{const value=overview();assert.equal(governanceOverview(value),value);assert.equal(value.credit_ledger.accounts[0].reserved,7);});
+test('cash permission, missing accounts and substituted currency are rejected',()=>{for(const mutate of [v=>v.cash_dispatch_enabled=true,v=>v.credit_ledger.accounts.pop(),v=>v.credit_ledger.accounts[0].unit='USD',v=>v.credit_ledger.accounts[1].name='amd-credits']){const v=overview();mutate(v);assert.throws(()=>governanceOverview(v));}});
+test('unsafe integer, absent limits and invented billing cap are rejected',()=>{for(const mutate of [v=>v.credit_ledger.accounts[0].spent=Number.MAX_SAFE_INTEGER+1,v=>delete v.limits.gpu_queue,v=>v.credit_ledger.provider_billing_cap_guaranteed=true]){const v=overview();mutate(v);assert.throws(()=>governanceOverview(v));}});
+test('unobserved metrics retain null rather than fabricated zero',()=>{const v=usage();assert.equal(usageObservation(v).observed_completion_tokens,null);});
+test('financial and verified-outcome claims cannot be invented',()=>{for(const mutate of [v=>v.financial_cost=0,v=>v.verified_outcome_cost=0,v=>v.completed_is_verified_resolution=true]){const v=usage();mutate(v);assert.throws(()=>usageObservation(v));}});

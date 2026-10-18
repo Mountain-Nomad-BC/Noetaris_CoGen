@@ -1,0 +1,10 @@
+{
+  "package": "defusedxml",
+  "version": "0.7.1",
+  "source": "https://pypi.org/project/defusedxml/0.7.1/",
+  "wheel_sha256": "a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61",
+  "license_file": "xlsx-defusedxml-LICENSE",
+  "license_sha256": "b80ce9da8c42a1f91079627fbbe2bf27210ae108a0ffe5f077d5b08e076c24c8",
+  "purpose": "DTD/entity/external-reference rejection in bounded OOXML parsing",
+  "activation": "Hash-pinned requirements.lock and pyproject.toml; staged metadata remains historical"
+}

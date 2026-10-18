@@ -1,0 +1,37 @@
+# Security scan recovery and parallel completion
+
+The dedicated DeepScan remains blocked before start, not failed with findings and not passed. Its recorded error is: "Deep Scan cannot safely start a read-only worker: the parent must provide a managed filesystem permission profile." No scan ID or canonical report exists. This blocks security acceptance and final release; it does not prevent independent implementation, isolated tests, benchmarks or recovery rehearsals.
+
+## Observed host configuration
+
+The installed CLI reports `codex-cli 0.148.0`. The user configuration already sets `[windows] sandbox = "elevated"`. The active conversation environment reports a disabled filesystem permission profile and unrestricted filesystem access. Configuring Windows sandbox support alone has therefore not supplied the managed profile required by the scanner in this conversation. No global configuration, account permission, credential, Docker policy or release requirement was changed during diagnosis.
+
+The plugin accepts a target/scope/context or an existing scan continuation; its exposed start interface has no parameter for changing the parent conversation's filesystem profile. Editing a project file cannot retrofit that active parent policy. A changed host profile is the supported recovery path; success must be demonstrated by the tool, not inferred from a setting name.
+
+## Recovery steps
+
+1. In the desktop app or IDE, use the permissions control below the composer. Select a sandboxed project/workspace profile rather than Full access. Available labels depend on the client; official documentation describes Ask for approval, Approve for me, and custom/named profiles. In the interactive CLI, use `/permissions` to choose the active profile.
+2. Keep the workspace scoped to this project. Let the host refresh the execution environment. If it still supplies the disabled profile, open a new conversation for this same project with the sandboxed workspace profile selected before requesting the scan.
+3. Ask for the project's dedicated deep security scan and preserve the prior pre-start failure. Follow the installed scan skill; do not fabricate continuation IDs or substitute a local report for canonical output. No retry was launched during this diagnosis because the active profile has not changed.
+4. Verify that the tool actually starts and returns its authoritative scan identity. Follow that scan through canonical completion. If the same error persists under a confirmed managed profile, retain the new error as a host/plugin compatibility issue and escalate through the client's support path. A compatible profile is a proposed remedy, not a verified successful scan.
+5. Address validated findings and requalify the affected artifacts before release. Keep actual tool output and its coverage limits with the testing evidence.
+
+Official guidance: [sandbox and permission controls](https://learn.chatgpt.com/docs/sandboxing), [permission profiles and legacy setting precedence](https://learn.chatgpt.com/docs/permissions), and [deep security scans](https://learn.chatgpt.com/docs/security/plugin/deep-scans). New permission profiles and legacy `sandbox_mode` settings have precedence rules; do not mix configuration snippets blindly. An unrestricted setting does not resolve a requirement for a managed read-only worker.
+
+This recovery does not require enabling Remy/RIE centralized security, AMD/Evolus, cloud inference or generated-code execution. It concerns the coding tool's worker isolation, not the application's staged security adapters.
+
+## Work that proceeds without this scan
+
+The [criterion ledger](../../plans/implementation/execution-status.json) remains authoritative. Its current snapshot contains 50 implemented-but-acceptance-pending cards, 17 partially implemented cards, seven qualification-pending cards, two quality-failed/partial-experiment cards, four engineering-issue replacements, two scan-blocked cards and seven future design-only cards. Zero cards have full independent acceptance; this does not mean no implementation exists. The historical backlog and its criteria are unchanged.
+
+1. **Hardening follow-through:** the three recorded concerns are now addressed in the staged candidate: compressed responses are rejected before decompression, the weaker legacy generation path is retired, and configured role credentials must be valid and unique before identity resolution. Fresh regression and owned-stack checks pass; this is scoped engineering evidence, not canonical security validation. Continue hostile real-server concurrency/cancellation and source-log canary qualification.
+2. **Foundation and operations:** the stack producer now has content-bound identity admission; candidate retention has a verified hold-before-build safeguard; populated upgrade and separate current/pre-upgrade restores pass 21 scoped checks. Finish all-producer binding, advisory disposition, every launcher, full old-API rollback, maximum/interrupted recovery and concurrent credential changes. The previous 100-start rehearsal belongs to historical candidate `7194`; the changed candidate needs its own final qualification after source freeze.
+3. **Chat and intelligence/resource balance:** repair or constrain citation-compliant grounded generation and long-context latency; measure support/refusal quality and full application contention/queue/memory behavior on independent holdouts. Preserve live 4K. Candidate 8K admission is demonstrated, but its quality qualification failed. Defer 16K/32K and additional providers.
+4. **PDF/OCR/formulas:** preserve unsupported/refusal states; improve critical negation and degraded tables; qualify transforms, durable lifecycle/resources and reviewed corrections. Independent geometry passes 48 words on four synthetic clean-English pages only. This does not qualify other fonts/transforms or general formula recognition.
+5. **Source and knowledge lifecycle:** finish dimensional/temporal contracts, reversible character/word maps, active generation selection, stale-index rejection, correction/replay/rollback, source-family retrieval/support holdouts and complete page/revision scope qualification. Bound session, audit and invocation growth.
+6. **Governed engineering and utilization:** finish issue-to-engineering lineage and uncertainty checks, shadow trials and reviewed promotion/rollback; qualify stale/expired/concurrent action denial; implement durable task/cohort denominators and crash/day-rollover resource reconciliation. Do not invent financial savings, causal diagnoses or verified outcomes.
+7. **Independent qualification and handover:** cover unobserved functions plus branch/fuzz/load/accessibility gaps, run the intended CI matrix, complete source/model/dependency rights and privacy review, reconcile guides, inspect the exact submission archive, and deploy the full candidate only after required acceptance gates pass. Test evidence remains separate from deployment instructions.
+
+Central security activation, AMD/Evolus, global index commissioning and external signing remain future design-only work under the existing scope. Candidate pinned CPU semantic artifacts already exist and are qualified only in their recorded scopes. They are not reasons to stop the current local foundation work.
+
+The complete remaining-work allocation and nonblocking execution order is [planJ](../../plans/implementation/J_REPAIR_UNBLOCK_COMPLETION_PLAN.md); canonical scan acceptance remains mandatory for release.

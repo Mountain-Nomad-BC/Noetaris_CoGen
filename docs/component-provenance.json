@@ -1,0 +1,18 @@
+[
+  {
+    "origin": "C:\\Users\\Ben\\Music\\Pacify-X-main\\Pacify-X-main\\runtime\\memory_broker.py",
+    "upstream_sha256": "d6eacdc32e1b280fb774a440235d00c12fde27acf01943847ab4b36f70f96bcb",
+    "destination": "src\\nsai\\vendor\\px_memory_plan.py",
+    "adopted_sha256": "7b0c42fceaf6cde820e15a2f5a5e6f91cd9df405148f27b6ccb4787b8a24531c",
+    "license": "Apache-2.0",
+    "modifications": "Pure query-plan class/build/validation only; remove fabric/intelligence imports; inline equivalent hash helper."
+  },
+  {
+    "origin": "C:\\Users\\Ben\\Music\\RIE_Remy\\Rie_Remy_codebase\\7_Remy\\remy\\turnburn\\manifest.py",
+    "upstream_sha256": "86017254b8ad7b49513bf57218a9ab2a3c62256051025d323a000c6b20fc1abb",
+    "destination": "src\\nsai\\vendor\\remy_manifest.py",
+    "adopted_sha256": "a745b95a287ccdf0283a866b673f215857501d7130b0ad36fa6a8f00d19166d6",
+    "license": "Restricted; private user authorization",
+    "modifications": "Attribution header only. Only typed manifest models are used by API; filesystem loader is not exposed."
+  }
+]

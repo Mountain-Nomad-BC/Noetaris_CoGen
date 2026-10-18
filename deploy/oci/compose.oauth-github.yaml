@@ -1,0 +1,17 @@
+services:
+  api:
+    environment:
+      NSAI_OAUTH_GITHUB_ENABLED: 'true'
+      NSAI_OAUTH_GITHUB_CLIENT_ID: ${NSAI_OAUTH_GITHUB_CLIENT_ID:?registered OAuth
+        client ID required}
+      NSAI_OAUTH_GITHUB_CLIENT_SECRET_FILE: /run/secrets/oauth_github
+    secrets:
+    - oauth_github
+    networks:
+    - oauth_egress
+secrets:
+  oauth_github:
+    file: /etc/noetaris/secrets/oauth_github
+networks:
+  oauth_egress:
+    internal: false

@@ -1,0 +1,51 @@
+# Candidate overlay. Live launch remains subject to the unchanged release guard.
+services:
+  api:
+    environment:
+      NSAI_ENCODER_URL: http://encoder:8092
+      NSAI_ENCODER_TOKEN_FILE: /run/secrets/encoder_token
+      NSAI_INDEX_WORKER_ENABLED: "true"
+      NSAI_INDEX_CONCURRENCY: "1"
+    secrets: [encoder_token]
+    networks: [encoder_net]
+  encoder:
+    build:
+      context: .
+      dockerfile: deploy/encoder/Dockerfile
+    image: nsai-cpu-encoder:local
+    init: true
+    restart: unless-stopped
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 64
+    cpus: 2.0
+    mem_limit: 768m
+    tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=32m,mode=1777"]
+    environment:
+      NSAI_ENCODER_MODEL_DIR: /models
+      NSAI_ENCODER_TOKEN_FILE: /run/secrets/encoder_token
+    secrets: [encoder_token]
+    volumes:
+      - type: bind
+        source: ./state/models/all-MiniLM-L6-v2
+        target: /models
+        read_only: true
+        bind:
+          create_host_path: false
+    networks: [encoder_net]
+    healthcheck:
+      test: ["CMD","python","-c","import urllib.request; urllib.request.urlopen('http://127.0.0.1:8092/healthz',timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: json-file
+      options: {max-size: "5m", max-file: "3"}
+networks:
+  encoder_net:
+    internal: true
+secrets:
+  encoder_token:
+    file: ./secrets/encoder_token.txt

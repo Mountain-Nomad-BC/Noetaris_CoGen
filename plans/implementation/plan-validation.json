@@ -1,0 +1,21 @@
+{
+  "verdict": "PASS_FOR_PLAN_STRUCTURE_ONLY",
+  "cards": 89,
+  "findings": 89,
+  "core_findings": 16,
+  "ops_findings": 12,
+  "reference_table_allocations": 137,
+  "starter_entries": 50,
+  "audit_note_allocations": 39,
+  "capabilities": 31,
+  "inventory_functions": 198,
+  "routes": 27,
+  "inline_handlers": 17,
+  "dependency_graph": "ACYCLIC",
+  "baseline_files_checked": 96,
+  "baseline_changes": [],
+  "implementation_performed": false,
+  "deployment_performed": false,
+  "security_qualification": "BLOCKED_NOT_STARTED",
+  "limits": "Reference mapping is architecture screening, not semantic review of all upstream files. Allocation is not branch coverage or implementation acceptance."
+}

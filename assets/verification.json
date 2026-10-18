@@ -1,0 +1,50 @@
+{
+  "overall_status": "PARTIAL_NOT_CERTIFIED",
+  "captured_at": "2026-10-14T23:28:19.688491+00:00",
+  "receipts": [
+    {
+      "name": "owned-stack",
+      "status": "PASS",
+      "exit_code": 0,
+      "output_sha256": "a9ab4167fdab5e231a7370526e92ab0055edb160ab1085ceeec1228b9e96c3f9",
+      "captured_at": "2026-10-14T23:19:51.697642+00:00",
+      "scope": "Scoped private qualification; detailed receipts require local inspection"
+    },
+    {
+      "name": "owned-integration",
+      "status": "PASS",
+      "exit_code": 0,
+      "output_sha256": "c075de2f3d6f646758a369cf6c299ceb83fcebc2566ad6d57623fd2b7bf94c20",
+      "captured_at": "2026-10-14T23:18:35.762996+00:00",
+      "scope": "Scoped private qualification; detailed receipts require local inspection"
+    },
+    {
+      "name": "retrieval",
+      "status": "UNVERIFIED",
+      "exit_code": null,
+      "output_sha256": "bd332c9e3452b12c825e6b6b90517a3b8d032524e673267bba5e090ca2bebcec",
+      "captured_at": null,
+      "scope": "Scoped private qualification; detailed receipts require local inspection"
+    },
+    {
+      "name": "runtime-policy",
+      "status": "PASS",
+      "exit_code": 0,
+      "output_sha256": "05c6e76278614d91d8489601595c8244177fe06b6392890af8770c2f6ab67cd9",
+      "captured_at": "2026-10-14T23:23:25.912510+00:00",
+      "scope": "Scoped private qualification; detailed receipts require local inspection"
+    }
+  ],
+  "central_security": "disabled",
+  "generated_execution": "disabled",
+  "future_providers": "deferred",
+  "deployment_status": "Candidate upgrade not deployed",
+  "limitations": [
+    "Required repository Deep Security Scan blocked before start by worker permission profile.",
+    "Full 89-card acceptance remains open.",
+    "OCR critical/degraded/formula cohorts remain withheld.",
+    "Image vulnerability findings retained; no blanket security clearance.",
+    "Current scoped receipts do not qualify later source or image changes."
+  ],
+  "privacy": "Allowlisted summary only; no local paths, source content, credentials or raw diagnostics."
+}

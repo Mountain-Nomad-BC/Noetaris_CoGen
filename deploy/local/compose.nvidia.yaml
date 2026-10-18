@@ -1,0 +1,5 @@
+# OPTIONAL: only use after Docker Desktop WSL2 + NVIDIA Container Toolkit GPU probe.
+# Apply after compose.ollama.yaml. Keep CPU-only as proven fallback.
+services:
+  ollama:
+    gpus: all

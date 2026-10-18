@@ -1,0 +1,491 @@
+[
+  {
+    "id": "NOTE-001",
+    "source": "docs/audit/FOUNDATION_STATIC.md:30",
+    "note": "`deploy/db/Dockerfile:3` pins the parent digest but unversioned apk upgrade/add resolves changing packages. The final scratch image is not reproducible solely from the parent digest. Pin package closure or preserve attested resulting image digest and SBOM; test rebuild drift deliberately. CPU baseline is stronger than optional Ollama profile, which still uses `ollama:latest` and app_net outbound network. Keep optional profiles explicitly unqualified until their own runtime evidence exists.",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-002",
+    "source": "docs/audit/FOUNDATION_STATIC.md:31",
+    "note": "Runtime dependency hashes are locked, but editable package installation can fetch unconstrained build-system requirements (`pyproject.toml:2`) and verification dependencies lack hashes. CI installs `.[test]` rather than the runtime lock and uses movable actions tags. Introduce a separate development-tool lock and SHA-pinned CI actions when that workflow is commissioned; do not enable publication.",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-003",
+    "source": "docs/audit/FOUNDATION_STATIC.md:32",
+    "note": "Static Compose validation implements its own shallow/list-replacing merge and validates AMD-merged base plus selected CPU service, not the actual complete CPU effective config. Effective CPU API fields and unknown services can escape this smoke gate. Parse Docker's effective JSON for the selected profile and validate every reachable service; retain current checker only as a clearly labeled smoke test.",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-004",
+    "source": "docs/audit/FOUNDATION_STATIC.md:33",
+    "note": "Most scripts execute at module import, complicating safe reuse and unit testing. Migration, backup, packaging and verification deserve explicit `main()` entrypoints with pure policy helpers and typed receipts, not automatic side effects on import.",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-005",
+    "source": "docs/audit/FOUNDATION_STATIC.md:34",
+    "note": "Long-running subprocess calls usually lack timeout/cancellation. Recovery memory limit is checked **after** capture_output has read the entire dump; fingerprint string_agg can grow unbounded. Use streaming and transactional snapshot fingerprints, SHA-256 instead of MD5 for integrity claims, and bounded restore time. Current networkless disposable restore and table comparison are useful evidence but do not prove grants/role restoration (`--no-acl --no-owner`), production-volume disaster recovery, PITR, or concurrent-write recovery.",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-006",
+    "source": "docs/audit/FOUNDATION_STATIC.md:35",
+    "note": "Browser downloads always use `original-source.bin`, so PDF opens inconveniently and loses filename/media information. Existing PDF behavior is extracted JSON and original download; it is not a rendered page viewer. A reviewed viewer plan should use safe PDF rendering, explicit page locators, extracted-text overlays and no active PDF execution.",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-007",
+    "source": "docs/audit/FOUNDATION_STATIC.md:36",
+    "note": "Source/UI text is textContent-based and tokens remain in memory; abort + auth epoch checks are meaningful safeguards. Errors in ask() leave chat status at 'Retrieving sources' and leave failed user question appended without clear retry state. Guard busy state is per button, so evidence/model sends can race for one conversation. Add explicit request/session ordering and retry UX; verify out-of-order responses before claiming conversational reliability.",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-008",
+    "source": "docs/audit/FOUNDATION_STATIC.md:37",
+    "note": "Library/review views fully render all items and source inspector prints large JSON. Bound/paginate visible data, lazy render, preserve focus/keyboard access and load state. Current caps partly bound the problem, but 2,000 claim cards with several buttons are a measurable UI workload needing benchmarking.",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-009",
+    "source": "docs/audit/FOUNDATION_STATIC.md:38",
+    "note": "No SQL constraint forces central_config.enabled false, audit digest length/uniqueness, span/chunk consistency, or nonempty reviewer. Application checks plus privileges currently enforce intended path, but app DB role can insert evidence/audit directly if compromised. Treat this as a documented trust boundary, not a bypass of arbitrary unauthenticated access. Plan schema constraints, append-only semantic event routines and independently anchored audit receipt with explicit activation gates.",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-089"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-010",
+    "source": "docs/audit/FOUNDATION_STATIC.md:39",
+    "note": "Audit/session/message/inference/learning tables have no bounded retention/archival policy. Immutable evidence is valuable but must have capacity planning, backup retention and export-before-archive; no automated destructive cleanup should be introduced.",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-046"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-011",
+    "source": "docs/audit/FOUNDATION_STATIC.md:40",
+    "note": "Packaging's hardcoded documentation allowlist is preferable to whole-tree copying, but `package_submission.py` asserts public-safe/credentials-excluded without executing a staging leakage/privacy/license check against current Markdown/verification JSON. Run scan on the exact archive members and preserve reviewed archive manifest, not just ZIP hash. No publication is performed today.",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-012",
+    "source": "docs/audit/FOUNDATION_STATIC.md:41",
+    "note": "`import_selected_components.py` uses text splitting/replacement against upstream files, no expected upstream hash or AST admission, and reimports whole restricted Remy manifest including unused loaders. Existing private import authorization is not an IP-free implementation claim. Under the user's latest architecture-only request, plan clean-room replacements from public behavior/contracts and retain provenance without copying source or plans.",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-013",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md:64",
+    "note": "`exact_knowledge.py:32` checks an ID against an empty prefix, which is vacuous. Exact references must require a nonempty, schema-valid ID, resolved source identity, authorized scope and actual hash verification. A SHA-looking string is not source validation.",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-014",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md:65",
+    "note": "`quality_signals.py:8` converts a caller confidence to float without an explicit finite/range check in the inspected function. Unknown cause and supporting evidence should not imply calibrated causal confidence.",
+    "card_ids": [
+      "NSAI-063",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-015",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md:66",
+    "note": "`governance.py:36` accepts a nonempty approval ID in its pure contract. Composition must validate the stored approval's actor, role, scope, revision, expiry and independence; caller-provided text must never count as authorization.",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-016",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md:67",
+    "note": "`production_boundary.py:13` accepts asserted environment flags and a syntactically valid digest. These are configuration assertions, not demonstrated containment. NSAI's active parser/runtime checks are stronger evidence; future execution requires its own actual enforcement tests.",
+    "card_ids": [
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-017",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md:68",
+    "note": "`metrics.py:74` independently counts numerator/denominator events, so cohort, event identity, duplicate exclusion and completion-to-request pairing need explicit independent implementation. Do not claim task success rate from unrelated event counts.",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-018",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md:69",
+    "note": "Cost/ratio/drift functions inspected contain several negative-only numeric guards. Negative checks alone do not reject NaN/infinity. New metrics must reject nonfinite values and avoid mixing a scenario estimate with measured savings.",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-072",
+      "NSAI-049"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-019",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md:70",
+    "note": "Fixed confidence values in continuity/route examples are heuristics. Preserve classification reasons and unknown states; calibrate only with held-out labels if probabilities are displayed.",
+    "card_ids": [
+      "NSAI-073",
+      "NSAI-044"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-020",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:56",
+    "note": "DVA `common/domain_ingest.py:92` decodes with `errors='ignore'`, and wrapper cleanup applies automatic encoding repair. A clean implementation must preserve bytes, fail or explicitly flag undecodable input, and retain a correction ledger rather than silently losing or changing evidence.",
+    "card_ids": [
+      "NSAI-063",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-021",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:57",
+    "note": "DVA `common/semantic_state.py:164` classifies negation at whole-text scope. A sentence with both negated and affirmed clauses needs clause/entity binding; importing a broad regex can suppress a real fact or promote a false one. Optional linguistic fallback also catches all exceptions, so degraded operation must be visible in quality receipts.",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-022",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:58",
+    "note": "DVA `common/terminology.py:117` uses fixed numeric confidence for contextual replacements. Such a number is a rule strength, not an empirically calibrated OCR or semantic probability. NSAI should not reproduce those values or claim calibration.",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-023",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:59",
+    "note": "DVA `costing.py:14` and `:32` reject negative values but the inspected paths do not explicitly reject NaN/infinity. Independent accounting must reject nonfinite values, use an exact currency representation when needed, and reconcile durable reservations. A reference cost calculator is not evidence of real financial savings.",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-024",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:60",
+    "note": "DVA `common/authority.py:24` excludes only two authority categories. This should not be adopted as a permissive authorization default: the local system needs an explicit allowlist of operations by principal, provenance state and review status, with missing or unknown authority denied.",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-025",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:61",
+    "note": "PX `knowledge_refinery.py:210` uses heuristic similarity thresholds and exposes a derived confidence. Those scores need domain-specific measurement; do not carry over thresholds, weights, or a confidence claim. Exact duplicate hashes and explicit independent review are safer first steps.",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-026",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:62",
+    "note": "PX benchmark and learning interfaces describe evidence gates. Merely producing a hash or a gate-shaped record is not proof that tests were independent, source-bound, fresh or semantically correct. Gate verification must revalidate the actual contract and artifact identities.",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-027",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:81",
+    "note": "Write generic requirements and original synthetic test fixtures before implementation; record what was inspired by a reference and what was independently specified.",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-028",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:82",
+    "note": "Do not copy thresholds, weights, hard-coded confidence values, dictionaries, business menus, diagnostic flows, source templates, transcript records, saved outputs, serialized models or marketing narratives.",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-029",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:83",
+    "note": "Prefer existing local PostgreSQL transactions and bounded worker processes over adding PX/DVA control-plane dependencies.",
+    "card_ids": [
+      "NSAI-052",
+      "NSAI-060"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-030",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:84",
+    "note": "Keep CPU authority for security, schema validation, provenance, review, calculations and mutation decisions. Treat model extraction and optional OCR corrections as candidates.",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-057",
+      "NSAI-058",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-063"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-031",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:85",
+    "note": "Keep benchmark uncertainty visible. Heuristic similarity, OCR engine confidence, extraction completeness, reviewer confidence, and calibrated probability are different quantities.",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-032",
+    "source": "docs/audit/REFERENCE_PX_DVA.md:86",
+    "note": "Retain attribution and license records for current imports. New reference-informed implementations require their own provenance and release review; a renamed/copied implementation is not independent.",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-033",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md:50",
+    "note": "`builders/common.py:102` replaces certain reference names while redacting secrets. Renaming a company, module or product does **not** remove proprietary implementation, business facts, license restrictions or intellectual property. Independent requirements/code/fixtures and provenance review remain necessary.",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-034",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md:51",
+    "note": "The inspected common proposal digest hashes sanitized content. Evidence identity must also bind the original restricted artifact independently without exposing it; otherwise two different originals can collapse to a redacted representation. Public redaction hashes and private custody hashes have different purposes.",
+    "card_ids": [
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-035",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md:52",
+    "note": "`builders/orchestration_builder.py:74` inspects status/evidence metadata. Freshness and actual verification must be recomputed from immutable receipts and scope; a caller declaring evidence current is not sufficient.",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-052",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-036",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md:53",
+    "note": "`extension/src/operationAuthority.js:10` is a decision/projection helper. Nonempty approval/grant IDs must be resolved and checked by the authoritative server; UI helper success cannot grant authorization.",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-037",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md:54",
+    "note": "`extension/src/providerExecutionPolicy.js:35` validates hashes and request bindings. A self-consistent digest provides integrity comparison, not authentication or enforcement of egress/cost/fallback. Current trusted issuer and actual enforcement receipts are required for any future authority decision.",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-038",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md:55",
+    "note": "`workflowTraceProjection.js` portions reviewed permit partial identities and fallbacks. NSAI's final evidence join should require the exact source/session/evaluation identity relevant to the claim; absent identity must not be inferred from the most recent UI state.",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  },
+  {
+    "id": "NOTE-039",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md:56",
+    "note": "Apache-2.0 at the PX root does not establish that every bundled data/model/provider/third-party artifact is redistributable. This pass copied no implementation or asset and did not perform comprehensive license clearance.",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "Specific card acceptance governs. Mathematical definitions and evidence limitations are preserved as qualification requirements, not claimed capabilities."
+  }
+]

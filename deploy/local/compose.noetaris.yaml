@@ -1,0 +1,36 @@
+# Isolated integrated candidate overlay; preserves the original API UI/image.
+services:
+  api:
+    ports: !reset []
+    networks: [edge_net]
+  noetaris:
+    image: nsai-noetaris-candidate:local
+    build:
+      context: ./frontend/noetaris
+    init: true
+    restart: unless-stopped
+    user: "101:101"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    cpus: 0.5
+    mem_limit: 96m
+    pids_limit: 32
+    tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=16m,mode=1777"]
+    ports: ["127.0.0.1:${NSAI_HOST_PORT:-8787}:8080"]
+    networks: [edge_net, edge_front_net]
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: json-file
+      options: {max-size: "5m", max-file: "3"}
+networks:
+  edge_net:
+    internal: true
+  edge_front_net: {}

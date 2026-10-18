@@ -1,0 +1,155 @@
+name: amd-hackathon-nsai
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    restart: unless-stopped
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    cpus: 2.0
+    mem_limit: 768m
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      NSAI_DB_HOST: db
+      NSAI_DB_NAME: nsai
+      NSAI_DB_USER: nsai_app
+      NSAI_DB_PASSWORD_FILE: /run/secrets/app_db_password
+      NSAI_API_TOKEN_FILE: /run/secrets/api_token
+      NSAI_ADMIN_TOKEN_FILE: /run/secrets/admin_token
+      NSAI_REVIEWER_TOKEN_FILE: /run/secrets/reviewer_token
+      NSAI_VIEWER_TOKEN_FILE: /run/secrets/viewer_token
+      NSAI_PARSER_TOKEN_FILE: /run/secrets/parser_token
+      NSAI_PARSER_URL: http://parser:8788
+      NSAI_CENTRAL_SECURITY_ENABLED: "false"
+      NSAI_MAX_INPUT_CHARS: ${NSAI_MAX_INPUT_CHARS:-20000}
+      NSAI_MODEL_URL: ${NSAI_MODEL_URL:-}
+      NSAI_MODEL_NAME: ${NSAI_MODEL_NAME:-google/gemma-3-1b-it}
+    secrets: [app_db_password, api_token, admin_token, reviewer_token, viewer_token, parser_token]
+    ports:
+      - "127.0.0.1:${NSAI_HOST_PORT:-8787}:8787"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8787/healthz', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
+    networks: [data_net, app_net, parser_net]
+
+  parser:
+    build: .
+    command: ["uvicorn", "nsai.parser:app", "--host", "0.0.0.0", "--port", "8788", "--no-server-header"]
+    init: true
+    restart: unless-stopped
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 32
+    cpus: 1.0
+    mem_limit: 384m
+    tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=32m,mode=1777"]
+    environment:
+      NSAI_PARSER_TOKEN_FILE: /run/secrets/parser_token
+    secrets: [parser_token]
+    networks: [parser_net]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8788/healthz', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: json-file
+      options: {max-size: "5m", max-file: "3"}
+
+  db:
+    build:
+      context: .
+      dockerfile: deploy/db/Dockerfile
+    image: amd-hackathon-nsai-db:local
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: nsai
+      POSTGRES_USER: nsai
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets: [db_password]
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./deploy/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    cap_drop: [NET_RAW, SYS_PTRACE, SYS_ADMIN, MKNOD]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    cpus: 1.0
+    mem_limit: 1024m
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "nsai", "-d", "nsai"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
+    networks: [data_net]
+
+  sandbox-smoke:
+    profiles: [sandbox]
+    build:
+      context: .
+    command: ["python", "-m", "nsai.sandbox_smoke"]
+    network_mode: none
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    user: "10001:10001"
+    pids_limit: 32
+    cpus: 0.25
+    mem_limit: 128m
+    tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=8m,mode=1777"]
+    restart: "no"
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  app_db_password:
+    file: ./secrets/app_db_password.txt
+  api_token:
+    file: ./secrets/api_token.txt
+  admin_token:
+    file: ./secrets/admin_token.txt
+  reviewer_token:
+    file: ./secrets/reviewer_token.txt
+  viewer_token:
+    file: ./secrets/viewer_token.txt
+  parser_token:
+    file: ./secrets/parser_token.txt
+  model_token:
+    file: ./secrets/model_token.txt
+
+volumes:
+  db_data:
+
+networks:
+  data_net:
+    internal: true
+  app_net: {}
+  parser_net:
+    internal: true

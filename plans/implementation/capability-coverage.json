@@ -1,0 +1,432 @@
+[
+  {
+    "id": "foundation",
+    "capability": "Boot/migration/health",
+    "state": "RUNNING_WITH_FINDINGS",
+    "source_surface": "scripts/start-cpu.ps1; scripts/migrate.py",
+    "finding_or_gap": "OPS-02,04,05,07,08,09,10",
+    "evidence": "isolated-api-profile.json; runtime-checks-fresh.json",
+    "plan_packages": "F01,F02,F03",
+    "punch_cards": [
+      "NSAI-004",
+      "NSAI-005",
+      "NSAI-006",
+      "NSAI-032"
+    ]
+  },
+  {
+    "id": "identity",
+    "capability": "Local roles and negative authorization",
+    "state": "IMPLEMENTED_TESTED_WITH_FINDINGS",
+    "source_surface": "src/nsai/security.py",
+    "finding_or_gap": "CORE-03,OPS-06",
+    "evidence": "isolated-api-profile.json; browser-negative-probes.json",
+    "plan_packages": "F04",
+    "punch_cards": [
+      "NSAI-010",
+      "NSAI-011",
+      "NSAI-064"
+    ]
+  },
+  {
+    "id": "central",
+    "capability": "Centralized security and generated execution",
+    "state": "STAGED_DISABLED",
+    "source_surface": "src/nsai/security.py; src/nsai/api.py",
+    "finding_or_gap": "Production individual identity deferred",
+    "evidence": "isolated-api-profile.json",
+    "plan_packages": "S01",
+    "punch_cards": [
+      "NSAI-065",
+      "NSAI-085"
+    ]
+  },
+  {
+    "id": "ingest_text",
+    "capability": "TXT/MD original-byte ingestion",
+    "state": "IMPLEMENTED_TESTED",
+    "source_surface": "src/nsai/ingestion.py; src/nsai/workflow_store.py",
+    "finding_or_gap": "CORE-14; Unicode output budget",
+    "evidence": "isolated-db-benchmark.json; api-additional-benchmarks.json",
+    "plan_packages": "F05,K03",
+    "punch_cards": [
+      "NSAI-018",
+      "NSAI-029",
+      "NSAI-038"
+    ]
+  },
+  {
+    "id": "ingest_pdf",
+    "capability": "Native text PDF extraction",
+    "state": "IMPLEMENTED_WITH_FINDINGS",
+    "source_surface": "src/nsai/ingestion.py",
+    "finding_or_gap": "CORE-01,13",
+    "evidence": "pdf-negative-probes.json; benchmark-results.json",
+    "plan_packages": "F05",
+    "punch_cards": [
+      "NSAI-013",
+      "NSAI-014",
+      "NSAI-053"
+    ]
+  },
+  {
+    "id": "source",
+    "capability": "Original downloads and normalized inspection",
+    "state": "IMPLEMENTED_TESTED",
+    "source_surface": "src/nsai/api.py; src/nsai/workflow_store.py",
+    "finding_or_gap": "Offsets/geometry not persisted; original filename/media UI",
+    "evidence": "isolated-api-profile.json",
+    "plan_packages": "K02,P01",
+    "punch_cards": [
+      "NSAI-038",
+      "NSAI-043",
+      "NSAI-051"
+    ]
+  },
+  {
+    "id": "pdf_viewer",
+    "capability": "Original page viewing/navigation/zoom",
+    "state": "MISSING",
+    "source_surface": "assets/app.js; src/nsai/api.py",
+    "finding_or_gap": "No original visual PDF viewer",
+    "evidence": "REFERENCE_REMY.md",
+    "plan_packages": "P01",
+    "punch_cards": [
+      "NSAI-051"
+    ]
+  },
+  {
+    "id": "pdf_scope",
+    "capability": "Ask selected document/revision/page",
+    "state": "MISSING_EXPLICIT_SCOPE",
+    "source_surface": "src/nsai/workflow_store.py:retrieve",
+    "finding_or_gap": "Global lexical corpus only",
+    "evidence": "benchmark-results.json",
+    "plan_packages": "K02,P01",
+    "punch_cards": [
+      "NSAI-050"
+    ]
+  },
+  {
+    "id": "ocr",
+    "capability": "Scanned/mixed-page OCR",
+    "state": "MISSING",
+    "source_surface": "src/nsai/ingestion.py",
+    "finding_or_gap": "No OCR engine; mixed-page omission",
+    "evidence": "pdf-negative-probes.json",
+    "plan_packages": "P02",
+    "punch_cards": [
+      "NSAI-052",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-056"
+    ]
+  },
+  {
+    "id": "formulas",
+    "capability": "OCR formula recognition and validated calculation",
+    "state": "MISSING",
+    "source_surface": "No active engine",
+    "finding_or_gap": "No formula/geometry accuracy proof",
+    "evidence": "REFERENCE_REMY.md; INTEGRATION_PLAN.md",
+    "plan_packages": "P03",
+    "punch_cards": [
+      "NSAI-057",
+      "NSAI-058"
+    ]
+  },
+  {
+    "id": "claims",
+    "capability": "Candidate extraction",
+    "state": "NARROW_BASELINE_WITH_GAPS",
+    "source_surface": "src/nsai/models.py",
+    "finding_or_gap": "CORE-05,06",
+    "evidence": "benchmark-results.json",
+    "plan_packages": "K01",
+    "punch_cards": [
+      "NSAI-033",
+      "NSAI-034"
+    ]
+  },
+  {
+    "id": "conflicts",
+    "capability": "Complete conflict discovery",
+    "state": "IMPLEMENTED_WITH_FINDINGS",
+    "source_surface": "src/nsai/api.py:evidence; src/nsai/models.py",
+    "finding_or_gap": "CORE-02,05",
+    "evidence": "benchmark-results.json",
+    "plan_packages": "F05,K01",
+    "punch_cards": [
+      "NSAI-017",
+      "NSAI-033",
+      "NSAI-035"
+    ]
+  },
+  {
+    "id": "review",
+    "capability": "Independent claim review and immutable history",
+    "state": "IMPLEMENTED_TESTED",
+    "source_surface": "src/nsai/workflow_store.py:review",
+    "finding_or_gap": "Shared demo identity; generation invalidation pending",
+    "evidence": "isolated-api-profile.json; isolated-db-benchmark.json",
+    "plan_packages": "F04,L01",
+    "punch_cards": [
+      "NSAI-026",
+      "NSAI-039",
+      "NSAI-061"
+    ]
+  },
+  {
+    "id": "retrieval",
+    "capability": "Lexical search/ranking/chunks",
+    "state": "IMPLEMENTED_WITH_RECALL_GAPS",
+    "source_surface": "src/nsai/workflow_store.py:retrieve",
+    "finding_or_gap": "CORE-12; no word overlap or metadata scope",
+    "evidence": "benchmark-results.json",
+    "plan_packages": "K02",
+    "punch_cards": [
+      "NSAI-040",
+      "NSAI-050"
+    ]
+  },
+  {
+    "id": "fusion",
+    "capability": "Reciprocal-rank fusion",
+    "state": "DORMANT_HELPER_TESTED",
+    "source_surface": "src/nsai/retrieval/fusion.py",
+    "finding_or_gap": "Not wired to search; no semantic backend",
+    "evidence": "benchmark-results.json; unit-function-profile.json",
+    "plan_packages": "K02",
+    "punch_cards": [
+      "NSAI-040",
+      "NSAI-039"
+    ]
+  },
+  {
+    "id": "chat",
+    "capability": "Source-extract chat and continuation",
+    "state": "IMPLEMENTED_TESTED_WITH_GAPS",
+    "source_surface": "src/nsai/api.py:chat",
+    "finding_or_gap": "Source scope/conflicts/session ordering",
+    "evidence": "isolated-api-profile.json",
+    "plan_packages": "F04,F05,K02",
+    "punch_cards": [
+      "NSAI-044",
+      "NSAI-041",
+      "NSAI-050"
+    ]
+  },
+  {
+    "id": "model",
+    "capability": "CPU source-grounded model drafting",
+    "state": "IMPLEMENTED_UNVERIFIED",
+    "source_surface": "src/nsai/inference.py",
+    "finding_or_gap": "CORE-09,11,16",
+    "evidence": "benchmark-results.json; token-budget-probe.json",
+    "plan_packages": "F04,K03",
+    "punch_cards": [
+      "NSAI-012",
+      "NSAI-016",
+      "NSAI-041",
+      "NSAI-020"
+    ]
+  },
+  {
+    "id": "budget",
+    "capability": "Daily/output/rate/concurrency limits",
+    "state": "IMPLEMENTED_WITH_FINDINGS",
+    "source_surface": "src/nsai/workflow_store.py:reserve_inference; src/nsai/api.py",
+    "finding_or_gap": "CORE-04,16; per-process admission; histories unbounded",
+    "evidence": "isolated-db-benchmark.json; token-budget-probe.json",
+    "plan_packages": "F05,K03",
+    "punch_cards": [
+      "NSAI-015",
+      "NSAI-016",
+      "NSAI-027",
+      "NSAI-074"
+    ]
+  },
+  {
+    "id": "memory",
+    "capability": "Working/canon/hypothesis/reflection projection",
+    "state": "IMPLEMENTED_WITH_FINDINGS",
+    "source_surface": "src/nsai/memory.py; src/nsai/workflow_store.py:memory_context",
+    "finding_or_gap": "CORE-07,08,10",
+    "evidence": "benchmark-results.json; isolated-api-profile.json",
+    "plan_packages": "K02,L01",
+    "punch_cards": [
+      "NSAI-036",
+      "NSAI-037"
+    ]
+  },
+  {
+    "id": "learning",
+    "capability": "Source-backed proposals and independent review",
+    "state": "IMPLEMENTED_PROPOSAL_ONLY",
+    "source_surface": "src/nsai/workflow_store.py",
+    "finding_or_gap": "CORE-07; no empirical training/generation promotion",
+    "evidence": "isolated-api-profile.json",
+    "plan_packages": "K01,L01",
+    "punch_cards": [
+      "NSAI-035",
+      "NSAI-061",
+      "NSAI-062"
+    ]
+  },
+  {
+    "id": "audit",
+    "capability": "Append-only local digest chain",
+    "state": "IMPLEMENTED_TESTED_LOCAL",
+    "source_surface": "src/nsai/workflow_store.py:audit_report",
+    "finding_or_gap": "No external anchor; full-history scan; growth",
+    "evidence": "runtime-checks-fresh.json; isolated-db-benchmark.json",
+    "plan_packages": "F01,F03,K04",
+    "punch_cards": [
+      "NSAI-026",
+      "NSAI-046",
+      "NSAI-067"
+    ]
+  },
+  {
+    "id": "parser",
+    "capability": "Fixed parser containment and subprocess",
+    "state": "IMPLEMENTED_RUNTIME_TESTED",
+    "source_surface": "src/nsai/parser.py; src/nsai/parser_child.py",
+    "finding_or_gap": "CORE-01,13,14; no hostile-code certification",
+    "evidence": "runtime-checks-fresh.json; isolated-api-profile.json",
+    "plan_packages": "F05,P02",
+    "punch_cards": [
+      "NSAI-013",
+      "NSAI-018",
+      "NSAI-029",
+      "NSAI-052"
+    ]
+  },
+  {
+    "id": "ui",
+    "capability": "Browser controls/rendering/logout",
+    "state": "IMPLEMENTED_WITH_FINDINGS",
+    "source_surface": "assets/app.js",
+    "finding_or_gap": "OPS-06; drafts/file remain; retry/session ordering",
+    "evidence": "browser-negative-probes.json; browser-function-profile.json",
+    "plan_packages": "F04,K04",
+    "punch_cards": [
+      "NSAI-011",
+      "NSAI-044",
+      "NSAI-045",
+      "NSAI-019"
+    ]
+  },
+  {
+    "id": "evidence",
+    "capability": "Submission-visible verification receipts",
+    "state": "IMPLEMENTED_WITH_GATE_FINDINGS",
+    "source_surface": "scripts/record_verification.py; scripts/inspect_runtime.py",
+    "finding_or_gap": "OPS-01,02,11",
+    "evidence": "ops-negative-reproductions.json",
+    "plan_packages": "F01",
+    "punch_cards": [
+      "NSAI-001",
+      "NSAI-002",
+      "NSAI-019"
+    ]
+  },
+  {
+    "id": "recovery",
+    "capability": "Backup/restart/restore",
+    "state": "PARTIAL_PROOF_WITH_GAPS",
+    "source_surface": "scripts/verify_recovery.py; scripts/migrate.py",
+    "finding_or_gap": "Old restore does not qualify ACL/PITR/concurrent writes",
+    "evidence": "FOUNDATION_STATIC.md; prior recovery.json",
+    "plan_packages": "F03",
+    "punch_cards": [
+      "NSAI-009",
+      "NSAI-025",
+      "NSAI-008"
+    ]
+  },
+  {
+    "id": "px",
+    "capability": "PX memory contract/tooling/learning architecture",
+    "state": "SELECTIVE_REUSE_AND_REFERENCE_ONLY",
+    "source_surface": "src/nsai/vendor/px_memory_plan.py",
+    "finding_or_gap": "Not full control plane; source/license disposition",
+    "evidence": "px-dva-static-inventory.json; px-broad-inventory.json",
+    "plan_packages": "F06,L01",
+    "punch_cards": [
+      "NSAI-031",
+      "NSAI-060",
+      "NSAI-062",
+      "NSAI-061"
+    ]
+  },
+  {
+    "id": "remy",
+    "capability": "Remy manifest and PDF/OCR architecture",
+    "state": "SELECTIVE_RESTRICTED_IMPORT",
+    "source_surface": "src/nsai/vendor/remy_manifest.py",
+    "finding_or_gap": "No IP-free claim; viewer/OCR not ported",
+    "evidence": "remy-functions.json; REFERENCE_REMY.md",
+    "plan_packages": "F06,P01,P02",
+    "punch_cards": [
+      "NSAI-031",
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-065"
+    ]
+  },
+  {
+    "id": "transcript",
+    "capability": "Transcript turn/evidence/action/outcome assembly",
+    "state": "REFERENCE_ONLY_NOT_IMPLEMENTED",
+    "source_surface": "Requested DVA transcript reference",
+    "finding_or_gap": "No upstream source/dictionaries/data copied",
+    "evidence": "px-dva-static-inventory.json",
+    "plan_packages": "B01",
+    "punch_cards": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-071"
+    ]
+  },
+  {
+    "id": "business",
+    "capability": "Outcome metrics and reserve/settle costing",
+    "state": "REFERENCE_ONLY_NOT_IMPLEMENTED",
+    "source_surface": "DVA canonical architecture references",
+    "finding_or_gap": "No verified outcome or monetary cost dataset",
+    "evidence": "dva-broad-inventory.json",
+    "plan_packages": "B02",
+    "punch_cards": [
+      "NSAI-072",
+      "NSAI-074",
+      "NSAI-075"
+    ]
+  },
+  {
+    "id": "amd_evolus",
+    "capability": "AMD/Evolus and optional external providers",
+    "state": "DEFERRED_BY_USER",
+    "source_surface": "deploy/amd; src/nsai/integrations/evolus.py",
+    "finding_or_gap": "No activation/runtime benchmark",
+    "evidence": "function-trace.json",
+    "plan_packages": "Later",
+    "punch_cards": [
+      "NSAI-086"
+    ]
+  },
+  {
+    "id": "dedicated_scan",
+    "capability": "Dedicated multi-pass security qualification",
+    "state": "BLOCKED_NOT_STARTED",
+    "source_surface": "Codex Security Deep Scan",
+    "finding_or_gap": "Managed filesystem permission profile required",
+    "evidence": "AUDIT_REPORT.md",
+    "plan_packages": "Resolve environment then scan",
+    "punch_cards": [
+      "NSAI-077",
+      "NSAI-078"
+    ]
+  }
+]

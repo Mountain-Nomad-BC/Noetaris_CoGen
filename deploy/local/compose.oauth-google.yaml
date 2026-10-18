@@ -1,0 +1,11 @@
+# Layer after compose.oauth.yaml. Never put real client credentials in YAML.
+services:
+  api:
+    environment:
+      NSAI_OAUTH_GOOGLE_ENABLED: "true"
+      NSAI_OAUTH_GOOGLE_CLIENT_ID: ${NSAI_OAUTH_GOOGLE_CLIENT_ID:?Registered Google client ID required}
+      NSAI_OAUTH_GOOGLE_CLIENT_SECRET_FILE: /run/secrets/oauth_google_client_secret
+    secrets: [oauth_google_client_secret]
+secrets:
+  oauth_google_client_secret:
+    file: ${NSAI_OAUTH_GOOGLE_SECRET_PATH:-./secrets/oauth_google_client_secret.txt}

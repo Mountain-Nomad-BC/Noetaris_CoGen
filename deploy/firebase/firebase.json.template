@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "REPLACE_HOSTING_SITE",
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "**/*.map", "**/*.log"],
+    "headers": [
+      {"source": "**", "headers": [
+        {"key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' REPLACE_API_ORIGIN; worker-src 'self' blob:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'"},
+        {"key": "Cache-Control", "value": "no-cache, max-age=0, must-revalidate"},
+        {"key": "X-Content-Type-Options", "value": "nosniff"},
+        {"key": "Referrer-Policy", "value": "no-referrer"}
+      ]},
+      {"source": "/assets/**", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]}
+    ],
+    "rewrites": [{"source": "**", "destination": "/index.html"}]
+  }
+}

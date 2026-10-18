@@ -1,0 +1,2054 @@
+[
+  {
+    "id": "ADOPT-001",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| OCR fallback | `3_training_library/stage3_api/app/ingestion/pdf_parser_support.py:10` | Whole-document average text length compared with a fixed sparse-text threshold. | Replace with per-page quality assessment; preserve good embedded text and OCR only deficient pages/regions. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-061",
+      "NSAI-075"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-002",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Preprocessing | `3_training_library/stage3_api/app/ingestion/ocr.py:16` | Grayscale, denoise, local Gaussian threshold; optional dependency absence falls back. Documentation says deskew, implementation does not. | Benchmark preprocessing alternatives and explicitly record applied transforms. Never silently label a non-deskewed image deskewed. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-061",
+      "NSAI-075"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-003",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| OCR engine | `3_training_library/stage3_api/app/ingestion/ocr.py:49` | English Tesseract text extraction; failure returns empty text. | Return typed per-page failure/quality states with token boxes/confidence; do not interpret an engine failure as an empty source. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-061",
+      "NSAI-075"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-004",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| PDF extraction | `3_training_library/stage3_api/app/ingestion/pdf_parser.py:39` | Two-pass extraction, document-level OCR selection, 300-DPI rendering, paragraph/table/image/link AST assembly. Empty pages are skipped. | Separate extraction from OCR, retain blank/failed/scanned page status and coverage. Cap raster pixels and render/OCR resources independently. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-061",
+      "NSAI-075"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-005",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| AST detail | `3_training_library/stage3_api/app/ingestion/pdf_parser_support.py:22` | Stable-looking page/ordinal paragraph and table identifiers; image records are placeholders with generated keys. | Use deterministic content-addressed page/span IDs and durable raster assets; tables need original cell geometry and duplicate-header handling. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-061",
+      "NSAI-075"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-006",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Training document view | `3_training_library/frontend/src/pages/DocumentViewerPage.tsx:95` | Loads versioned rendered HTML; at line 297 inserts HTML into the DOM. This is not a confirmed native PDF viewer. | Avoid copying markup. Build text-first views; any sanitized HTML requires an explicit sanitizer and separate security tests. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-061",
+      "NSAI-075"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-007",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Source opening | `7_Remy/remy/turnburn/source_document_index.py:63` | Document record produces an original-file URL; aliases and document IDs aid document discovery. | Implement generic title/ID/source-hash discovery independent of domain-specific manual numbers and alias lists. |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-008",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Source authorization | `7_Remy/remy/api/route_groups/knowledge.py:288`, `:318`, `:727` | Source API requires an exact service credential; delegated roles checked against manifest visibility. Non-delegated service requests are privileged. | Preserve actor-derived authorization concept but require explicit project/source scope; never let browsers set trusted delegation headers. Source visibility applies to retrieval, snippets, original files, thumbnails and caches. |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-009",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| File confinement | `7_Remy/remy/api/route_groups/knowledge.py:525`, `:559` | Manifest resolution and root-confined resolved paths; original PDFs delivered inline. | Use opaque DB source IDs rather than user file paths; test traversal, encoded separators, symlink escape and enumeration. Current NSAI BYTEA originals avoid this filesystem resolution surface. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-010",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Citations | `7_Remy/remy/retrieval/exact_reference_hydration.py:429` | Converts structured citation mappings into original PDF URLs with one-based `#page`, sentence/source metadata. | Validate exact source version/hash/page bounds; label mapping method/confidence and unmapped states. Page URL is navigation evidence, not semantic support. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-011",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Page mapping | `7_Remy/scripts/generate_pdf_page_map.py:478`, `:525`, `:555` | Deterministic document/page candidate scoring and threshold checks; unresolved review outputs. | Prefer direct parse-time anchoring. For legacy mappings, independent synthetic calibration and top-two margin, human review and uncertainty states. Do not copy domain weights/corpus. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-089"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-012",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Identity authority | `7_Remy/remy/permissions/service.py:55` | User identity comes from validated JWT state; only service-authenticated requests may delegate actor traits. | Future centralized adapter may consume validated authority and scoped service grants. Keep adapter disabled as requested; local protections remain mandatory. |",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-013",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Deployment admission | `7_Remy/remy/turnburn/activation.py:70` | Query activation requires multiple readiness flags. | Bind activation to immutable generation/config hashes, held-out quality reports and atomic promotion; flags alone are not proof. |",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-014",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Retrieval benchmark | `7_Remy/remy/retrieval/benchmark.py:49` | Captures case latency/citation counts/route and expected term matches. Any one expected term can satisfy text criterion. | Improve exact relevant-source/span gold labels, Recall@k/MRR, citation precision, unsupported refusal and role leakage; term presence alone is insufficient. |",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-015",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Evidence integrity | `6_Engineering_ML_NN_Tools/diagnostics_learning_suite/src/evidence/integrity.py:17` | Declared canonical evidence hash excludes explicitly mutable lifecycle fields. | Independent versioned evidence contract separating immutable observations from outcome/review events; hash is integrity, not authenticity. |",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-016",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Learning eligibility | `6_Engineering_ML_NN_Tools/diagnostics_learning_suite/src/validation/data_gates.py:27` | Structural, outcome, label and reviewer-approval gates before training. | Define generic outcome-supported reviewed learning candidates; maintain proposal-only state until independent acceptance. No domain data or model training is needed now. |",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-017",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Leakage prevention | `6_Engineering_ML_NN_Tools/diagnostics_learning_suite/src/ml/splits.py:7` | Deterministic group-level data split prevents duplicated groups across sets. | Group synthetic evaluation by source family/revision/session; hold out entire groups and evaluate temporal drift separately. |",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-088"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-018",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Measure | Proposed gate | Important qualification |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-019",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Completeness reporting | 100% pages classified; zero silently omitted nonblank pages | Detection status is not successful extraction. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-020",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Clean printed scans | Micro CER <=1%, WER <=3%; report p95 per-page CER <=3% | English baseline only; not yet measured. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-021",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Degraded supported scans | Micro CER <=3%, WER <=8%, or explicit low-quality refusal | Do not hide hard cases by removing them from denominator. |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-022",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Critical literals | >=99.5% exact numbers/units/negations on supported synthetic cases; all uncertain cases flagged | These are candidate targets; consequential usage still needs independent verification. |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-023",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Original/source/page identity | 100% correct source hash, revision and one-based page mapping | Source identity and answer entailment scored separately. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-024",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Coordinate round trip | <=0.5 PDF-point error on synthetic transforms | No approximation for omitted crop/rotation/user-unit information. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-025",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Highlight overlap | Median IoU >=0.9; p95 boundary error <=2 PDF points | Token boundary quality may differ by font/layout; report strata. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-026",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Formula support | 100% exact match on declared supported symbol/structure fixtures; otherwise explicit unsupported state | Text OCR alone does not meet this. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-057",
+      "NSAI-058"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-027",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Safety | Zero unauthorized document/page disclosures or active-content network calls in adversarial fixtures | Includes thumbnails, errors, metadata and stale browser requests. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-028",
+    "source": "docs/audit/REFERENCE_REMY.md",
+    "reference_row": "| Local performance | Proposed OCR p95 <=10 s/page at 300 DPI and <=512 MiB worker RSS for ordinary single-page samples | Uncalibrated; total job limit must fit the advertised page cap, not the existing 20-s text-parser budget. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-052",
+      "NSAI-060"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-029",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `1_Diagnostics` (761 files) | Case repositories, telemetry ingestion/banding, process definitions/runs, reporting, retention and document workspace bridge. | Versioned evidence packets, explicit process lifecycle and dry-run retention plans with holds/idempotency. | Direct retention inspection; broad remainder surface only. Equipment diagnostics, thresholds, repair procedures and vendor adapters are excluded. |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-046"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-030",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `2_Dashboards` (128) | Portal authority bridging, role routes, case feeds, operational/dashboard surfaces. | Honest readiness/error metrics and permission-scoped operational views; later centralized identity adapter. | Direct `stage2_api/app/portal_auth.py:18` inspection shows explicit cookie-name mapping and delegation surface. Do not reproduce session-cookie migration without CSRF/domain/path/expiry tests. |",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-031",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `3_training_library` (205) | Document ingestion/rendered AST/HTML, search, versioning, quiz/authoring/SCORM and approval surfaces. | PDF workspace, immutable source revisions, page-aware OCR and evidence-backed reviewer corrections. | Direct PDF/OCR/UI review in companion report. Quizzes, SCORM packaging and enterprise learning administration are low-priority scope expansion. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-063",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-032",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `4_admin_tooling` (1,053) | Central authority, tiers, identity provider exchange, integration secret storage, pending AI/admin actions, comparisons/readiness, engineering dashboards. | Disabled policy-provider interface, action capability inventory, typed readiness/exclusions, dedicated integration key management. | Direct permissions/secrets/readiness/action sections; full route-by-route authority audit unperformed. Do not transplant enterprise roles, prompts, company product constraints or call-center integrations. |",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-033",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `5_Manual_Diagnostics_Tools` (2,321) | Declarative flows, authoring schemas/compiler surfaces, validators, version comparison, simulation, event delivery and domain assets. | Optional future typed evidence-review workflow graph with bounded pure simulation, explicit version diffs and independent approval. | Direct runtime graph validation/simulation/version-comparison sections. Domain flow assets and logic are prohibited. Executable or external action routes remain outside current scope. |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-034",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `6_Engineering_ML_NN_Tools` (90) | Evidence packets, deterministic rules, model inference, outcome review, group splits, model registry, candidate/drift gates, worker API. | Review-eligible learning records, data-only model manifests, holdout-by-source evaluation and uncertainty/abstention. | Direct evidence/gates/splits/model registry/resolver sections. Current NSAI does not need classifier training; reject company labels, rules, matrices and pretrained artifacts. |",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-052"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-035",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `7_Remy` (197) | Retrieval/citations, document source discovery, memory, permissions, model routing, action/navigation registries, orchestration, feedback, voice and activation. | Exact source/page links, scoped QA, session ownership, bounded memory, gate-bound retrieval generations, explicit action refusal. | Direct selected subsystem reading; voice/navigation/inference broader surfaces not runtime validated. Do not copy prompts, personas, aliases or entire orchestration stack. |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-063",
+      "NSAI-052",
+      "NSAI-060",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-036",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `core` (2) | GPU bridge imports, rather than local device ownership. | Future narrow compute-provider abstraction only. | Direct `core/gpu.py:5`: depends on `infrastructure` package absent from this supplied inventory. Importability is not proven; no AMD work now. |",
+    "card_ids": [
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-037",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `security` (22), `ci` (2) | Scanner orchestration/report summarization, SQL injection and frontend DB exposure checks. | Payload-free findings index, scanner completeness/freshness receipts, explicit missing-tool states and authorized probe profiles. | Direct `security/summarize-findings.py:15` and inventory. Do not execute full upstream scanner harness against local services; it can trigger active tests or downloads. Scanner names are not proof of coverage. |",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-052",
+      "NSAI-060"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-038",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `monitoring` (13) | Metrics/logging/dashboard/alert configuration, local image wrappers. | Minimal parser/model/API budget, latency/error/queue metrics with privacy-preserving labels. | Surface; logs may leak source text/prompts/tokens. Do not import dashboards/rules or add whole monitoring stack before metric and retention contracts exist. |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-046"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-039",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `infra` (4), root compose files | Cloud provisioning and cross-service networking/monitoring templates. | Conceptual dependency health and network segmentation only. | Surface; cloud deployment/credentials/public ports are explicitly deferred. Do not copy infrastructure templates. |",
+    "card_ids": [
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-040",
+    "source": "docs/audit/REFERENCE_REMY_CAPABILITIES.md",
+    "reference_row": "| `docs` (556), `config` (2), `evidence` (2) | Plans, certifications and governance/configuration references. | Requirements/evidence distinction and traceability patterns. | Inventory only except existing context references. Recorded certifications are not fresh runtime proof; corporate text is excluded. |",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-041",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| Reference and inspected locus | Useful architectural observation | Current NSAI comparison | Independent integration option |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-042",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| PX `runtime/knowledge_refinery.py:66`, `:139`, `:210`, `:296` | Bounded inventory, multidimensional similarity, explicit novelty dispositions, reviewable merge plans separate from canonical mutation | Hash provenance and conflicts exist; near duplicates, semantic variants, enrichment decisions, and reversible merge plans do not | Content-hash duplicate detection first; then candidate-only similarity explanations and explicit retain/enrich/conflict/supersede decisions. Calibrate similarity against original fixtures; never treat similarity as fact confidence |",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-043",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| PX `runtime/knowledge_foundry.py:233`, `:271`, `:281` | Source records carry evidence/license/version; knowledge objects and candidate skills declare I/O, dependencies, examples, tests, failure cases | Source originals/hashes and learning reflections exist; no knowledge compiler or skill lifecycle | Define a small attributed knowledge-object contract, then human-reviewed reusable procedure proposals. No generated execution or automatic skill activation |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-044",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| PX `runtime/knowledge_foundry.py:88`, `:121`, `:172` and calculation sections through `:365` | Bounded arithmetic syntax, declared variables, finite values, magnitude/exponent limits, dimensional validation | No arithmetic/formula tool or OCR calculation engine exists | Add an independently written, allowlisted arithmetic service only after a requirement exists; distinguish units, absolute temperature, and temperature deltas. Never evaluate OCR/model text as executable code |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-057",
+      "NSAI-058",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-045",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| PX `runtime/learning_promotion.py:40`, `:79`, `:120`, `:148` | Immutable observations feed aggregation, pattern candidates, and testable hypotheses without authority | Current learning is deterministic conflict reflection plus review; no weight training | Preserve that truthful labeling. Add revision-bound observation records, explicit applicability, and experimental candidate state rather than claiming autonomous learning |",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-046",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| PX `runtime/learning_promotion.py:181`, `:259`, `:315`, `:323`, `:375`, `:381` | Promotion requires evidence gates, matching incumbent/challenger identities, dependency validity, rollback identity; reuse may trigger revalidation | Independent reviewer exists; no empirical promotion, dependency invalidation, reuse/decay monitoring | Require a frozen fixture contract, held-out evaluation, source revision check, independent reviewer, and reversible revision adoption. Retain failed candidates and all historical provenance |",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-047",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| PX `runtime/learning_promotion.py:799`, `:832`, `:843` (definition/interface inventory) | Evaluation contracts and contamination checks are explicit interfaces | Current demonstrations primarily use repeated synthetic facts; no frozen holdout lane | Version a synthetic training/development/holdout split. Label exploratory benchmark-informed changes accurately; never report them as cold validation |",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-048",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| PX `runtime/engineering_intelligence.py:23`, `:56`, `:98`, `:136`, `:276` (interface inventory), `:380–533` (reviewed bodies) | Drift, dependency impact, collision analysis, measured opportunity queues, versioned benchmark runs, repository graph | Existing evidence hashes and test scripts are useful, but feature-to-function-to-check linkage is partial | Build a local capability registry with active/staged/unsupported status, source range, route, mutation boundary, test ID and evidence hash. Keep quality, latency, resource, cost, and uncertainty separate |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-049",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| PX `runtime/benchmark_operations.py:98`, `:189`, `:223`, `:253`, `:272`, `:321`, `:426` (interface/control inspection) | Frozen treatment profiles, preflight gates, retry classification, matched comparisons, contamination/custody | Existing live scripts demonstrate behavior, not all-path statistical performance | Save hardware/runtime/input/model hashes, warmup status, repetitions, failures, sample size, p50/p95, peak memory, and matched baseline. Never silently discard slow/error cases |",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-050",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| PX `runtime/provider_budget.py:80`, `:113`, `:136`, `:297` (reviewed policy/custody/reservation portions) | Durable budget identity, duplicate invocation protection, integrity-bound receipts, fail-closed policy | PostgreSQL locked daily attempt budget exists; per-interaction token/time/resource budgets and retry idempotency do not | Extend the existing database ledger rather than import a file/WAL control plane. Reserve bounded estimated usage before inference and settle once using an idempotent request ID; keep attempts charged even on failure |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-051",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| DVA transcript `common/contracts.py:24`, `:33`, `:50`, `:77` | Confidence has a declared meaning; numerical evidence requires value/unit and source attribution; supported findings require evidence and decision provenance | Claim schema has source locator and review state, but value is a string and no typed confidence/decision trace | Add raw value, normalized typed value/unit, source state, rule/version and explicit support level. Unknowns remain unknown; rule strength is not calibrated probability |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-052",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| DVA transcript `common/domain_ingest.py:28`, `:57`, `:80` | Transcript ingestion preserves speaker turns, conversation identity, duplicate handling and source manifest | Current ingestion treats documents as lines, with no speaker/time/turn model | New optional transcript ingest contract with stable source-bound turn IDs, offsets, optional timestamps and declared speaker labels. Strict decoding plus explicit warnings; do not inherit upstream permissive error dropping |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-053",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| DVA transcript `common/terminology.py:42`, `common/text_quality.py:22` | Context-gated aliases record corrections; encoding corruption is detectable | NFC and whitespace normalization exist, with no correction ledger or mojibake quality receipt | Preserve raw decoded text and original bytes. Independently define per-change offset maps and reversible correction records. Aliases propose candidate normalization; they do not create evidence |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-063",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-054",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| DVA transcript `common/semantic_state.py:106`, `:164`, `:180` | Topic mentions, questions, negation, historical statements, conditional actions and completed outcomes remain distinct | Narrow temperature extractor and string conflict comparator lack these semantics | Prioritize conservative evidence-state gates and unit equivalence before adding broader extraction. Abstain on unsupported sentence forms; do not reuse proprietary phrase dictionaries |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-055",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| DVA transcript `common/measurement_assurance.py:34` | Quantities are attributed to request/response spans; location/instrument omissions and non-live contexts remain visible | Current engineering values are operating specifications, not live measurements | Keep specification, reported reading, derived calculation and instruction separate. Require location/instrument only for domains where they are material; never turn a number in a manual into an observed measurement |",
+    "card_ids": [
+      "NSAI-057",
+      "NSAI-058",
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-056",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| DVA transcript `hybrid/semantic_pipeline.py:57`, `:125`, `:173`, `:366`, `:431` (selected processing bodies) | Normalization, state, question linkage, evidence building and report projection are separate stages; source provenance survives enrichment | Current source/claim/review stages exist but question-response linkage and normalization replay do not | Implement a compact independent stage DAG with deterministic stage receipts and explicit invalidation when parser/rules/source change. Do not import product-specific menu reconstruction or diagnostic policy |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-052",
+      "NSAI-060",
+      "NSAI-087"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-057",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| DVA transcript `common/authority.py:8`, `:24`, `reporting/report_model.py:83`, `:177` | Renderer and optional enrichment cannot assert facts; report model separates accepted and withheld evidence | UI safely presents unverified model answers but only a limited evidence ledger | A renderer should consume a validated projection containing approved, disputed, withheld and unsupported items. UI may summarize, never silently upgrade an item to verified |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-058",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| DVA transcript `validation/corpus_regression.py:53`, `:70`, `:84`, `validation/release_certification.py:57` (selected checks) | Semantic signatures are distinct from packaging paths; reports/graphs are checked for missing source bindings and encoding issues | Existing aggregate receipts do not provide semantic corpus equivalence | Freeze synthetic semantic outputs independently of timestamps/host paths, but also retain a full raw receipt. Test that report presence alone cannot certify semantic correctness |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-059",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| DVA `modules/model-agnostic/model-runtime/server/cost_governor.py:31`, `:49`, `:104`, `:147` (first 170 lines) | Reserve/settle budget pattern, per-interaction call ceilings, workload tiers and cross-replica design | Local daily attempt cap and output token cap active; no priced cloud usage needed yet | Keep CPU-local usage accounting focused on time/tokens/attempts. Later add versioned pricing and transactional settlement only when paid providers are authorized. Use UTC explicitly, durable state, finite Decimal amounts and expiry reconciliation |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-060",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| DVA `modules/model-agnostic/enterprise-intelligence-core/src/enterprise_intelligence/costing.py:14`, `:32`, `:40`, `:50` | Outcome-normalized costs require a verified denominator and avoid duplicate interaction counting; savings require attribution | No business outcome analytics; local inference success is not verified task resolution | Independently define cost per reviewed successful task and failure cost only after measured data exists. Avoid claiming ROI, causality or customer quality from unvalidated model outputs |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-061",
+      "NSAI-075"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-061",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| Foundation repair first | Unify conflict policy; expose real capability coverage; schema-check projections; make unsupported OCR/layout cases visible; preserve original bytes and local role isolation | Reviewed-vs-new-candidate conflict regression, UTF-8/Unicode fixtures, mixed-PDF missing-page fixtures, role/denial checks, fresh route-to-function receipts |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-062",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| Evidence and retrieval refinement | Typed units and evidence states; relevance-aware bounded canon; semantic support benchmarks; raw-normalized offset contracts | No false conflict for equivalent units; negated/historical/conditional statements withheld; original span round trips; recall/precision/refusal metrics with sample counts and frozen synthetic fixtures |",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-063",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| PDF and OCR extension | Independently implement the viewer/OCR plan from the separate Remy review; isolated page rendering and extraction workers; confidence/geometry/provenance quality receipts | Text/scanned/mixed/multicolumn/table/formula PDF corpus, adversarial bounds, CER/WER and layout/citation metrics, original-page review; no automatic reviewed-fact creation |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-057",
+      "NSAI-058",
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-052",
+      "NSAI-060"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-064",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| Optional transcript assembly | Speaker/timestamp turns, request-answer linkage, reversible terminology normalization, stateful event/evidence graph, accepted/withheld report projection | Synthetic transcripts covering ambiguity, speaker spoofing, duplicated turns, correction context, negation, prior vs live values; deterministic replay and source attribution |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-063",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-065",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| Governed learning after quality baseline | Observation→candidate→shadow evaluation→independent review→reversible revision workflow with dependency invalidation and holdout hygiene | Matching revision hashes, immutable experiment contract, paired baseline/challenger outcomes, rollback rehearsal, stale evidence fail closed, no code execution activation |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-066",
+    "source": "docs/audit/REFERENCE_PX_DVA.md",
+    "reference_row": "| Optional business reporting | Measured task outcomes, durable reservation settlement, per-task resources and cost; attribution separated from correlation | Duplicate/retry/crash/day-rollover reconciliation, finite amounts, no verified denominator handled explicitly, no fabricated savings or customer-quality claims |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-067",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| runtime | 474 | Python AST inventory and selected learning/knowledge/engineering bodies, detailed in the companion report |",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-068",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| contracts | 205 | Namespace/interface inventory; selected NSAI knowledge/formula schema portions inspected |",
+    "card_ids": [
+      "NSAI-057",
+      "NSAI-058",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-069",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| providers | 1,254 | Architecture directory/interface screening; provider definitions/history not executed or treated as validated capabilities |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-070",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| registry | 557 | Metadata grouped by skills/packages/planning/graphs/authority surfaces; registry records not imported |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-071",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| orchestration | 544 | Workflow metadata; bodies and run history omitted from semantic review |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-052"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-072",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| extension | 303 | 81 source files present; selected JS authority/provider-policy/trace bodies and UI action interfaces inspected; third-party node_modules omitted |",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-073",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| builders | 11 | AST definitions; common, skill, semantic-index and orchestration portions reviewed |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-052",
+      "NSAI-087"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-074",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| policies | 33 | Policy metadata; operation-authority and learning-promotion policy portions reviewed |",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-075",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| knowledge | 76 | Metadata only; NSAI knowledge payloads deliberately not opened or copied |",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-076",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| bootstrap | 22 | Profiles/commissioning/interface metadata; no commissioning activation |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-077",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| tests | 538 | Metadata only in this broad pass; existing upstream success claims not independently verified |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-078",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| scripts | 175 | Metadata only; release/certification/host mutation tooling not executed |",
+    "card_ids": [
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-079",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| docs / evidence / templates | 165 / 520 / 52 | Metadata only; no upstream evidence adopted as proof of current NSAI behavior |",
+    "card_ids": [
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-080",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| `contracts/nsai/knowledge-object.schema.json:8`, `:137`, `:184` | Explicit object identity, semantics/applicability, attributed claims, source extraction provenance and no granted authority | A future compatibility bridge should preserve candidate review state and actual source hashes. Reject unknown fields, missing provenance, invalid IDs and unverified authority. Existing local candidate helper is not full schema compatibility |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-081",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| `contracts/nsai/formula-object.schema.json:8`, `:66` | Preserve verbatim and normalized expression, declared variables/units/dimensions, assumptions and applicability | Relevant to formula OCR only as a candidate record contract. OCR text must not become executable code or a reviewed formula. Test symbol/offset preservation, dimensional consistency, ambiguous notation and unsupported formulas |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-057",
+      "NSAI-058",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-082",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| `builders/common.py:79`, `:102`, `:133` | Bounded collections, recursive redaction and candidate-only proposal envelopes | Independently define a narrow proposal schema with immutable source/evidence references. Audit secret redaction and finite serialization; proposal creation grants no authority |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-083",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| `builders/skill_builder.py:19`, `:38` | A skill proposal declares I/O, effects, source references, tests and evidence, and explains the registry gap | Generalize nonexecutable reusable procedure proposals only after local evidence quality is stable. Require exact feature-gap proof, positive/negative fixtures and independent review; no automatic activation |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-084",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| `builders/orchestration_builder.py:26`, `:35`, `:59`, `:74` | Declarative workflow DAG, capability dependencies, bounded tool/time/agent budgets and explicit stop conditions | If PDF/OCR needs jobs, start with one bounded owned worker and cancellation/restart receipts. Test cycle/unknown dependency rejection, budget exhaustion, stale capability receipts and cleanup. Avoid bringing the full workflow ecosystem into the API |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-052"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-085",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| `builders/semantic_index_builder.py:14` | Index building is a separate lifecycle operation | NSAI needs independent candidate index source/model identity, validation, activation and rollback before hybrid retrieval. This upstream entry point writes a registry artifact; it was not run and is not a reusable no-effect import |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-087"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-086",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| `policies/operation-authority-boundary.json:3`, `extension/src/operationAuthority.js:10` | Observation, governance, host authority and execution ownership remain separate; overlapping executors denied | A UI status or model output cannot authorize an action. Current generated execution remains disabled. Test unknown effects/owners, forged grants and stale revisions if future execution is added |",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-087",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| `policies/learning-promotion.json:3` | Learning candidates progress through separate evidence gates and retain rollback/history | Use the companion governed-learning plan. Independently select trial counts and quality gates for the actual corpus; do not inherit policy constants as validated performance thresholds |",
+    "card_ids": [
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-088",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| `extension/src/providerExecutionPolicy.js:29`, `:35` | Bind provider call to plan/model/authority/egress/budget identity; preserve fallback privacy constraints | Useful later gateway requirements, with active local endpoint allowlist/budget first. Require actual policy identity and actual runtime enforcement, not a self-consistent caller hash. Test fallback cannot silently weaken local-only scope |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-089",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| `extension/src/workflowTraceProjection.js:29`, `:46`, `:65` | UI traces need stable workflow/version/run identity and bounded failure context; mismatched receipts must not merge | Apply independently to NSAI source/claim/session/evaluation trace panels. Test stale run suppression, missing source revisions, identity conflicts, cancellation and safe rendering |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-090",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| `extension/src/uiActionInventory.js:203` (interface screening) | User actions can be cataloged by effect and owner | Add route/UI-action-to-permission/test/evidence mapping to the audit registry. Count active/staged/unsupported actions separately; test role transitions and no background stale-session mutation |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-091",
+    "source": "docs/audit/REFERENCE_PX_BROAD.md",
+    "reference_row": "| Providers/registry/contracts directory interfaces (metadata only) | Capability catalogs, maturity, validation and authority should be explicit | NSAI can adopt a small original capability registry. Registry presence is not feature implementation, runtime support, security proof or empirical quality |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-092",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| model-agnostic/knowledge-memory | 19,101 | 271 | Memory contracts and reference tooling; large corporate knowledge payload excluded from content review |",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-093",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| model-agnostic/diagnostics-core | 841 | 335 | Deterministic flows, authoring/validation, calculations and exact-reference execution; product rules/data excluded |",
+    "card_ids": [
+      "NSAI-057",
+      "NSAI-058",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-094",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| model-agnostic/enterprise-intelligence-core | 151 | 303 | Generic metrics, continuity, governance, cost, feedback and orchestration; selected bodies reviewed |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-073",
+      "NSAI-044",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-063",
+      "NSAI-052",
+      "NSAI-060"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-095",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| model-agnostic/model-runtime | 218 | 206 | Inference providers, admission and budget interfaces; cost governor portions reviewed |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-096",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| integrations/transcript-analytics | 582 | 737 | Canonical interfaces; focused source package and its legacy inventory covered separately |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-097",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| integrations/live-media-stt | 177 | 145 | Live media/STT integration contracts and accuracy/cost evaluation interfaces; no audio/customer streams read |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-098",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| integrations/voice-provider-edge | 15 | 41 | Provider adapter surface; optional, untested |",
+    "card_ids": [
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-099",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| microsoft/dynamics-control-plane | 268 | 238 | Admin/lifecycle/audit/CRM coordination; interface screening only |",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-100",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| microsoft/enterprise-edge | 137 | 167 | Thin adapters, task/cost ledger contracts, business scenario calculator |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-101",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| microsoft/operational-runtime | 154 | 366 | Deployment, event integration and observability interfaces; platform-specific, untested |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-102",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| microsoft/conversation-governance-overlay | 117 | 281 | Evidence/policy staging and distribution validation; instruction/interface screening only |",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-103",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| experience/contractor-mobile | 5 | 4 | Optional mobile experience; no current need |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-104",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| experience/diagnostics-experience | 14 | 39 | Product UI adapter interfaces; no design assets copied |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-105",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| experience/dynamics-diagnostics | 8 | 0 | Integration assets, not Python interfaces |",
+    "card_ids": [
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-106",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| experience/script-execution | 19 | 46 | Registered approved artifacts, bounded execution broker, deployment boundary |",
+    "card_ids": [
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-107",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| compatibility/automated-hybrid | 72 | 240 | Compatibility/reference adapter tooling; not a recommended runtime dependency |",
+    "card_ids": [
+      "NSAI-084",
+      "NSAI-083",
+      "NSAI-087"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-108",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `metrics.py:11`, `:42`, `:74` (bodies) | Traceable benchmark and quality metrics rather than undocumented percentages | Version metric owner, cohort, numerator, denominator, exclusions, time window and freshness; join outcomes to actual eligible units rather than count arbitrary events | Zero-denominator behavior; duplicate/missing events; timezone and stale receipts; reproducible per-case lineage |",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-109",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `costing.py:14`, `:40`; `microsoft/enterprise-edge/tools/calculate_business_case.py:13` (bodies) | Budget allocation and business scenario analysis | Independently model fixed/variable/resource costs. Separate hypothetical capacity from realized savings; local CPU accounting needs no cloud pricing | Finite/nonnegative values, currency/pricing revision, measured resource ledger, verified outcome denominator, sensitivity ranges and explicit assumptions |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-061",
+      "NSAI-075",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-110",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `wfm.py:39`, `:54`, `:62`, `:68` (bodies) | Operational utilization and throughput definitions | Generalize task service time, queue latency and resource utilization. Avoid importing call-center KPI labels where NSAI has no contact population | Cohort reconciliation, no duplicate task IDs, latency percentiles, queue depth, errors and sample counts; no financial booking based on a boolean alone |",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-111",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `case_continuity.py:28`, `repeat_contact.py:16`, `:36`, `:73` (bodies) | Distinguish continued questions, recurring issues and a new task | Optional project/task continuity with source-bound entity and intent identity, explicit unknowns and user confirmation; do not infer customer identity | Synthetic ambiguity/recurrence/continuation fixtures, linkage precision/recall, false association rate, owner isolation |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-073",
+      "NSAI-044"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-112",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `session_context.py:52`, `:89`, `:102`, `:121` (contract/first transition bodies; later interfaces) | Safe contextual object switching and durable task handoff | Explicit active/pending/closed states, revision checks and checkpoint receipt for document/project switch; preserve source context | Stale transition denial, old-context response suppression, pending-switch confirmation, crash recovery and actor ownership |",
+    "card_ids": [
+      "NSAI-073",
+      "NSAI-044",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-113",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `quality_signals.py:8`, `gaps.py:23`, `:66` (quality body, gap interfaces) | Evidence-backed correction queue instead of free-form feedback loss | Emit bounded reasons tied to response/source/claim IDs; dedupe by scoped source revision; unknown cause remains unknown | Duplicate feedback idempotency, no unsupported causal claim, finite confidence, correction before/after receipts |",
+    "card_ids": [
+      "NSAI-063",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-114",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `language_quality.py:41` (interface) | Separate OCR, transcript and semantic error types | Original error taxonomy by parser/language/source form; no corporate vocabulary or error corpus | Character/word error counts, exact citation support, human labels, held-out samples and per-domain counts |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-115",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `routing.py:27`, `:47` (bodies); `exact_knowledge.py:29` (body) | Use deterministic source lookup before spending model work | Direct approved-fact/source response can be model-free; label source assertions and review status. Verify actual source content hash and ownership, not a caller assertion | Exact hash/reference round trip; unknown ID denied; stale/missing source fails closed; equivalent output and measured latency savings |",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-116",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `evidence_policy.py:48` (body) | Source-scoped evidence filtering and applicability | Current single-project scope remains explicit. Future document grants must be applied before retrieval and rechecked before display/generation | Cross-owner/source deny fixtures, high-impact abstention, removed-grant race, no unauthorized IDs in results |",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-117",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `governance.py:36` (body) | Admin controls separated by risk and privilege | Independently define operational versus approval-requiring changes; inspect actual authenticated approval record and old/new revision; central security remains disabled | Forged/stale/self approval denial, tenant mismatch if implemented, role matrix, rollback record |",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-118",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `assurance.py:35`, `:63` (bodies) | Measured degradation and prioritization of experiments | Compare quality/resource/latency baselines using defined sample-size and drift metrics; recommendations never alter runtime policy autonomously | Distribution-aware drift tests, nonfinite values rejected, insufficient samples labeled, metric/source revisions verified |",
+    "card_ids": [
+      "NSAI-072",
+      "NSAI-049",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-119",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `orchestration.py:8`, `:28` (interfaces) | Bounded queued jobs with lease and cancellation | Only if asynchronous PDF/OCR requires it: task ownership, expiration, retry idempotency, no restart duplication | Lease-expiry/restart/cancel tests, bounded queue and memory, retry receipts, no duplicate persistent source records |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-052",
+      "NSAI-060"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-120",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `memory.py:86`, `:169`, `:191` (interfaces) | Explicit lifecycle and authority for memory records | Extend existing projection with typed epistemic state and revision validity, not a parallel memory stack | Candidate/approved/disputed separation, source invalidation and context budgets, serialization size/token measurements |",
+    "card_ids": [
+      "NSAI-074",
+      "NSAI-016",
+      "NSAI-015",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-121",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `model-agnostic/diagnostics-core/runtime/flow_authoring.py:94`, `:116` (bodies) | Safe ingestion of structured candidate procedures | Strict JSON duplicate-key/depth/size validation, explicit adapter matching, content-bound validation receipt; no product-specific flow assets | Adversarial malformed/deep/duplicate-key/ambiguous format fixtures; no executable payload admitted; immutable revision |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-122",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `experience/script-execution/broker/registry.py:50`, `service.py:43` (interfaces), `production_boundary.py:13` (body) | Future approved artifact registry and bounded runner contracts | Execution stays disabled. A future Linux sandbox must verify real OS/network/runtime containment; no reliance on environment booleans or Python monkeypatch guards | Actual kernel/container denial tests, unforgeable current admission, digest match, time/resource limits, custody/cleanup recovery |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-123",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `microsoft/dynamics-control-plane/tests/test_audit_export.py:54` (interface/test-name inspection) | Reconstructable redacted audit exports | Independently authored CSV/JSON export with strict field allowlist and formula-injection neutralization; current evidence view is enough until requested | Synthetic redaction, CSV formula strings, missing before/after refs, independent chain validation; no raw secrets/customer data exported |",
+    "card_ids": [
+      "NSAI-057",
+      "NSAI-058",
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-124",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| `integrations/live-media-stt/.../scripts/benchmark_text_accuracy.py` and package validators (interface inventory) | Optional later speech/transcript ingestion evaluation | No voice feature needed for local foundation; evaluate only original synthetic/authorized audio if separately requested | WER/CER, timestamp/speaker alignment, privacy/retention, latency and bounded failure behavior; no provider activation now |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038",
+      "NSAI-046",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-125",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| Original requirement | Current audit comparison | Plan position |",
+    "card_ids": [
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-126",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| Runtime health/auth/reproducibility, provenance, conflict demo, restarts | Implemented local baseline with recorded checks; adversarial and performance audit is fresh separate work | Repair validated local gaps first; avoid asserting full readiness from old receipts |",
+    "card_ids": [
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-127",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| Canonical PX-compatible knowledge/formula schemas and migration bridge | Strict helper contracts exist; full PX object compatibility and evidence-to-object migration remain unintegrated | After evidence semantics stabilize, specify original contract compatibility tests; formulas optional and nonexecutable |",
+    "card_ids": [
+      "NSAI-057",
+      "NSAI-058",
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-128",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| PDF/TXT/MD original bytes, hashes, page locators | Bounded parser implemented; general visual PDF workspace/OCR not carried over | Current explicit user request elevates independent PDF viewer/OCR design; do not advertise it as already active |",
+    "card_ids": [
+      "NSAI-051",
+      "NSAI-053",
+      "NSAI-054",
+      "NSAI-055"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-129",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| Token-bounded semantic chunks, embedding identity, hybrid retrieval | Line chunks and lexical retrieval active; fusion/helper envelopes do not make hybrid retrieval active | Define corpus and baseline before semantic retrieval; token limits and index/source identity required |",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-087"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-130",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| Candidate index validation, activation and rollback | No active versioned semantic index lifecycle | Separate proposed index lifecycle from reviewed knowledge and executable skill authority; benchmark and rollback before activation |",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-087"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-131",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| Duplicate/novel/variant/conflict review and exact old/new hashes | Exact conflicts/reviews implemented; wider refinery and semantic normalization incomplete | Foundation conflict consistency and equivalent units first, then candidate-only broader refinery |",
+    "card_ids": [
+      "NSAI-069",
+      "NSAI-070",
+      "NSAI-038"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-132",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| Temporal memory and historical validity | Bounded working/canon/reflection projection exists; bitemporal queries and dependency invalidation not full implementations | Design explicit valid/observed-time semantics only when needed; keep current limitation visible |",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-088"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-133",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| Signed evidence/independent authority | Digest chain/reviewer roles exist; external signed anchor and production identity absent | Do not label local chain a signed PX trust system; independent source-bound evidence planning |",
+    "card_ids": [
+      "NSAI-064",
+      "NSAI-065",
+      "NSAI-066",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078",
+      "NSAI-089"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-134",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| Skill descriptors and Linux sandbox | Execution disabled; helper contract is not executor | Keep disabled; candidate nonexecutable plans only, genuine containment required before future activation |",
+    "card_ids": [
+      "NSAI-047",
+      "NSAI-084"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-135",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| Tenant/document visibility, OIDC/TLS/cloud defenses | Local single-project role tokens; no production tenant isolation or OIDC | Do not claim corporate production security; plan scoped identity independently, no central activation |",
+    "card_ids": [
+      "NSAI-084",
+      "NSAI-083"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-136",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| AMD host and optional Evolus/partner workflow | Deferred per latest user instruction | No activation or provider work in this audit; later separate environment validation |",
+    "card_ids": [
+      "NSAI-062",
+      "NSAI-047",
+      "NSAI-060",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  },
+  {
+    "id": "ADOPT-137",
+    "source": "docs/audit/REFERENCE_DVA_BROAD.md",
+    "reference_row": "| Corrupt/oversize/path traversal, prompt injection, stale citations, recovery | Existing tests cover portions; full edge coverage must be mapped to the current audit | Track each obligation to fresh case/output; unsupported paths remain explicit rather than mark all starter obligations passed |",
+    "card_ids": [
+      "NSAI-036",
+      "NSAI-040",
+      "NSAI-050",
+      "NSAI-067",
+      "NSAI-001",
+      "NSAI-078"
+    ],
+    "decision": "INDEPENDENT_SPECIFICATION_ONLY; metadata-only/module rows are screening scope, not validated functionality; optional and deferred card boundaries apply",
+    "approval_required_before_source_copy": "Source copying is prohibited; architecture-only implementation and original fixtures."
+  }
+]

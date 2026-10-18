@@ -1,0 +1,25 @@
+[Unit]
+Description=Noetaris qualified OCI deployment
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/opt/noetaris/current
+EnvironmentFile=/etc/noetaris/deployment.env
+Environment=DOCKER_CONFIG=/etc/noetaris/docker
+ExecStartPre=/opt/noetaris/current/.venv/bin/python /opt/noetaris/current/scripts/check_release_readiness.py
+ExecStartPre=/opt/noetaris/current/.venv/bin/python /opt/noetaris/current/scripts/check_oci_profile.py --env-file /etc/noetaris/deployment.env --with-oauth
+ExecStart=/usr/bin/docker compose --project-name noetaris-oci --env-file /etc/noetaris/deployment.env -f deploy/oci/compose.yaml -f deploy/oci/compose.oauth-google.yaml -f deploy/oci/compose.oauth-github.yaml up --detach --wait
+ExecStop=/usr/bin/docker compose --project-name noetaris-oci --env-file /etc/noetaris/deployment.env -f deploy/oci/compose.yaml -f deploy/oci/compose.oauth-google.yaml -f deploy/oci/compose.oauth-github.yaml stop
+TimeoutStartSec=300
+TimeoutStopSec=120
+NoNewPrivileges=true
+ProtectHome=true
+PrivateTmp=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

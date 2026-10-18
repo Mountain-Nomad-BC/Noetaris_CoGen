@@ -1,0 +1,11 @@
+# Layer after compose.oauth.yaml. Never put real client credentials in YAML.
+services:
+  api:
+    environment:
+      NSAI_OAUTH_GITHUB_ENABLED: "true"
+      NSAI_OAUTH_GITHUB_CLIENT_ID: ${NSAI_OAUTH_GITHUB_CLIENT_ID:?Registered GitHub client ID required}
+      NSAI_OAUTH_GITHUB_CLIENT_SECRET_FILE: /run/secrets/oauth_github_client_secret
+    secrets: [oauth_github_client_secret]
+secrets:
+  oauth_github_client_secret:
+    file: ${NSAI_OAUTH_GITHUB_SECRET_PATH:-./secrets/oauth_github_client_secret.txt}

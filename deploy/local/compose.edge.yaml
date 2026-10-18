@@ -1,0 +1,43 @@
+# Local operational candidate. Cloud Run terminates public TLS separately.
+services:
+  api:
+    ports: !reset []
+    networks: [edge_net]
+  edge:
+    image: nginx@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+    init: true
+    restart: unless-stopped
+    user: "101:101"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    cpus: 0.5
+    mem_limit: 64m
+    pids_limit: 32
+    tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=16m,mode=1777"]
+    entrypoint: ["nginx"]
+    command: ["-c", "/etc/nginx/nsai.conf", "-g", "daemon off;"]
+    volumes:
+      - type: bind
+        source: ./deploy/nginx/nginx.conf
+        target: /etc/nginx/nsai.conf
+        read_only: true
+        bind:
+          create_host_path: false
+    ports: ["127.0.0.1:${NSAI_HOST_PORT:-8787}:8080"]
+    networks: [edge_net, edge_front_net]
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: json-file
+      options: {max-size: "5m", max-file: "3"}
+networks:
+  edge_net:
+    internal: true
+  edge_front_net: {}

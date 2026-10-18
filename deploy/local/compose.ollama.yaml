@@ -1,0 +1,49 @@
+# Local AI overlay: test the actual AI->API->UI path before AMD GPU deployment.
+# Execute from repository ROOT (see scripts/local-ai-start.ps1).
+# Ollama model API is reachable ONLY through the private Compose service network,
+# not published to the host. CPU by default; GPU override is optional.
+services:
+  api:
+    environment:
+      NSAI_MODEL_URL: http://ollama:11434/v1
+      NSAI_MODEL_NAME: ${NSAI_LOCAL_MODEL:-gemma3:1b}
+      NSAI_MODEL_PROVIDER: local-ollama
+    depends_on:
+      ollama:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+  ollama:
+    profiles: [local-ai]
+    image: ${NSAI_OLLAMA_IMAGE:-ollama/ollama:latest}
+    restart: unless-stopped
+    # Ollama image writes its cache as root by default. This service must not
+    # execute untrusted tools or handle production secrets.
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 256
+    cpus: 6.0
+    mem_limit: 10g
+    tmpfs: ["/tmp:rw,nosuid,nodev,size=128m,mode=1777"]
+    environment:
+      OLLAMA_HOST: 0.0.0.0:11434
+      OLLAMA_KEEP_ALIVE: 5m
+      OLLAMA_NUM_PARALLEL: "1"
+    volumes:
+      - ollama_models:/root/.ollama
+    expose: ["11434"]
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 15s
+      timeout: 15s
+      retries: 8
+      start_period: 30s
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
+    networks: [app_net]
+volumes:
+  ollama_models:

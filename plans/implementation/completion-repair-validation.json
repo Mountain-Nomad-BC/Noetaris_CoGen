@@ -1,0 +1,14 @@
+{
+  "status": "PASS_PLANNING_COVERAGE_ONLY",
+  "packages": 24,
+  "coverage": {
+    "original_cards": 89,
+    "original_criteria": 301,
+    "checklist_requirements": 209,
+    "research_cards": 9,
+    "functions": 507
+  },
+  "dependency_cycles": 0,
+  "plan_sha256": "43c3c5fe0a703a3d833949a24eab68b58467c3a9dedf6c32ddb645f1893a7895",
+  "release_approved": false
+}

@@ -1,0 +1,13 @@
+{
+  "project_id": "replace-project-id",
+  "zone": "us-central1-a",
+  "images": {
+    "api": "us-central1-docker.pkg.dev/replace-project-id/noetaris/api@sha256:REPLACE_WITH_REGISTRY_DIGEST",
+    "ui": "us-central1-docker.pkg.dev/replace-project-id/noetaris/ui@sha256:REPLACE_WITH_REGISTRY_DIGEST",
+    "db": "us-central1-docker.pkg.dev/replace-project-id/noetaris/db@sha256:REPLACE_WITH_REGISTRY_DIGEST",
+    "encoder": "us-central1-docker.pkg.dev/replace-project-id/noetaris/encoder@sha256:REPLACE_WITH_REGISTRY_DIGEST",
+    "model": "us-central1-docker.pkg.dev/replace-project-id/noetaris/model@sha256:REPLACE_WITH_REGISTRY_DIGEST"
+  },
+  "model_file": "/srv/noetaris/models/gemma/model.gguf",
+  "encoder_directory": "/srv/noetaris/models/minilm"
+}

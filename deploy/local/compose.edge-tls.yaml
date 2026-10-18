@@ -1,0 +1,17 @@
+# Layer after compose.edge.yaml. Requires a supplied certificate/key for localhost.
+services:
+  edge:
+    ports: !override ["127.0.0.1:${NSAI_TLS_HOST_PORT:-8443}:8443"]
+    volumes:
+      - type: bind
+        source: ./deploy/nginx/local-tls.conf
+        target: /etc/nginx/nsai-optional/local-tls.conf
+        read_only: true
+        bind:
+          create_host_path: false
+    secrets: [local_tls_certificate,local_tls_private_key]
+secrets:
+  local_tls_certificate:
+    file: ${NSAI_TLS_CERT_PATH:-./secrets/local_tls_certificate.pem}
+  local_tls_private_key:
+    file: ${NSAI_TLS_KEY_PATH:-./secrets/local_tls_private_key.pem}

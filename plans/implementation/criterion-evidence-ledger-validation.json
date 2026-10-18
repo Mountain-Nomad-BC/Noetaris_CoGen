@@ -1,0 +1,25 @@
+{
+  "status": "PASS_MAPPING_ONLY",
+  "product_certified": false,
+  "release_approved": false,
+  "input_sha256": {
+    "plans/implementation/end-to-end-completion-plan.json": "f9add292d478a6d5cb4ace7ab370b8d92d9ccf24d4d04a8f4d9f26975cac7076",
+    "plans/implementation/backlog.json": "e90209a70de6b9569184aaa10c885975e36df7cc9868ca47159f1943693c83ed",
+    "plans/implementation/release-validation-extension.json": "5b961ed711088912c2920213185abe6ff9307953e5f0ae5902050d20c7b3ef1e",
+    "plans/implementation/research-workspace-integration-plan.json": "b54f0865274be2dc1f5f2008383512535d23d23d58d26b08e6c088fbde2a33dd",
+    "docs/implementation/REFERENCE_RESEARCH_EXTENSION.md": "9078da7d07843e09e6f7bb6c2f26fa65688af6bb808978d0124fa75abd7ff1a6",
+    "plans/implementation/L_PRIVATE_DOCUMENT_AUTHORIZATION.md": "e4733711e313e31ed58cbb24e71a61a36907f8d6dccee3dfe355d6c9e5e86429"
+  },
+  "counts": {
+    "authorization-card": 8,
+    "original-criterion": 301,
+    "release-checklist": 209,
+    "research-card": 9,
+    "ui-card": 10
+  },
+  "total_rows": 537,
+  "unassigned_reviewers": 537,
+  "rows_with_evidence": 16,
+  "ledger_sha256": "296d60b6ba487e828008554b6b38cf73cba955aeeedd453c69ddacc1dbcbc9c1",
+  "limitation": "Complete obligation inventory only; empty implementation/test/evidence assignments remain open. Existing review state is never reset. No criterion is accepted by this generator."
+}

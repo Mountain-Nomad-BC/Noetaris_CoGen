@@ -1,0 +1,49 @@
+# Optional candidate overlay; never launch against live resources before release admission.
+services:
+  api:
+    environment:
+      NSAI_RATE_LIMIT_BACKEND: redis
+      NSAI_OPERATION_COORDINATION: "true"
+      NSAI_REDIS_URL: redis://redis:6379
+      NSAI_REDIS_PASSWORD_FILE: /run/secrets/redis_password
+    secrets: [redis_password]
+    networks: [coordination_net]
+    depends_on:
+      redis:
+        condition: service_healthy
+  redis:
+    image: redis@sha256:3811787313eba226a2ef38658c6ccb91cd5e110edc89c37767de373120a0e5a0
+    init: true
+    restart: unless-stopped
+    user: "999:999"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 32
+    cpus: 0.5
+    mem_limit: 128m
+    tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=8m,mode=1777"]
+    entrypoint: ["/bin/sh", "/run/nsai/start.sh"]
+    volumes:
+      - type: bind
+        source: ./deploy/redis/start.sh
+        target: /run/nsai/start.sh
+        read_only: true
+        bind:
+          create_host_path: false
+    secrets: [redis_password]
+    networks: [coordination_net]
+    healthcheck:
+      test: ["CMD-SHELL", "REDISCLI_AUTH=$$(cat /run/secrets/redis_password) redis-cli ping | grep -qx PONG"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    logging:
+      driver: json-file
+      options: {max-size: "5m", max-file: "3"}
+networks:
+  coordination_net:
+    internal: true
+secrets:
+  redis_password:
+    file: ./secrets/redis_password.txt

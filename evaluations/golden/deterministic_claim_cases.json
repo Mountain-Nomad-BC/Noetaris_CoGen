@@ -1,0 +1,11 @@
+{
+  "fixture_version": "1.0",
+  "description": "Fixture for the narrow starter line-based extractor, not a benchmark of full TurnBurn or AMD LLM inference.",
+  "cases": [
+    {"id":"C001","filename":"vendor-manual-r1.txt","expected_values":["85C"],"expected_locators":["line:5"]},
+    {"id":"C002","filename":"vendor-manual-r2.txt","expected_values":["75C"],"expected_locators":["line:5"]},
+    {"id":"C003","filename":"purchase-order.txt","expected_values":[],"expected_locators":[]},
+    {"id":"C004","filename":"malicious-document.txt","expected_values":["999C"],"expected_locators":["line:3"]}
+  ],
+  "pairwise_conflict_cases": [{"id":"K001","left":"C001","right":"C002","expected_conflict":true}]
+}

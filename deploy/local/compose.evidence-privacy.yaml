@@ -1,0 +1,11 @@
+{
+  "services": {
+    "api": {
+      "image": "sha256:2ffe38c418aa16260baeaa9b6f0469ce9e58e84fdff792f7784746bef824113d",
+      "pull_policy": "never",
+      "environment": {
+        "NSAI_MODEL_CONTEXT_TOKENS": "4096"
+      }
+    }
+  }
+}

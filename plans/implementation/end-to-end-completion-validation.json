@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "scope": "Planning inventory, inherited coverage and dependency graph only",
+  "product_certified": false,
+  "coverage_counts": {
+    "original_cards": 89,
+    "original_criteria": 301,
+    "checklist_requirements": 209,
+    "research_cards": 9,
+    "fin_packages": 24,
+    "ui_packages": 10,
+    "acl_packages": 8,
+    "execution_packages": 22
+  }
+}

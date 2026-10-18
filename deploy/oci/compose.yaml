@@ -1,0 +1,296 @@
+name: noetaris-oci
+services:
+  db:
+    image: ${NSAI_DB_IMAGE:?qualified ARM64 database registry digest required}
+    platform: linux/arm64
+    pull_policy: missing
+    init: true
+    restart: unless-stopped
+    user: 70:70
+    read_only: true
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 1024m
+    cpus: 1
+    tmpfs:
+    - /tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777
+    - /var/run/postgresql:rw,nosuid,nodev,size=8m,mode=1777
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: '3'
+    environment:
+      POSTGRES_USER: nsai
+      POSTGRES_DB: nsai
+      POSTGRES_PASSWORD_FILE: /run/secrets/db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    secrets:
+    - db
+    networks:
+    - data
+    volumes:
+    - data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+      - CMD
+      - pg_isready
+      - -h
+      - 127.0.0.1
+      - -U
+      - nsai
+      - -d
+      - nsai
+      interval: 10s
+      timeout: 3s
+      retries: 15
+  parser:
+    image: ${NSAI_API_IMAGE:?qualified ARM64 parser registry digest required}
+    platform: linux/arm64
+    pull_policy: missing
+    init: true
+    restart: unless-stopped
+    user: 10001:10001
+    read_only: true
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 384m
+    cpus: 0.5
+    tmpfs:
+    - /tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: '3'
+    command:
+    - uvicorn
+    - nsai.parser:app
+    - --host
+    - 0.0.0.0
+    - --port
+    - '8788'
+    - --no-access-log
+    environment:
+      NSAI_PARSER_TOKEN_FILE: /run/secrets/parser
+    secrets:
+    - parser
+    networks:
+    - parser
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import urllib.request;urllib.request.urlopen('http://127.0.0.1:8788/healthz',timeout=3)
+      interval: 10s
+      timeout: 4s
+      retries: 12
+      start_period: 30s
+  encoder:
+    image: ${NSAI_ENCODER_IMAGE:?qualified ARM64 encoder registry digest required}
+    platform: linux/arm64
+    pull_policy: missing
+    init: true
+    restart: unless-stopped
+    user: 10001:10001
+    read_only: true
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 768m
+    cpus: 1
+    tmpfs:
+    - /tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: '3'
+    environment:
+      NSAI_ENCODER_TOKEN_FILE: /run/secrets/encoder
+      NSAI_ENCODER_MODEL_DIR: /models
+    secrets:
+    - encoder
+    networks:
+    - encoder
+    volumes:
+    - type: bind
+      source: /srv/noetaris/models/minilm
+      target: /models
+      read_only: true
+      bind:
+        create_host_path: false
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import urllib.request;urllib.request.urlopen('http://127.0.0.1:8092/healthz',timeout=3)
+      interval: 10s
+      timeout: 4s
+      retries: 12
+      start_period: 30s
+  api:
+    image: ${NSAI_API_IMAGE:?qualified ARM64 API registry digest required}
+    platform: linux/arm64
+    pull_policy: missing
+    init: true
+    restart: unless-stopped
+    user: 10001:10001
+    read_only: true
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 768m
+    cpus: 1
+    tmpfs:
+    - /tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: '3'
+    environment:
+      NSAI_DB_HOST: db
+      NSAI_DB_NAME: nsai
+      NSAI_DB_USER: nsai_app
+      NSAI_DB_PASSWORD_FILE: /run/secrets/app_db
+      NSAI_PUBLIC_ORIGIN: ${NSAI_PUBLIC_ORIGIN:?owned HTTPS API origin required}
+      NSAI_FRONTEND_ORIGIN: ${NSAI_FRONTEND_ORIGIN:?owned HTTPS frontend origin required}
+      NSAI_DEPLOYMENT_SITE: ${NSAI_DEPLOYMENT_SITE:?owned same-site domain required}
+      NSAI_OAUTH_COOKIE_SECRET_FILE: /run/secrets/oauth_cookie
+      NSAI_OAUTH_GOOGLE_ENABLED: 'false'
+      NSAI_OAUTH_GITHUB_ENABLED: 'false'
+      NSAI_PARSER_URL: http://parser:8788
+      NSAI_PARSER_TOKEN_FILE: /run/secrets/parser
+      NSAI_ENCODER_URL: http://encoder:8092
+      NSAI_ENCODER_TOKEN_FILE: /run/secrets/encoder
+      NSAI_INDEX_WORKER_ENABLED: 'true'
+      NSAI_INDEX_CONCURRENCY: '1'
+      NSAI_CENTRAL_SECURITY_ENABLED: 'false'
+      NSAI_OPERATION_COORDINATION: 'true'
+    secrets:
+    - app_db
+    - oauth_cookie
+    - parser
+    - encoder
+    networks:
+    - data
+    - parser
+    - encoder
+    - edge
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import urllib.request;urllib.request.urlopen('http://127.0.0.1:8787/readyz',timeout=3)
+      interval: 10s
+      timeout: 4s
+      retries: 12
+      start_period: 30s
+    depends_on:
+      db:
+        condition: service_healthy
+      parser:
+        condition: service_healthy
+      encoder:
+        condition: service_healthy
+  edge:
+    image: ${NSAI_EDGE_IMAGE:?qualified ARM64 nginx registry digest required}
+    platform: linux/arm64
+    pull_policy: missing
+    init: true
+    restart: unless-stopped
+    user: 101:101
+    read_only: true
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 128m
+    cpus: 0.25
+    tmpfs:
+    - /tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: '3'
+    entrypoint:
+    - nginx
+    command:
+    - -c
+    - /etc/nginx/noetaris.conf
+    - -g
+    - daemon off;
+    ports:
+    - 443:8443
+    networks:
+    - front
+    - edge
+    secrets:
+    - tls_certificate
+    - tls_private_key
+    volumes:
+    - type: bind
+      source: ./nginx.conf
+      target: /etc/nginx/noetaris.conf
+      read_only: true
+      bind:
+        create_host_path: false
+    healthcheck:
+      test:
+      - CMD
+      - nginx
+      - -t
+      - -c
+      - /etc/nginx/noetaris.conf
+      interval: 10s
+      timeout: 4s
+      retries: 12
+    depends_on:
+      api:
+        condition: service_healthy
+secrets:
+  db:
+    file: /etc/noetaris/secrets/db
+  app_db:
+    file: /etc/noetaris/secrets/app_db
+  oauth_cookie:
+    file: /etc/noetaris/secrets/oauth_cookie
+  parser:
+    file: /etc/noetaris/secrets/parser
+  encoder:
+    file: /etc/noetaris/secrets/encoder
+  tls_certificate:
+    file: /etc/noetaris/secrets/tls_certificate
+  tls_private_key:
+    file: /etc/noetaris/secrets/tls_private_key
+volumes:
+  data:
+    labels:
+      nsai.scope: owned-oci-production
+networks:
+  data:
+    internal: true
+  parser:
+    internal: true
+  encoder:
+    internal: true
+  edge:
+    internal: true
+  front:
+    internal: false

@@ -1,0 +1,49 @@
+# CPU-only local profile; existing GGUF is a single-file readonly mount, never bundled.
+services:
+  api:
+    secrets: [model_token]
+    networks: [data_net, app_net, parser_net, model_net]
+    environment:
+      NSAI_MODEL_URL: http://llama-cpp:8080/v1
+      NSAI_MODEL_NAME: nsai-local-gemma
+      NSAI_MODEL_PROVIDER: local-llamacpp-cpu
+      NSAI_MODEL_ANSWER_STRATEGY: source-selection
+      NSAI_MODEL_API_KEY_FILE: /run/secrets/model_token
+      NSAI_MODEL_CONTEXT_TOKENS: "8192"
+    depends_on:
+      llama-cpp:
+        condition: service_healthy
+  llama-cpp:
+    image: ${NSAI_LLAMA_IMAGE:-ghcr.io/ggml-org/llama.cpp:server@sha256:89f180f16f295ee496fe00924ec2118cae2efec519d1a82c605420af09d2a6df}
+    init: true
+    restart: unless-stopped
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    cpus: 6.0
+    mem_limit: 8g
+    tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777"]
+    command: ["-m", "/models/model.gguf", "--alias", "nsai-local-gemma", "--host", "0.0.0.0", "--port", "8080", "--ctx-size", "8192", "--parallel", "1", "--threads", "6", "--n-gpu-layers", "0", "--no-ui", "--no-agent", "--no-slots", "--cors-origins", "http://127.0.0.1:8787", "--no-cors-credentials", "--api-key-file", "/run/secrets/model_token", "--timeout", "120"]
+    volumes:
+      - type: bind
+        source: ${NSAI_GGUF_PATH:?Set NSAI_GGUF_PATH to a validated local GGUF file}
+        target: /models/model.gguf
+        read_only: true
+        bind:
+          create_host_path: false
+    networks: [model_net]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8080/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    logging:
+      driver: json-file
+      options: {max-size: "5m", max-file: "3"}
+    secrets: [model_token]
+networks:
+  model_net:
+    internal: true

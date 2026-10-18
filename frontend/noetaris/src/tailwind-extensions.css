@@ -1,0 +1,2 @@
+/* Build-time utilities for any new UI work; prevents frozen class list drift. */
+@tailwind utilities;

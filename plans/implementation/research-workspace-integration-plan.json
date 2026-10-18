@@ -1,0 +1,130 @@
+{
+  "version": 3,
+  "plan_sha256": "9b6bb281822e235215fb9648de34efdb483543db647dea9b1cdae27da90d5454",
+  "release_approved": false,
+  "production_modified": false,
+  "decisions_pending": [],
+  "cards": [
+    {
+      "id": "UI-01",
+      "title": "UI-01 Scope and history",
+      "existing_work": "FIN-04/05/19; REF-04/08",
+      "scope_and_acceptance": "Replace implicit PDF/page scope in `assets/app.js`; add explicit controls and API scope validation in `src/nsai/api.py`. Opening a citation cannot alter question scope; cross-user, deleted and replaced documents remain denied. Default library scope implemented; authorization integration remains open.",
+      "status": "PARTIAL_IMPLEMENTATION"
+    },
+    {
+      "id": "UI-02",
+      "title": "UI-02 Anchor contract",
+      "existing_work": "FIN-08/13/14/19; REF-07/08",
+      "scope_and_acceptance": "Extend persisted source/citation lineage with versioned selectors and reversible normalization. Original bytes and source spans remain immutable. Test Unicode, repeated phrases, columns, truncation and stale generations independently.",
+      "status": "PARTIAL_IMPLEMENTATION"
+    },
+    {
+      "id": "UI-03",
+      "title": "UI-03 Viewer positioning",
+      "existing_work": "FIN-13/19; REF-08/09",
+      "scope_and_acceptance": "Add pinned local text-layer assets, bounded matching, native DOM-range overlays and labeled OCR fallback. Bundle font data with provenance. Test zoom/rotation/DPR, keyboard navigation, cancellation and no false exact labels. Use labeled fallback; exact positioning still requires verification.",
+      "status": "PLANNED_NOT_ACCEPTED"
+    },
+    {
+      "id": "UI-04",
+      "title": "UI-04 Durable semantic jobs",
+      "existing_work": "FIN-07/10/18; REF-05/06",
+      "scope_and_acceptance": "Add migration, transactional enqueue/activation, bounded CPU worker and queue status. Test crashes, retry limits, duplicate upload, model mismatch, deletion, replacement, queue saturation and backup/restore. No global semantic activation before its own admission.",
+      "status": "PLANNED_NOT_ACCEPTED"
+    },
+    {
+      "id": "UI-05",
+      "title": "UI-05 Unified retrieval",
+      "existing_work": "FIN-04/05/11/17/18; REF-03/04",
+      "scope_and_acceptance": "Encode natural-language questions server-side; merge lexical/semantic candidates with explicit source scope. Prove no silent library truncation, no ACL leakage and stable lineage. Compare against lexical and semantic baselines on independent labels.",
+      "status": "PLANNED_NOT_ACCEPTED"
+    },
+    {
+      "id": "UI-06",
+      "title": "UI-06 Grounded answers",
+      "existing_work": "FIN-09/12/14/19",
+      "scope_and_acceptance": "Connect ordinary Ask to retrieval and schema-constrained explanation. Validate claim/source support, comparison attribution, no-evidence handling, conflicts and prompt injection. Retain honest partial extraction warnings. Use clarification or abstention when support is insufficient.",
+      "status": "PLANNED_NOT_ACCEPTED"
+    },
+    {
+      "id": "UI-07",
+      "title": "UI-07 Knowledge navigation",
+      "existing_work": "FIN-09/14/16/19; REF-01/02/07",
+      "scope_and_acceptance": "Expose structured passages, typed formula candidates, semantic neighborhoods, engineering issue flows and candidate-memory status without presenting similarity as entailment or promoting memory to canon. Test subject switches and cross-document comparisons.",
+      "status": "PLANNED_NOT_ACCEPTED"
+    },
+    {
+      "id": "UI-08",
+      "title": "UI-08 Workload admission",
+      "existing_work": "FIN-17/18; REF-05/06",
+      "scope_and_acceptance": "Establish chosen document/library limits across upload, parser, database, encoder, browser and retrieval. Measure cold/warm latency, p50/p95, peak RSS, CPU, queue delay, disk growth and idle residency; unknown cost stays unknown. Use the decided qualification tiers and upload gates below.",
+      "status": "PLANNED_NOT_ACCEPTED"
+    },
+    {
+      "id": "UI-09",
+      "title": "UI-09 End-to-end qualification",
+      "existing_work": "FIN-20/24; REF-03/08/09",
+      "scope_and_acceptance": "Run real browser upload through ready state, normal Ask, citation click, correct PDF passage, topic switch, comparison, logout and restart. Include native, scanned, rotated/cropped, mathematical, multilingual and repeated-text fixtures with independent truth labels.",
+      "status": "PLANNED_NOT_ACCEPTED"
+    },
+    {
+      "id": "UI-10",
+      "title": "UI-10 Controlled integration",
+      "existing_work": "FIN-01/02/03/07/21/22/23",
+      "scope_and_acceptance": "Bind evidence to the exact new image and schema, perform owned-stack migration/restore/restart checks, reconcile package risk and rights, obtain canonical scan and acceptance, then stage controlled CPU deployment with rollback. Deferred systems remain disabled.",
+      "status": "PLANNED_NOT_ACCEPTED"
+    }
+  ],
+  "validation": {
+    "unique_cards": 10,
+    "local_links_resolved": true,
+    "probe": "PASS_COMPATIBILITY_ONLY",
+    "probe_cases": 12,
+    "limitations": "Planning and synthetic compatibility only; no integrated workflow certification."
+  },
+  "capacity_decision": {
+    "demonstrated": false,
+    "p0": {
+      "pdfs": 100,
+      "pages": 5000,
+      "required_independent_verification": true
+    },
+    "p1": {
+      "pdfs": 1000,
+      "pages": 50000,
+      "release_target": true
+    },
+    "p2": {
+      "pdfs": 10000,
+      "pages": 500000,
+      "optional_stretch": true
+    },
+    "active_upload": {
+      "mib": 2,
+      "pages": 100
+    },
+    "standard_upload_target": {
+      "mib": 25,
+      "pages": 250,
+      "qualification_required": true
+    },
+    "large_upload_target": {
+      "mib": 100,
+      "pages": 1000,
+      "qualification_required": true
+    },
+    "concurrent_ingestion_target": 2,
+    "entire_authorized_indexed_library_searchable": true,
+    "incremental": true,
+    "content_hash_deduplication": true,
+    "no_partial_publication": true,
+    "runtime_limits_changed": false
+  },
+  "adopted_behavior_defaults": [
+    "authorized_library_scope",
+    "clarify_or_abstain",
+    "labeled_highlight_fallback"
+  ],
+  "document_access_decision": "uploader-private; explicit user/group sharing; explicitly authorized audited administrative access; complete derived-source authorization; central disabled"
+}

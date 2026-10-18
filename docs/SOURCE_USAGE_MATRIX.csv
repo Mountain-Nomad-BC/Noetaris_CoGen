@@ -1,0 +1,51 @@
+source,source_path,component,nsai_destination,decision,phase,risk,notes,present_in_archive
+REMY,4_admin_tooling/admin_frontend/src/ai/remy/RemyAssistant.tsx,Assistant UI,assets/ or apps/console UI,DESIGN_ONLY,P0,HIGH/IP,Recreate look and interaction from scratch; employer proprietary license bars copying without permission,YES
+REMY,4_admin_tooling/admin_frontend/src/ai/remy/RemyContext.tsx,Chat session orchestration,src/nsai/session/ + frontend state,DESIGN_ONLY,P1,HIGH/IP,"Huge code coupled to React Query, routing, identity, role workflows; design state contracts independently",YES
+REMY,4_admin_tooling/admin_frontend/src/ai/RemyInteraction.tsx,Interaction widget,apps/console/chat,DESIGN_ONLY,P1,HIGH/IP,Reference interaction patterns only,YES
+REMY,4_admin_tooling/admin_frontend/src/ai/remy/RemyMemoryTrace.tsx,Memory explanations UI,apps/console/memory,DESIGN_ONLY,P2,HIGH/IP,Design trace viewer around NSAI memory event IDs,YES
+REMY,4_admin_tooling/admin_frontend/src/ai/remy/RemySuggestionLayer.tsx,Suggestions,apps/console/suggestions,DESIGN_ONLY,P2,HIGH/IP,Optional after evidence chat,YES
+REMY,4_admin_tooling/admin_frontend/src/components/ai/SourceCitations.tsx,Citations widget,apps/console/evidence,DESIGN_ONLY,P0,HIGH/IP,Implement original clickable sources with exact source locator,YES
+REMY,4_admin_tooling/admin_frontend/src/components/ai/PDFWorkspace.tsx,Document viewer,apps/console/documents,DESIGN_ONLY,P2,HIGH/IP,Not required for first demo; reproduce generic viewer patterns with clean implementation,YES
+REMY,7_Remy/remy/turnburn/corpus_builder.py,TurnBurn corpus builder,src/nsai/ingest/build.py,REIMPLEMENT,P1,HIGH/IP,"Strong reference design; content hashing, semantic chunks, embeddings, graph creation; remove diagnostics source roots",YES
+REMY,7_Remy/remy/turnburn/manifest.py,Index manifest,src/nsai/ingest/manifest.py,REIMPLEMENT,P1,HIGH/IP,Preserve document ID/hash and index generation concept,YES
+REMY,7_Remy/remy/turnburn/corpus_validation.py,Retrieval validation,src/nsai/evaluations/retrieval.py,REIMPLEMENT,P1,HIGH/IP,"Golden query retrieval, failed case reporting",YES
+REMY,7_Remy/remy/turnburn/service.py,Index lifecycle,src/nsai/retrieval/index_lifecycle.py,REIMPLEMENT,P1,HIGH/IP,"Candidate stage, validate, promote and rollback separate from knowledge promotion",YES
+REMY,7_Remy/remy/turnburn/search.py,Hybrid search,src/nsai/retrieval/search.py,REIMPLEMENT,P1,HIGH/IP,"Mix lexical + semantic, provenance checks and score calibration",YES
+REMY,7_Remy/remy/turnburn/source_links.py,Source linking,src/nsai/evidence/sources.py,REIMPLEMENT,P0,HIGH/IP,URI/path sanitization and locators,YES
+REMY,7_Remy/remy/graph/service.py,Graph exploration,src/nsai/graph/query.py,REIMPLEMENT,P2,HIGH/IP,"Graph neighbors, paths and provenance visibility; decouple from RIE catalog",YES
+REMY,7_Remy/remy/knowledge/provenance.py,Knowledge provenance,src/nsai/evidence/provenance.py,REIMPLEMENT,P1,HIGH/IP,Conceptual pattern only; avoid referencing company records,YES
+REMY,7_Remy/remy/retrieval/controlled_retriever.py,Controlled retrieval,src/nsai/retrieval/policy.py,REIMPLEMENT,P1,HIGH/IP,Authorized scopes and cited retrieval,YES
+REMY,7_Remy/remy/models/remote_client.py,Remote inference client,src/nsai/inference/openai.py,REIMPLEMENT,P0,HIGH/IP,Generic HTTP gateway written originally; support ROCm vLLM adapter,YES
+REMY,7_Remy/remy/memory/service.py,Session memory,src/nsai/memory/session.py,REIMPLEMENT,P2,HIGH/IP,Session ownership and personal preferences; avoid domain-specific user tables,YES
+REMY,7_Remy/remy/learning/service.py,Governed consolidation,src/nsai/learning/feedback.py,REIMPLEMENT,P2,HIGH/IP,Current service captures summaries; do not label autonomous learning,YES
+REMY,7_Remy/remy/safety/guard.py,Safety guard,src/nsai/security/input.py,REIMPLEMENT,P1,HIGH/IP,"Treat as prompts/policy guidance, not a runtime sandbox",YES
+REMY,7_Remy/remy/permissions/service.py,Permissions,src/nsai/auth/policy.py,REIMPLEMENT,P1,HIGH/IP,Original RBAC/ABAC scope design,YES
+REMY,7_Remy/remy/telemetry/service.py,Observability,src/nsai/observability/events.py,REIMPLEMENT,P1,HIGH/IP,"Correlation IDs, audit events, timings",YES
+REMY,7_Remy/remy/voice/runtime.py,Speech interface,apps/console/voice,DEFER,P3,HIGH/IP,Not relevant to judging vertical slice,YES
+REMY,7_Remy/Dockerfile,Nonroot application image pattern,Dockerfile,PATTERN_ONLY,P0,MEDIUM,Source contains good USER practice; too many domain-specific copies and packages,YES
+REMY,7_Remy/docker-compose.yml,Runtime compose design,compose.yaml,PATTERN_ONLY,P0,HIGH/SEC,"Rebuild; avoid default token, public bind, shared external network, broad mounts",YES
+REMY,7_Remy/docker-compose.gpu.yml,GPU compose,deploy/amd/compose.amd.yaml,REPLACE,P1,HIGH/SEC,Configured as gpu_bridge/remote_ollama; target AMD ROCm vLLM,YES
+REMY,gpu-worker/docker-compose.yml,GPU worker,deploy/amd/compose.amd.yaml,REPLACE,P1,HIGH/SEC,NVIDIA driver reservations incompatible with AMD pass-through,YES
+REMY,docker-compose.monitoring.yml,Monitoring,deploy/monitoring,DEFER,P2,HIGH/SEC,"Avoid Docker socket mount, even read-only; use restricted metric exports",YES
+REMY,docs/deployment/docker-hardening-pc16.md,Docker hardening runbook,docs/DOCKER_SAFETY.md,PATTERN_ONLY,P0,LOW,Explains prior hardening but describes config validation not runtime proof,YES
+PX,contracts/nsai/knowledge-object.schema.json,Knowledge schema,contracts/knowledge.schema.json,ADAPT_APACHE,P1,MEDIUM,Retain source license and original notices if copied; adapt scope and schema version,YES
+PX,contracts/nsai/formula-object.schema.json,Formula schema,contracts/formula.schema.json,ADAPT_APACHE,P2,MEDIUM,Candidate formula objects; formulas never executable without validation,YES
+PX,runtime/nsai_knowledge.py,NSAI knowledge object validator,src/nsai/knowledge/px_adapter.py,ADAPT_APACHE,P1,MEDIUM/DEPENDENCIES,"Imports PX archive_io,bounded_walk,contracts,json_io; lift pure semantics or implement narrow adapter",YES
+PX,runtime/knowledge_refinery.py,Novelty and merge proposals,src/nsai/evidence/refinery.py,ADAPT_APACHE,P1,MEDIUM/DEPENDENCIES,"Near-duplicate, novelty, merge planning and graph audits; no direct canon writes",YES
+PX,runtime/knowledge_foundry.py,Candidate skill/calculation build,src/nsai/skills/candidate_builder.py,ADAPT_APACHE,P2,HIGH/EXEC,Use restricted AST checks and explicit validation; never execute untrusted code in API,YES
+PX,runtime/memory_fabric.py,Memory record/shards,src/nsai/memory/fabric.py,ADAPT_APACHE,P2,MEDIUM/DEPENDENCIES,"Candidate multi-class record model, shard identities, admission semantics",YES
+PX,runtime/memory_broker.py,Context materializer,src/nsai/memory/context.py,ADAPT_APACHE,P2,MEDIUM/DEPENDENCIES,"Depends on memory_fabric,memory_intelligence,hash_utils; bounded query plans",YES
+PX,runtime/learning_promotion.py,Evidence-based learning promotion,src/nsai/learning/promotion.py,ADAPT_APACHE,P2,HIGH/GOV,"Candidate hypotheses, revision freeze, confidence gates; keep separate signing authority",YES
+PX,runtime/trusted_evidence.py,Trusted evidence receipts,src/nsai/evidence/receipts.py,ADAPT_APACHE,P1,MEDIUM/DEPENDENCIES,"Source scope, producer identity, signatures; no fake authorizations",YES
+PX,runtime/event_ledger.py,Audit ledger,src/nsai/audit/event_log.py,ADAPT_APACHE,P1,MEDIUM,Append-only evidentiary event patterns,YES
+PX,runtime/compact_address.py,Compact deterministic addressing,src/nsai/routing/addressing.py,DEFER,P2,MEDIUM,Useful after objects/sources stable; avoid forcing addressing onto raw evidence,YES
+PX,runtime/capability_routing.py,Deterministic capability selection,src/nsai/routing/capability.py,ADAPT_APACHE,P2,MEDIUM/DEPENDENCIES,"Structured candidates, ranking, bounded execution package",YES
+PX,runtime/provider_gateway.py,Provider budgets/retries,src/nsai/inference/gateway.py,ADAPT_APACHE,P2,MEDIUM/DEPENDENCIES,Broader than needed for first AMD endpoint; start with thin client,YES
+PX,runtime/isolated_sandbox.py,Sandbox policy contracts,src/nsai/security/policy.py,ADAPT_APACHE,P1,HIGH/ENFORCEMENT,Declarative policy only; enforce with containers and Linux host mechanism,YES
+PX,runtime/gremlin/containment.py,Gremlin containment facade,src/nsai/security/gremlin_adapter.py,DEFER,P3,HIGH/PORTABILITY,Has exact identity/receipt ideas; not complete Linux Docker isolation,YES
+PX,runtime/gremlin/host_enforcement_backend.py,Host process enforcement,none,EXCLUDE,NEVER,HIGH/PORTABILITY,Windows Job Objects and kernel32; not usable on ROCm Linux host,YES
+PX,runtime/docker_model_runtime.py,Docker model runner lifecycle,src/nsai/deploy/model_manager.py,DEFER,P3,MEDIUM,OCI digest and authority verification ideas; external AMD runner uses Compose,YES
+PX,runtime/process_supervisor.py,Host process management,none,EXCLUDE,NEVER,HIGH/PORTABILITY,Tightly tied to PX supervisor and Windows Job custody,YES
+PX,runtime/work_admission.py,Work admission,src/nsai/governance/admission.py,ADAPT_APACHE,P2,HIGH/GOV,"Borrow scoped admission semantics, avoid copying full PX release ledger",YES
+PX,runtime/semantic_retrieval_fusion.py,Fusion of evidence sources,src/nsai/retrieval/fusion.py,DEFER,P2,MEDIUM/DEPENDENCIES,Short adapter but depends on multiple semantic subsystem modules,YES
+PX,runtime/resource_lifecycle.py,Custody and resource budgets,src/nsai/jobs/lifecycle.py,DEFER,P3,HIGH/PORTABILITY,Host-level resource management not needed for initial Docker deployment,YES

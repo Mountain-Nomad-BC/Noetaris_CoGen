@@ -1,0 +1,25 @@
+id,title,priority,lane,status,dependencies,original_cards,research_cards,owner
+FIN-01,"Reconcile baseline, claims and exact evidence",P0,Independent now,PLANNED,,"NSAI-001,NSAI-002,NSAI-003,NSAI-047,NSAI-081",,Implementation engineer + separate verifier
+FIN-02,Recover canonical security scan environment,P0,Host prerequisite; independent work continues,EXTERNAL_PREREQUISITE,FIN-01,"NSAI-077,NSAI-078",,Host operator + independent security reviewer
+FIN-03,Resolve image/package findings and reproducibility,P0,Independent now,PLANNED,FIN-01,"NSAI-021,NSAI-022,NSAI-023",,Implementation engineer + separate verifier
+FIN-04,"Complete local identity, object permissions and inactive central contracts",P0,Independent now; local only,PLANNED,FIN-01,"NSAI-010,NSAI-011,NSAI-027,NSAI-065,NSAI-066,NSAI-085",REF-04,Implementation engineer + separate verifier
+FIN-05,Prove Windows/private-state and database least privilege,P0,Independent now,PLANNED,FIN-01,"NSAI-007,NSAI-008,NSAI-026",,Implementation engineer + separate verifier
+FIN-06,"Finish startup, import, transport and interface integrity",P0,Independent now,PLANNED,FIN-01,"NSAI-004,NSAI-005,NSAI-006,NSAI-024,NSAI-028,NSAI-029",,Implementation engineer + separate verifier
+FIN-07,"Finish CPU commissioning, recovery and rollback",P0,Independent rehearsal; release later,PLANNED,"FIN-03,FIN-05,FIN-06","NSAI-009,NSAI-025,NSAI-032",,Implementation engineer + separate verifier
+FIN-08,"Qualify typed values, formula contracts and safe calculations",P1,Independent now,PLANNED,FIN-01,"NSAI-033,NSAI-034,NSAI-057,NSAI-058",,Implementation engineer + separate verifier
+FIN-09,"Finish contradiction, relevance and bounded memory",P1,Independent now,PLANNED,FIN-08,"NSAI-017,NSAI-035,NSAI-036,NSAI-037",,Implementation engineer + separate verifier
+FIN-10,Complete extraction lineage and source generations,P1,Independent now,PLANNED,FIN-01,"NSAI-013,NSAI-014,NSAI-018,NSAI-038,NSAI-039","REF-05,REF-06,REF-07",Implementation engineer + separate verifier
+FIN-11,"Qualify lexical, semantic and hybrid retrieval",P1,Independent now; optional worker only,PLANNED,"FIN-08,FIN-09,FIN-10","NSAI-040,NSAI-041,NSAI-048,NSAI-049,NSAI-087",REF-03,Implementation engineer + separate verifier
+FIN-12,Repair grounded CPU responses and intelligence/resource balance,P1,Independent now,PLANNED,"FIN-01,FIN-08,FIN-09","NSAI-012,NSAI-015,NSAI-016,NSAI-020",,Implementation engineer + separate verifier
+FIN-13,"Complete PDF workspace, OCR lifecycle and geometry",P1,Independent now,PLANNED,"FIN-05,FIN-06,FIN-10","NSAI-050,NSAI-051,NSAI-052,NSAI-053,NSAI-054,NSAI-055,NSAI-056,NSAI-059",REF-09,Implementation engineer + separate verifier
+FIN-14,"Finish typed knowledge assembly, structural units and provenance",P1,Independent now,PLANNED,"FIN-08,FIN-10","NSAI-060,NSAI-062,NSAI-067,NSAI-068","REF-01,REF-02,REF-07",Implementation engineer + separate verifier
+FIN-15,"Complete governed learning, correction and temporal contracts",P1,Independent now; signing design only,PLANNED,"FIN-04,FIN-09,FIN-10,FIN-14","NSAI-061,NSAI-063,NSAI-064,NSAI-088,NSAI-089",,Implementation engineer + separate verifier
+FIN-16,Complete issue-to-engineering-flow work,P1,Independent now,PLANNED,"FIN-08,FIN-14,FIN-15","NSAI-069,NSAI-070,NSAI-071,NSAI-076",,Implementation engineer + separate verifier
+FIN-17,"Complete utilization, task continuity and cost accounting",P1,Independent now,PLANNED,"FIN-09,FIN-12,FIN-15","NSAI-072,NSAI-073,NSAI-074,NSAI-075",,Implementation engineer + separate verifier
+FIN-18,"Finish bounded storage, async performance and retention",P1,Independent now,PLANNED,"FIN-05,FIN-10,FIN-17","NSAI-042,NSAI-045,NSAI-046",,Implementation engineer + separate verifier
+FIN-19,Finish real browser PDF and workflow experience,P2_DEMO_REQUIRED,Independent now,PLANNED,"FIN-04,FIN-10,FIN-13,FIN-14","NSAI-019,NSAI-043,NSAI-044",REF-08,Implementation engineer + separate verifier
+FIN-20,"Complete adversarial, fuzz, fault and function qualification",P0,Independent now; coverage expands with changes,PLANNED,FIN-01,"NSAI-030,NSAI-079",,Implementation engineer + separate verifier
+FIN-21,"Clear provenance, rights and exact submission archive",P0,Independent now,PLANNED,FIN-01,"NSAI-031,NSAI-080",,Implementation engineer + separate verifier
+FIN-22,Accept and deploy the controlled CPU release,P0,Final mandatory gate,PLANNED,"FIN-02,FIN-03,FIN-04,FIN-05,FIN-06,FIN-07,FIN-08,FIN-09,FIN-10,FIN-11,FIN-12,FIN-13,FIN-14,FIN-15,FIN-16,FIN-17,FIN-18,FIN-19,FIN-20,FIN-21,FIN-23,FIN-24",NSAI-082,,Implementation engineer + separate verifier
+FIN-23,Close deferred boundaries through design and truthful exclusions,P3_DESIGN_ONLY,Design only; no activation,DESIGN_ONLY,FIN-01,"NSAI-083,NSAI-084,NSAI-086",,Implementation engineer + separate verifier
+FIN-24,Complete untouched-subject challenge and judge demonstrations,P2_DEMO_REQUIRED,After feature freeze,PLANNED,"FIN-04,FIN-10,FIN-11,FIN-12,FIN-13,FIN-14,FIN-15,FIN-16,FIN-19,FIN-20,FIN-21",,,Implementation engineer + separate verifier

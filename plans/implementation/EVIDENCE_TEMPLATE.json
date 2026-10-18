@@ -1,0 +1,48 @@
+{
+  "template_only": true,
+  "card_id": "NSAI-NNN",
+  "run_id": "unique-owned-run-id",
+  "started_at_utc": null,
+  "finished_at_utc": null,
+  "source_manifest_sha256": null,
+  "image_digest": null,
+  "effective_config_sha256": null,
+  "fixture_manifest_sha256": null,
+  "tool_versions": {},
+  "isolation": {
+    "owned_resource_names": [],
+    "user_volume_access": false,
+    "model_transport": "declare REAL or MOCKED",
+    "cleanup_result": "NOT_RUN"
+  },
+  "commands": [],
+  "acceptance_cases": [
+    {
+      "criterion": "copy the actual card acceptance criterion",
+      "case_id": "original-independent-fixture-id",
+      "expected": null,
+      "actual": null,
+      "verdict": "NOT_RUN",
+      "artifact_sha256": null
+    }
+  ],
+  "metrics": {
+    "definition_version": null,
+    "units": null,
+    "sample_count": 0,
+    "cold_warm_policy": null,
+    "concurrency": null,
+    "quality_tolerance_predeclared": null,
+    "baseline": null,
+    "challenger": null
+  },
+  "recovery_result": "NOT_RUN",
+  "limitations": [],
+  "independent_review": {
+    "reviewer": null,
+    "decision": "NOT_REVIEWED",
+    "receipt_binding_sha256": null
+  },
+  "submission_projection_reviewed": false,
+  "overall_verdict": "NOT_RUN"
+}
