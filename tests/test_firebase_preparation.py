@@ -59,3 +59,11 @@ def test_private_debug_or_wrong_target_artifacts_cannot_be_bundled(tmp_path,case
     {'app_origin':'https://project.web.app'},{'project_id':'REPLACE_PROJECT'},{'site_id':'invalid/site'}])
 def test_placeholder_credential_and_crosssite_configuration_cannot_render(change):
     with pytest.raises(ValueError):firebase_config({**config(),**change})
+
+
+def test_default_firebase_site_can_prepare_same_origin_static_hosting():
+    values=dict(project_id='existing-project',site_id='existing-site',app_origin='https://existing-site.web.app',api_origin='https://existing-site.web.app',deployment_site='')
+    hosting=firebase_config(values)['hosting']
+    assert hosting['site']=='existing-site'
+    assert 'run' not in str(hosting.get('rewrites',[]))
+    with pytest.raises(ValueError): firebase_config({**values,'app_origin':'https://other-site.web.app','api_origin':'https://other-site.web.app'})

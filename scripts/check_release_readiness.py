@@ -20,7 +20,7 @@ def source_snapshot(root):
         # Windows junctions are reparse points even when is_symlink is false.
         import stat
         attributes = path.lstat().st_file_attributes if hasattr(path.lstat(), 'st_file_attributes') else 0
-        if path.is_symlink() or attributes & getattr(stat, 'FILE_ATTRIBUTE_REPARSE_POINT', 1024):
+        if attributes & getattr(stat, 'FILE_ATTRIBUTE_REPARSE_POINT', 1024) or path.is_symlink():
             raise ValueError('Source link or junction not admitted')
     def walk(directory, frontend=False):
         if not directory.exists():

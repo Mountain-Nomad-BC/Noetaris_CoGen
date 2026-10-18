@@ -3,7 +3,7 @@
 !.env.example
 secrets/*
 !secrets/.gitkeep
-state/
+/state/
 data/arxiv-corpus/
 .pytest_cache/
 __pycache__/
@@ -15,12 +15,12 @@ __pycache__/
 node_modules/
 
 # Local-only datasets, generated evidence, tooling and runtime artifacts.
-data/
-datasets/
-evidence/
-reports/
-.agents/
-.vscode/
+/data/
+/datasets/
+/evidence/
+/reports/
+/.agents/
+/.vscode/
 **/node_modules/
 **/dist/
 **/build/

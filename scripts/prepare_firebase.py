@@ -22,7 +22,9 @@ def firebase_config(config):
     if not isinstance(config['site_id'],str) or re.fullmatch(r'[a-z0-9][a-z0-9-]{0,61}[a-z0-9]',config['site_id']) is None:
         raise ValueError('Explicit Firebase hosting site required')
     app=_https_origin(config['app_origin']);api=_https_origin(config['api_origin']);site=config['deployment_site']
-    if (not isinstance(site,str) or re.fullmatch(r'[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?',site) is None or
+    default_static=(app==api and site=='' and app in {
+        'https://'+config['site_id']+'.web.app','https://'+config['site_id']+'.firebaseapp.com'})
+    if not default_static and (not isinstance(site,str) or re.fullmatch(r'[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?',site) is None or
         '.' not in site or urlsplit(api).hostname!='api.'+site or urlsplit(app).hostname not in {'app.'+site,site}):
         raise ValueError('Owned same-site app/API domains required')
     csp=("default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
@@ -76,6 +78,7 @@ def bundle(config,dist,output,asset_root=ROOT/'assets'):
         public_configuration=expected,files=hashes,
         public_artifact_sha256=hashlib.sha256(json.dumps(hashes,sort_keys=True).encode()).hexdigest(),
         pending=['Owner-approved Firebase site/domain and public publication',
+                 'Reachable same-origin API gateway or separately qualified backend; static Hosting does not execute Python',
                  'Real Google/GitHub OAuth and production-origin Chromium/Firefox cookie/CSRF E2E',
                  'Independent security, private-content, rights and release acceptance'])
     (output/'preparation.json').write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8')
